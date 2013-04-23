@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngswipeDemoApp', [])
+angular.module('ngswipeDemoApp', ['ngMobile'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -1,3 +1,5 @@
-<div class="hero-unit" ng-swipe-left="swipeLeft()" ng-swipe-right="swipeRight()">
-	SWIPE ME
+<div class="offset3 span4" ng-carousel="page in pages" style="height: 100%">
+  <span ng-style="{ 'background-color': page.color }">
+    Content {{ page.id }}
+  </span>
 </div>

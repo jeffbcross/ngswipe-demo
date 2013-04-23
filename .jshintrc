@@ -21,5 +21,6 @@
   "smarttabs": true,
   "globals": {
     "angular": false
-  }
+  },
+  "loopfunc": true
 }
