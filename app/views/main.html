@@ -1,9 +1,5 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div class="offset3 span4" ng-carousel="page in pages" style="height: 100%">
+  <span ng-style="{ 'background-color': page.color }">
+    Content {{ page.id }}
+  </span>
 </div>
