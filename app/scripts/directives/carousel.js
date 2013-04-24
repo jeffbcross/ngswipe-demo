@@ -99,8 +99,16 @@ angular.module('ngswipeDemoApp')
           function resize() {
             viewportWidth = wrapper[0].clientWidth;
             snapThreshold = Math.round(viewportWidth * 0.15);
+            console.log('resized: ' + viewportWidth + ', ' + snapThreshold);
           }
           resize();
+
+          var resizeEvent = 'onorientationchange' in window ? 'orientationchange' : 'resize';
+          window.addEventListener(resizeEvent, function() {
+            resize();
+            slider.css('-webkit-transition-duration', '0s');
+            moveSlider(-page * viewportWidth);
+          });
 
           function moveSlider(x) {
             sliderX = x;
