@@ -13,8 +13,27 @@ html, body {
 
 .page {
   height: 100%;
-  -webkit-column-count: 3;
-  -webkit-column-gap: 2em;
-  padding: 2em;
   overflow: hidden;
 }
+
+.columns {
+  padding: 2em;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 2em;
+  overflow: hidden;
+  height: 600px;
+}
+
+.columns p {
+  -webkit-columns-break-inside: avoid;
+}
+
+.banner {
+  text-align: center;
+  background-color: #e80000;
+  color: white;
+  font-size: 300%;
+  line-height: 100px;
+  font-family: "Times" serif;
+}
+
