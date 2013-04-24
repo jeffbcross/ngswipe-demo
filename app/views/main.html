@@ -1,5 +1,12 @@
-<div class="offset3 span4" ng-carousel="page in pages" style="height: 100%">
-  <span ng-style="{ 'background-color': page.color }">
-    Content {{ page.id }}
-  </span>
+<div ng-carousel="page in pages" style="height: 100%">
+  <div class="page">
+    <p ng-repeat="content in page.content">
+      <span ng-hide="content.src">
+        {{content}}
+      </span>
+      <span ng-show="content.src">
+        <img ng-src="{{content.src}}" width="200px" />
+      </span>
+    </p>
+  </div>
 </div>

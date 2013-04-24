@@ -10,3 +10,11 @@ html, body {
 .container {
   height: 100%;
 }
+
+.page {
+  height: 100%;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 2em;
+  padding: 2em;
+  overflow: hidden;
+}
