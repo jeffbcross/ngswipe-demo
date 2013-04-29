@@ -25,7 +25,8 @@
     "matchdep": "~0.1.1",
     "grunt-google-cdn": "~0.1.1",
     "grunt-ngmin": "~0.0.2",
-    "grunt-contrib-less": "~0.5.1"
+    "grunt-contrib-less": "~0.5.1",
+    "bootstrap": "git+https://github.com/twitter/bootstrap.git"
   },
   "engines": {
     "node": ">=0.8.0"
