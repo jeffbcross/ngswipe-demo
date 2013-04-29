@@ -5,10 +5,7 @@ angular.module('ngswipeDemoApp')
     return {
       restrict: 'AC',
       transclude: true,
-      template: '<div style="position: relative; overflow: hidden; height: 100%">' +
-          '<div style="position: relative; top: 0; height: 100%; width: 100%; -webkit-transition-duration: 0; -webkit-transform: translateZ(0); -webkit-transition-timing-function: ease-out">' +
-            '<div style="-webkit-transform: translateZ(0); position: absolute; top: 0; height:100%; width: 100%;" ng-transclude>' +
-        '</div></div></div>',
+      templateUrl: 'views/carousel.html',
       compile: function(_element, _attr, linker) {
         return function(scope, element, attr) {
           // Parse the values out of the attr value.
@@ -24,8 +21,8 @@ angular.module('ngswipeDemoApp')
           valueIdentifier = match[1];
           listIdentifier = match[2];
 
-          var wrapper = element.children();
-          var slider = wrapper.children();
+          var wrapper = element.children(); console.log('wrapper', wrapper);
+          var slider = wrapper.children(); //
 
           // Empty out the slider.
           var templateFrame = slider.children();
