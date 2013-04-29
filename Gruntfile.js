@@ -20,6 +20,13 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+    less: { 
+      development: {
+        files: {
+          "app/styles/main.css": "app/styles/main.less"
+        }  
+      }
+    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -28,6 +35,10 @@ module.exports = function (grunt) {
       coffeeTest: {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
+      },
+      less: {
+        files: ['app/styles/{,*/}*.less'],
+        tasks: ['less']
       },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],

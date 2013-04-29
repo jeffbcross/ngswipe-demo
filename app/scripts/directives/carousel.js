@@ -21,8 +21,8 @@ angular.module('ngswipeDemoApp')
           valueIdentifier = match[1];
           listIdentifier = match[2];
 
-          var wrapper = element.children(); console.log('wrapper', wrapper);
-          var slider = wrapper.children(); //
+          var wrapper = element.children();
+          var slider = wrapper.children();
 
           // Empty out the slider.
           var templateFrame = slider.children();
