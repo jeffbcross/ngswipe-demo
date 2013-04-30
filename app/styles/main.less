@@ -28,6 +28,12 @@ html, body {
   }
 }
 
+.loading-placeholder {
+  width: 100%;
+  height: 100%;
+
+}
+
 .article {
   font-family: Georgia, serif;
   overflow-y: auto;
@@ -70,13 +76,26 @@ html, body {
   top:0;
   height: @bannerHeight;
   width: 100%;
+  padding-left: @padding;
   text-align: left;
   background-color: @grayLighter;
-  color: @gray;
-  font-size: 150%;
-  line-height: @bannerHeight;
+  
+  .title {
+    margin:@padding 0 @padding / 4;
+    line-height: 100%;
+    font-size: 150%;
+    color: @gray;
 
-  padding-left: @padding;
+    &.loading {
+      line-height: @bannerHeight;
+      margin: 0;
+    }
+  }
+  .url {
+    font-size:100%;
+    color: @grayLight;
+  }
+  
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 

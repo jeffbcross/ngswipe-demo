@@ -5,4 +5,8 @@
     </div>
   </div>
 </div>
-<div class="banner" ng-bind="feed.title"></div>
+<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!pages.length"></div>
+<div class="banner">
+  <h3 class="title" ng-bind="feed.title" ng-class="{loading: !pages.length}"></h3>
+  <a class="url" target="_blank" href="{{feed.url}}" ng-bind="feed.url"></a>
+</div>

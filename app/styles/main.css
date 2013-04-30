@@ -5276,6 +5276,10 @@ body {
 .page::-webkit-scrollbar {
   display: none;
 }
+.loading-placeholder {
+  width: 100%;
+  height: 100%;
+}
 .article {
   font-family: Georgia, serif;
   overflow-y: auto;
@@ -5318,13 +5322,24 @@ body {
   top: 0;
   height: 75px;
   width: 100%;
+  padding-left: 15px;
   text-align: left;
   background-color: #eeeeee;
-  color: #555555;
-  font-size: 150%;
-  line-height: 75px;
-  padding-left: 15px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.banner .title {
+  margin: 15px 0 3.75px;
+  line-height: 100%;
+  font-size: 150%;
+  color: #555555;
+}
+.banner .title.loading {
+  line-height: 75px;
+  margin: 0;
+}
+.banner .url {
+  font-size: 100%;
+  color: #999999;
 }
 .carousel-container {
   position: relative;
