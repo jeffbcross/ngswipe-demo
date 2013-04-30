@@ -5266,6 +5266,9 @@ body {
   height: 100%;
   width: 100%;
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
 .page {
   height: 100%;
   overflow-x: hidden;
@@ -5273,27 +5276,51 @@ body {
 .page::-webkit-scrollbar {
   display: none;
 }
-.columns {
+.article {
+  font-family: Georgia, serif;
   padding: 2em;
   overflow-y: auto;
   height: auto;
   width: 100%;
 }
-.columns img {
+.article .body {
+  width: 70%;
+  padding: 90px 45px 45px;
+  margin: auto;
+}
+.article .body img,
+.article .body code {
+  margin: 50px 0;
+}
+.article .body p,
+.article .body h1,
+.article .body h2,
+.article .body h3,
+.article .body h4,
+.article .body h5,
+.article .body h6 {
+  margin: 25px 0;
+}
+.article img {
   pointer-events: none;
 }
-.columns p {
+.article p {
   -webkit-columns-break-inside: avoid;
 }
 .banner {
-  text-align: center;
-  background-color: #eee;
-  color: white;
-  font-size: 300%;
-  line-height: 100px;
-  font-family: "Times" serif;
+  position: fixed;
+  top: 0;
+  height: 75px;
+  width: 100%;
+  text-align: left;
+  background-color: #eeeeee;
+  color: #555555;
+  font-size: 150%;
+  line-height: 75px;
+  padding-left: 15px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
-.columns {
+.article {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

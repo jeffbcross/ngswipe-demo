@@ -1,8 +1,8 @@
 <div ng-carousel="page in pages" style="height: 100%">
   <div class="page">
-    <div class="banner">The Angularian</div>
-    <div class="columns">
-      <div ng-bind-html="page.content"></div>
+    <div class="article">
+      <div class="body" ng-bind-html="page.content"></div>
     </div>
   </div>
 </div>
+<div class="banner" ng-bind="feed.title"></div>

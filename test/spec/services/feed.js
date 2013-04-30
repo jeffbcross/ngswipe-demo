@@ -11,8 +11,10 @@ describe('Service: feed', function () {
     feed = _feed_;
   }));
 
-  it('should do something', function () {
-    expect(!!feed).toBe(true);
+  it('should return a promise for loading a feed', function (done) {
+    feed.fetch('http://feeds.mashable.com/Mashable').then(function (data) {
+      expect(data.query).to.exist();
+    });
   });
 
 });
