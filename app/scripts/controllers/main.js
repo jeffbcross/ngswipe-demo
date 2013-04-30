@@ -1,8 +1,29 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $http, $sanitize, feed) {
+    feed.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml', 'feed.entry').then(function (data) {
+      var newPages = [];
+
+      for (var i=0; i<data.query.results.entry.length; i++) {
+        newPages.push({
+          id: i,
+          content: data.query.results.entry[i].content.content
+        });
+      }
+
+      $scope.pages = newPages;
+    });
+
     $scope.pages = [
+      {
+        id: 0,
+        content: [
+          { src: 'http://rack.0.mshcdn.com/media/ZgkyMDEzLzA0LzI5LzY3L1NhdHVybkh1cnJpLjQzYTlkLmpwZwpwCXRodW1iCTU3NXgzMjMjCmUJanBn/8364ada9/821/SaturnHurricane.jpg'},
+          'NASA\'s Cassini spacecraft captured what the agency calls a "behemoth" hurricane on Saturn that has been churning for years. With a 1,250-mile-wide eye, the hurricane is 20 times larger than those we see on Earth' +
+          'This first color image, acquired on Nov. 27, 2012, shows the hurricane at <a href="/category/space/?utm_medium=feed&amp;utm_source=rss">Saturn</a>\'s north pole, which was previously hidden when Cassini arrived in 2004 during the planet\'s winter. Scientists combined images with red, green and blue spectral filters to create a view that looks natural to the human eye. Cassini was about 261,000 miles away from the storm'
+        ]
+      },
       {
         id: 1,
         content: [

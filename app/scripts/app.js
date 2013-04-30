@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngswipeDemoApp', ['ngMobile'])
+angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -5264,6 +5264,7 @@ body {
 }
 .container {
   height: 100%;
+  width: 100%;
 }
 .page {
   height: 100%;
@@ -5274,8 +5275,6 @@ body {
 }
 .columns {
   padding: 2em;
-  -webkit-column-count: 4;
-  -webkit-column-gap: 2em;
   overflow-y: auto;
   height: auto;
   width: 100%;

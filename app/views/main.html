@@ -2,14 +2,7 @@
   <div class="page">
     <div class="banner">The Angularian</div>
     <div class="columns">
-      <p ng-repeat="content in page.content">
-        <span ng-hide="content.src">
-          {{content}}
-        </span>
-        <span ng-show="content.src">
-          <img ng-src="{{content.src}}" width="200px" />
-        </span>
-      </p>
+      <div ng-bind-html="page.content"></div>
     </div>
   </div>
 </div>
