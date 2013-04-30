@@ -3,7 +3,6 @@
 angular.module('ngswipeDemoApp')
   .controller('MainCtrl', function ($scope, $http, $sanitize, feed) {
     feed.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml', 'feed.entry').then(function (data) {
-      console.log(data);
       var newPages = [];
 
       for (var i=0; i<data.query.results.entry.length; i++) {
@@ -21,5 +20,5 @@ angular.module('ngswipeDemoApp')
     });
 
     $scope.pages = [];
-    $scope.feed = {title: "The Angularian"};
+    $scope.feed = {title: "Loading..."};
   });
