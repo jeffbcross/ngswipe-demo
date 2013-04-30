@@ -30,10 +30,21 @@ html, body {
 
 .article {
   font-family: Georgia, serif;
+  overflow-y: auto;
+  height: auto;
+  width: 100%;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   .body {
     width: 70%;
-    padding: (@bannerHeight + @padding) (@padding * 3) (@padding * 3);
+    min-width:320px;
+    padding: (@bannerHeight + @padding * 2) (@padding * 3) (@padding * 3);
     margin: auto;
 
     img, code {
@@ -43,24 +54,15 @@ html, body {
     p, h1, h2, h3, h4, h5, h6 {
       margin: 25px 0;
     }
-
-    *::-webkit-scrollbar {
-      // display: none;
-    }
   }
 
-  padding: 2em;
-  overflow-y: auto;
-  height: auto;
-  width: 100%;
+  p {
+    -webkit-columns-break-inside: avoid;
+  }
 
   img {
     pointer-events: none;
   }
-}
-
-.article p {
-  -webkit-columns-break-inside: avoid;
 }
 
 .banner {
@@ -76,15 +78,6 @@ html, body {
 
   padding-left: @padding;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-}
-
-.article {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;  
 }
 
 

@@ -7,7 +7,7 @@ angular.module('ngswipeDemoApp')
       transclude: true,
       templateUrl: 'views/carousel.html',
       compile: function(_element, _attr, linker) {
-        return function(scope, element, attr) {
+        return function link (scope, element, attr) {
           // Parse the values out of the attr value.
           var expression = attr.ngCarousel;
           var match = expression.match(/^\s*(.+)\s+in\s+(.*?)\s*$/);
@@ -84,7 +84,9 @@ angular.module('ngswipeDemoApp')
             }
           }
 
-          repositionFrames();
+          scope.$watch(listIdentifier, repositionFrames);
+
+          // repositionFrames();
 
           var startX, pointX;
           var sliderX = 0;

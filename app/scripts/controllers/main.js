@@ -7,7 +7,7 @@ angular.module('ngswipeDemoApp')
 
       for (var i=0; i<data.query.results.entry.length; i++) {
         newPages.push({
-          id: i,
+          id: i + 1,
           content: data.query.results.entry[i].content.content
         });
       }

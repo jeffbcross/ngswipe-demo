@@ -5278,14 +5278,20 @@ body {
 }
 .article {
   font-family: Georgia, serif;
-  padding: 2em;
   overflow-y: auto;
   height: auto;
   width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .article .body {
   width: 70%;
-  padding: 90px 45px 45px;
+  min-width: 320px;
+  padding: 105px 45px 45px;
   margin: auto;
 }
 .article .body img,
@@ -5301,11 +5307,11 @@ body {
 .article .body h6 {
   margin: 25px 0;
 }
-.article img {
-  pointer-events: none;
-}
 .article p {
   -webkit-columns-break-inside: avoid;
+}
+.article img {
+  pointer-events: none;
 }
 .banner {
   position: fixed;
@@ -5319,14 +5325,6 @@ body {
   line-height: 75px;
   padding-left: 15px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
-}
-.article {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 .carousel-container {
   position: relative;
