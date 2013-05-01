@@ -5283,6 +5283,7 @@ body {
 .article {
   font-family: Georgia, serif;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   height: auto;
   width: 100%;
   -webkit-touch-callout: none;
@@ -5298,11 +5299,10 @@ body {
   padding: 105px 0 45px;
   margin: auto;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 320px) {
   .article .body {
     width: 90%;
-    font-size: 150%;
-    line-height: 175%;
+    line-height: 150%;
   }
 }
 .article .body img,
