@@ -5294,9 +5294,16 @@ body {
 }
 .article .body {
   width: 70%;
-  min-width: 320px;
-  padding: 105px 45px 45px;
+  max-width: 940px;
+  padding: 105px 0 45px;
   margin: auto;
+}
+@media only screen and (max-width: 600px) {
+  .article .body {
+    width: 90%;
+    font-size: 150%;
+    line-height: 175%;
+  }
 }
 .article .body img,
 .article .body code {
