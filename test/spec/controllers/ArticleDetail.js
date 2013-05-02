@@ -19,10 +19,6 @@ describe('Controller: ArticleDetailCtrl', function () {
     ArticleDetailCtrl = $controller('ArticleDetailCtrl', {
       $scope: scope
     });
-
-    
-
-    console.log('ArticleDetailCtrl', ArticleDetailCtrl);
   }));
 
   it('should provide some pages', function () {

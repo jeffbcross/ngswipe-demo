@@ -5279,6 +5279,15 @@ body {
   border: 0;
   width: 100%;
   height: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body {
+  padding-top: 75px;
 }
 .container {
   height: 100%;
@@ -5304,17 +5313,11 @@ body {
   -webkit-overflow-scrolling: touch;
   height: auto;
   width: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 .article .body {
   width: 70%;
   max-width: 940px;
-  padding: 105px 0 45px;
+  padding: 30px 0 45px;
   margin: auto;
 }
 @media only screen and (max-width: 320px) {
@@ -5358,13 +5361,43 @@ body {
   font-size: 150%;
   color: #555555;
 }
-.banner .title.loading {
+.banner .title.loading,
+.banner .title.no-subtitle {
   line-height: 75px;
   margin: 0;
 }
 .banner .url {
   font-size: 100%;
   color: #999999;
+}
+.feed-list .feed-box {
+  display: block;
+  height: 48px;
+  padding: 15px 7.5px;
+  margin: 0 15px;
+  background: #fff;
+  border-bottom: 1px solid #999999;
+}
+.feed-list .feed-box:hover {
+  background-color: #eeeeee;
+}
+.feed-list .feed-box:active {
+  background-color: #999999;
+}
+.feed-list .feed-box:active .name {
+  color: #ffffff;
+}
+.feed-list .feed-box img {
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 15px;
+}
+.feed-list .feed-box .name {
+  color: #555555;
+  font-weight: bold;
+  line-height: 48px;
+  font-size: 36px;
 }
 .carousel-container {
   position: relative;

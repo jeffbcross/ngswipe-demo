@@ -1,1 +1,13 @@
-feeds
+<div class="row-fluid feed-list">  
+  <div ng-class="{span12: !activeFeed, span6: activeFeed}">
+    <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box">
+      <img ng-src="{{ feed.icon }}">
+      <span class="name" ng-bind="feed.name"></div>
+    </span>
+  </div>
+</div>
+<div class="banner">
+  <h2 class="title no-subtitle">
+    Feeds
+  </h2>
+</div>

@@ -27,4 +27,30 @@ describe('Service: feeds', function () {
     expect(feed).toEqual('bar');
   });
 
+  it('should support addition of a feed through the "add" method', function () {
+    feeds.add({name: 'Random Feed', href: "http://random.feed"});
+
+    expect(feeds.get('Random Feed').name).toEqual('Random Feed');
+  });
+
+  it ('should not add a feed without a name', function () {
+    var passes = true, all;
+    feeds.add({href: 'http://google.com/feed'});
+    
+    all = feeds.getAll();
+    for (var i = 0; i<all.length; i++) {
+      expect(all[i].href).not.toEqual('http://google.com/feed');
+    }
+  });
+
+  it ('should not add a feed without an href', function () {
+    feeds.add({name: 'Google'});
+    expect(feeds.get('Google')).toBe(undefined);
+  });
+
+  it('should remove a feed', function () {
+    feeds.remove("Random Feed");
+    expect(feeds.get("Random Feed")).toBe(undefined);
+  });
+
 });
