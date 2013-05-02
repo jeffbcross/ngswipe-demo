@@ -6,12 +6,13 @@ describe('Service: localData', function () {
   beforeEach(module('ngswipeDemoApp'));
 
   // instantiate service
-  var localData, oldOpenDatabase, openDatabase;
+  var localData, oldOpenDatabase, openDatabase, win;
   beforeEach(inject(function (_localData_, $injector, $window, $rootScope) {
+    win = $window;
     localData = _localData_;
 
     oldOpenDatabase = openDatabase;
-    $window.openDatabase = function () {
+    win.openDatabase = function () {
       var fakeTx = {
         executeSql: function (query, vars, callback) {
           if (query.indexOf('SELECT') === 0) {
@@ -26,19 +27,17 @@ describe('Service: localData', function () {
       return {
         transaction: function (fn) {
           return fn(fakeTx);
-        }  
+        }
       }
     }
   }));
 
-  /*afterEach(function () {
-    $window.openDatabase = oldOpenDatabase
-  });*/
+  afterEach(function ($window) {
+    win.openDatabase = oldOpenDatabase
+  });
 
   it('should select a single item when calling getItem', inject(function ($rootScope) {
     var foo;
-
-    
 
     localData.getItem('foo').then(function (result) {
       foo = result;
@@ -47,7 +46,5 @@ describe('Service: localData', function () {
     $rootScope.$digest();
 
     expect(foo).toEqual('bar');
-    
-    
   }));
 });
