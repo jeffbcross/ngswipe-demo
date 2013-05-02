@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('MainCtrl', function ($scope, $http, $sanitize, feed) {
+  .controller('ArticleDetailCtrl', function ($scope, $http, $sanitize, feed) {
     feed.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml', 'feed').then(function (data) {
       console.log(data);
       var newPages = []
@@ -9,10 +9,8 @@ angular.module('ngswipeDemoApp')
 
 
       for (var i=0; i<entries.length; i++) {
-        newPages.push({
-          id: i + 1,
-          content: entries[i].content.content
-        });
+        newPages.push(entries[i]);
+        newPages[newPages.length - 1].id = i;
       }
       $scope.pages = newPages;
 

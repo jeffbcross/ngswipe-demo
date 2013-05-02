@@ -5253,6 +5253,24 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+[io-article-preview] {
+  background: #fff;
+}
+[io-article-preview] .col1 {
+  width: 100px;
+}
+[io-article-preview] .col2 {
+  width: 210px;
+}
+[io-article-preview] .col3 {
+  width: 320px;
+}
+[io-article-preview] .col4 {
+  width: 430px;
+}
+[io-article-preview] .col5 {
+  width: 540px;
+}
 /* Will be compiled down to a single stylesheet with your sass files */
 html,
 body {

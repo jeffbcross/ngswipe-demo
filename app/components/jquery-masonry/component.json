@@ -1,0 +1,17 @@
+{
+  "name": "jquery-masonry",
+  "version": "2.1.08",
+  "description": "Layout elements in a grid, like a mason fitting stones in a wall",
+  "main": "jquery.masonry.js",
+  "dependencies": {
+    "jquery": ">=1.5"
+  },
+  "gitHead": "7bd495ebd18f1c200c192beaf20d1fc1cd5b2fa9",
+  "readme": "jQuery Masonry\n==============\n\nMasonry is a dynamic grid layout plugin for jQuery. Think of it as the flip-side of CSS floats. Whereas floating arranges elements horizontally then vertically, Masonry arranges elements vertically, positioning each element in the next open spot in the grid. The result minimizes vertical gaps between elements of varying height, just like a mason fitting stones in a wall.\n\nThis package has all the documentation and demos to get you started.\n\nView this project live at [http://masonry.desandro.com](http://masonry.desandro.com).\n\n## Viewing this project locally\n\n\n### Via download\n\nYou can download a zip of all the flat HTML files from [http://meta.metafizzy.co/files/masonry-site.zip](http://meta.metafizzy.co/files/masonry-site.zip).\n\n### Via Jekyll\n\nThe documentation and demo pages are generated using [Jekyll](http://github.com/mojombo/jekyll/wiki). With Jekyll installed, you can clone this repo and run Jekyll from Terminal:\n\n    git clone https://github.com/desandro/masonry.git\n    cd masonry/\n    jekyll --server --auto\n\nThen view the live site at [http://localhost:4000](http://localhost:4000).\n\n* * *\n\nCopyright (c) 2012 David DeSandro",
+  "readmeFilename": "README.mdown",
+  "_id": "jquery-masonry@2.1.08",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/desandro/masonry"
+  }
+}
