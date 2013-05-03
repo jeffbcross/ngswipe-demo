@@ -2,8 +2,11 @@
   <div ng-class="{span12: !activeFeed, span6: activeFeed}">
     <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box">
       <img ng-src="{{ feed.icon }}">
-      <span class="name" ng-bind="feed.name"></div>
+      <span class="name" ng-bind="feed.name"></span>
     </span>
+  </div>
+  <div ng-show="activeFeed" class="span6">
+    <div io-article-preview="activeFeed"></div>
   </div>
 </div>
 <div class="banner">

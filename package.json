@@ -20,13 +20,22 @@
     "grunt-usemin": "~0.1.10",
     "grunt-regarde": "~0.1.1",
     "grunt-rev": "~0.1.0",
-    "grunt-karma": "~0.3.0",
+    "grunt-karma": "~0.4.0",
     "grunt-open": "~0.2.0",
     "matchdep": "~0.1.1",
     "grunt-google-cdn": "~0.1.1",
     "grunt-ngmin": "~0.0.2",
     "grunt-contrib-less": "~0.5.1",
-    "bootstrap": "git+https://github.com/twitter/bootstrap.git"
+    "bootstrap": "git+https://github.com/twitter/bootstrap.git",
+    "karma-script-launcher": "0.0.1",
+    "karma-firefox-launcher": "0.0.1",
+    "karma-chrome-launcher": "0.0.1",
+    "karma-jasmine": "0.0.1",
+    "karma-requirejs": "0.0.1",
+    "karma-coffee-preprocessor": "0.0.1",
+    "karma-phantomjs-launcher": "0.0.2",
+    "karma": "~0.9.2",
+    "karma-ng-html2js-preprocessor": "git+ssh://git@github.com:karma-runner/karma-ng-html2js-preprocessor.git"
   },
   "engines": {
     "node": ">=0.8.0"

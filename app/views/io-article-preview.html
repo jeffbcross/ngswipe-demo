@@ -1,0 +1,5 @@
+<div ng-repeat="article in articles" class="article">
+  <h2 ng-bind="article.title"></h2>
+  <p ng-bind="article.preview"></p>
+</div>
+<div spinner ng-show="articles.length"></div>
