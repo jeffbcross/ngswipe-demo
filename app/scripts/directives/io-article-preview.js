@@ -6,7 +6,7 @@ angular.module('ngswipeDemoApp')
       templateUrl: 'views/io-article-preview.html',
       restrict: 'EA',
       scope: {
-        "feed": "&ioArticlePreview"
+        "activeFeed": "=ioArticlePreview"
       },
       controller: 'IOArticlePreviewCtrl'
     };

@@ -7,7 +7,8 @@ describe('Controller: IOArticlePreviewCtrl', function () {
 
   var IOArticlePreviewCtrl,
     scope,
-    $httpBackend;
+    $httpBackend,
+    articles;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $injector) {
@@ -19,41 +20,81 @@ describe('Controller: IOArticlePreviewCtrl', function () {
       $httpBackend: $httpBackend
     });
 
-    $httpBackend.whenJSONP("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http://dailyjs.com/atom.xml'%20and%20itemPath%3D'undefined'&format=json&diagnostics=true&callback=JSON_CALLBACK")
-
+    $httpBackend.whenJSONP("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http://dailyjs.com/atom.xml'%20and%20itemPath%3D'feed.entry'&format=json&diagnostics=true&callback=JSON_CALLBACK")
       .respond(dailyJSFeed);
+    
+    $httpBackend.whenJSONP("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http://www.blogger.com/feeds/7159470537406093899/posts/default'%20and%20itemPath%3D'feed.entry'&format=json&diagnostics=true&callback=JSON_CALLBACK")
+    .respond(angularJSFeed)
 
     scope.feed = function () {
       return {name: 'DailyJS', href: 'http://dailyjs.com/atom.xml'}
     }
 
-    scope.activeFeed = {name: 'DailyJS', href: 'http://dailyjs.com/atom.xml'};
+    scope.activeFeed = 'DailyJS';
+
+    scope.loadArticles().then(function (data) {
+      articles = data.data.query.results.feed.entry;
+    });
+
+    $httpBackend.flush();
+    scope.$digest();
   }));
 
   describe('Article Loading', function () {
     it('should load articles from a service to display to the user', function () {
-      var promise = scope.loadArticles(scope.feed())
-        , articles;
-
-      promise.then(function (data) {
-        articles = data;
-      });
-
-      $httpBackend.flush();
-      scope.$digest();
-
       waitsFor(function () {
         return typeof articles !== "undefined";
       }, "articles to be defined", 250);
+      
       runs(function () {
-        expect(articles.data.query.results.feed.entry.length).toBeGreaterThan(0);  
+        expect(articles.length).toBeGreaterThan(0);
       })
+    });
+
+    it('should put the articles in a list on the scope after loading', function () {
+      expect(scope.articles.length).toBeGreaterThan(0);
+    });
+
+    it('should clear the articles from the scope when loading new articles', function () {
+      scope.loadArticles();
+      expect(scope.articles.length).toBeGreaterThan(0);
+    });
+
+    it('should load new articles when the activeFeed property changes', function () {
+      var prevTitle = 'Daily';
+
+      scope.activeFeed = "AngularJS";
       
-      
+      scope.$digest();
+      // $httpBackend.flush();
+
+      expect(scope.articles[0].title).toEqual('Angular');
     });
   })
 
   var dailyJSFeed = JSON.stringify({
+    query: {
+      results:{
+        feed: {
+          entry: [
+            {
+              content: {
+                content: "Hello!"
+              }
+            }
+          ],
+          author: {
+            name: 'DailyJS'
+          },
+          link: [{},{
+            href: 'http://dailyjs.com/feed.xml'
+          }]
+        }
+      }
+    }
+  })
+
+  var angularJSFeed = JSON.stringify({
     query: {
       results:{
         feed: {

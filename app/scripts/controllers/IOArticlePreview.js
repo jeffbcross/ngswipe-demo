@@ -1,20 +1,10 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', 'feed', 'feeds', function ($scope, feed, feeds) {
-    // $scope.$watch('feed()', function (newVal) {
-      // $scope.activeFeed = newVal;
-    // });
-
+  .controller('IOArticlePreviewCtrl', ['$scope', 'feed', 'feeds', '$window', function ($scope, feed, feeds, $window) {
     $scope.loadArticles = function () {
-      return feed.fetch(feeds.get($scope.activeFeed.name).href);
+      return feed.fetch(feeds.get($window.encodeURIComponent($scope.activeFeed)).href, 'feed.entry');
     }
 
-    // $scope.articlesLoaded = function (articles, err) {
-    //   if (err) return;
-
-    //   $scope.articles = articles;
-    // }
-        
     $scope.articles = [];
   }]);
