@@ -8,7 +8,19 @@ describe('Service: articles', function () {
   // instantiate service
   var articles
     , $httpBackend
-    , scope;
+    , scope
+    , atomArticle = {
+      "title": "LevelDB and Node: Getting Up and Running",
+      "link": {
+        "href": "http:\/\/dailyjs.com\/2013\/05\/03\/leveldb-and-node-2"
+      },
+      "updated": "2013-05-03T00:00:00+01:00",
+      "id": "http:\/\/dailyjs.com\/2013\/05\/03\/leveldb-and-node-2",
+      "content": {
+        "type": "html",
+        "content": "<p>hi!</p>"
+      }
+    };;
 
   beforeEach(inject(function (_articles_, $injector, $rootScope) {
     $httpBackend = $injector.get('$httpBackend');
@@ -58,4 +70,14 @@ describe('Service: articles', function () {
 
     expect(responseData.foo).toBeDefined();
   });
+
+  it('should normalize articles from different feeds into a consumable format', function () {
+    var normalizedAtom = articles.normalize(atomArticle, 'atom');
+    expect(Object.keys(normalizedAtom).sort()).toEqual(['content', 'contentType', 'id', 'link', 'title', 'updated'])
+  });
+
+  it('should normalize an item as atom if no inputFormat is provided', function () {
+    var normalizedAtom = articles.normalize(atomArticle);
+    expect(Object.keys(normalizedAtom).sort()).toEqual(['content', 'contentType', 'id', 'link', 'title', 'updated'])
+  })
 });

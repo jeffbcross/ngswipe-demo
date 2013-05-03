@@ -1,7 +1,9 @@
 'use strict';
 
 describe('Directive: ioArticlePreview', function () {
-  beforeEach(module('ngswipeDemoApp'));
+
+
+ // beforeEach(module('ngswipeDemoApp', 'views/io-article-preview.html'));
 
   var element, $httpBackend;
 
@@ -16,10 +18,13 @@ describe('Directive: ioArticlePreview', function () {
     element = angular.element('<div io-article-preview></div>');
     element = $compile(element)($rootScope);
 
+    console.log(element.html());
+
     $rootScope.$digest();
-    // var repeater = element.find('[ng-repeat="article*"]');
+    var title = element.find('.title');
+    console.log(title);
     
-    // expect(repeater.html()).toContain('ng-bind');
+    expect(title.text()).toEqual('<!--Overwrite me-->');
     expect(element).toBeDefined();
   }));
 });

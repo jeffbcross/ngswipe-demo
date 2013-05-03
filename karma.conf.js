@@ -1,10 +1,10 @@
 // Karma configuration
 
 // base path, that will be used to resolve files and exclude
-basePath = 'app';
+basePath = 'app/';
 
 // list of files / patterns to load in the browser
-files = [
+files = [  
   'components/angular/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/angular-mobile/*.js',
@@ -12,21 +12,21 @@ files = [
   'components/angular-sanitize/*.js',
   'scripts/*.js',
   'scripts/**/*.js',
-  '../test/mock/**/*.js',
-  '../test/spec/**/*.js'
+  '../test/spec/**/*.js',
+  'views/**.html'
 ];
+
+plugins = ['karma-ng-html2js-preprocessor', 'karma-jasmine', 'karma-chrome-launcher']
 
 frameworks = [
   'jasmine'
-]
+];
 
 // list of files to exclude
 exclude = [];
 
 preprocessors = {
-  'views/**.html': 'html2js',
-  'app/views/io-article-preview.html': 'html2js',
-  'views/io-article-preview.html': 'html2js'
+  'views/**.html': 'html2js'
 };
 
 // test results reporter to use
@@ -57,7 +57,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['PhantomJS'];
+browsers = ['Chrome'];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;
