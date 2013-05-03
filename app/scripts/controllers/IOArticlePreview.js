@@ -1,12 +1,19 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', 'feed', 'feeds', '$window', function ($scope, feed, feeds, $window) {
-    var promise;
+  .controller('IOArticlePreviewCtrl', ['$scope', 'articles', 'feeds', '$window', function ($scope, articles, feeds, $window) {
+    
     $scope.loadArticles = function (name) {
-      promise = feed.fetch($window.encodeURIComponent(feeds.get(name).href), 'feed.entry');
-      return promise;
-    }
+      var promise
+        , feedToLoad = feeds.get(name);
+
+      $scope.articles = [];
+
+      if (feedToLoad && feedToLoad.href) {
+        promise = articles.fetch($window.encodeURIComponent(feedToLoad.href), 'feed.entry');
+        return promise;  
+      }
+    };
 
     $scope.bootstrapArticles = function () {
       if ($scope.activeFeed) {

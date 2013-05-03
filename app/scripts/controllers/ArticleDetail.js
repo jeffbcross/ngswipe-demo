@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('ArticleDetailCtrl', function ($scope, $http, $sanitize, feed) {
-    feed.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml', 'feed').then(function (data) {
+  .controller('ArticleDetailCtrl', ['$scope', '$http', '$sanitize', 'articles', function ($scope, $http, $sanitize, articles) {
+    articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml', 'feed').then(function (data) {
       //(jeffbcross) Hack to make test work.
       if (data && data.data) {
         data = data.data;
@@ -26,4 +26,4 @@ angular.module('ngswipeDemoApp')
 
     $scope.pages = [];
     $scope.feed = { title: "Loading..." };
-  });
+  }]);

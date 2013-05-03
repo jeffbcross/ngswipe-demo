@@ -65,12 +65,11 @@ describe('Controller: IOArticlePreviewCtrl', function () {
       runs(function () {
         expect(scope.articles.length).toBeGreaterThan(0);  
       });
-      
     });
 
     it('should clear the articles from the scope when loading new articles', function () {
-      scope.loadArticles();
-      expect(scope.articles.length).toBeGreaterThan(0);
+      scope.loadArticles('Foobar');
+      expect(scope.articles.length).toBe(0);
     });
 
     it('should load new articles when the activeFeed property changes', function () {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .factory('feed', ['$q', '$http', function ($q, $http) {
+  .factory('articles', ['$q', '$http', function ($q, $http) {
     return {
       fetch: function (feedUrl, pathToItems) {
 
