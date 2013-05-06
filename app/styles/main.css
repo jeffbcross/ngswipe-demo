@@ -5253,25 +5253,6 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-[io-article-preview] {
-  background: #fff;
-}
-[io-article-preview] .col1 {
-  width: 100px;
-}
-[io-article-preview] .col2 {
-  width: 210px;
-}
-[io-article-preview] .col3 {
-  width: 320px;
-}
-[io-article-preview] .col4 {
-  width: 430px;
-}
-[io-article-preview] .col5 {
-  width: 540px;
-}
-/* Will be compiled down to a single stylesheet with your sass files */
 html,
 body {
   margin: 0;
@@ -5306,44 +5287,6 @@ body {
 .loading-placeholder {
   width: 100%;
   height: 100%;
-}
-.article {
-  font-family: Georgia, serif;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: auto;
-  width: 100%;
-}
-.article .body {
-  width: 70%;
-  max-width: 940px;
-  padding: 30px 0 45px;
-  margin: auto;
-}
-@media only screen and (max-width: 320px) {
-  .article .body {
-    width: 90%;
-    line-height: 150%;
-  }
-}
-.article .body img,
-.article .body code {
-  margin: 50px 0;
-}
-.article .body p,
-.article .body h1,
-.article .body h2,
-.article .body h3,
-.article .body h4,
-.article .body h5,
-.article .body h6 {
-  margin: 25px 0;
-}
-.article p {
-  -webkit-columns-break-inside: avoid;
-}
-.article img {
-  pointer-events: none;
 }
 .banner {
   position: fixed;
@@ -5399,6 +5342,21 @@ body {
   line-height: 48px;
   font-size: 36px;
 }
+[io-article-preview] .article,
+io-article-preview .article {
+  font-family: Georgia, serif;
+  margin: 15px;
+  padding: 30px;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+[io-article-preview] .article > .content,
+io-article-preview .article > .content {
+  max-height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .carousel-container {
   position: relative;
   overflow: hidden;
@@ -5419,4 +5377,42 @@ body {
   top: 0;
   height: 100%;
   width: 100%;
+}
+.carousel-container .carousel-wrapper .carousel-slider .article {
+  font-family: Georgia, serif;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: auto;
+  width: 100%;
+}
+.carousel-container .carousel-wrapper .carousel-slider .article .body {
+  width: 70%;
+  max-width: 940px;
+  padding: 30px 0 45px;
+  margin: auto;
+}
+@media only screen and (max-width: 320px) {
+  .carousel-container .carousel-wrapper .carousel-slider .article .body {
+    width: 90%;
+    line-height: 150%;
+  }
+}
+.carousel-container .carousel-wrapper .carousel-slider .article .body img,
+.carousel-container .carousel-wrapper .carousel-slider .article .body code {
+  margin: 50px 0;
+}
+.carousel-container .carousel-wrapper .carousel-slider .article .body p,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h1,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h2,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h3,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h4,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h5,
+.carousel-container .carousel-wrapper .carousel-slider .article .body h6 {
+  margin: 25px 0;
+}
+.carousel-container .carousel-wrapper .carousel-slider .article p {
+  -webkit-columns-break-inside: avoid;
+}
+.carousel-container .carousel-wrapper .carousel-slider .article img {
+  pointer-events: none;
 }

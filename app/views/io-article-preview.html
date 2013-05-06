@@ -1,6 +1,9 @@
-<div ng-repeat="article in articles" class="article">
-  <h2 ng-bind="article.title" class="title">Overwrite me</h2>
-  <p ng-bind="article.preview"></p>
-</div>
-<div spinner ng-show="articles.length"></div>
-<!--hi-  hghg  ->   
+<ul ng-swipe-right="reloadArticles()" ng-init="bootstrapArticles()" class="unstyled">
+  <li ng-repeat="article in articles" class="article" ng-swipe-left="showArticle(article.id)">
+    <h2 ng-bind="article.title" class="title"></h2>
+    <div class="content" ng-bind-html="article.content"></div>
+  </li>
+</ul>
+<div class="loading" ng-show="loading">Loading</div>
+<div class="alert-error alert" ng-bind="error" ng-show="error"></div>
+<!--io-article-preview.html-->

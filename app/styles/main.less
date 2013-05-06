@@ -3,15 +3,6 @@
 @padding: 15px;
 @bannerHeight: 75px;
 
-[io-article-preview] {
-  background: #fff;
-  .col1 { width: 100px; }
-  .col2 { width: 210px; }
-  .col3 { width: 320px; }
-  .col4 { width: 430px; }
-  .col5 { width: 540px; }
-}
-/* Will be compiled down to a single stylesheet with your sass files */
 html, body {
   margin:0;
   padding:0;
@@ -51,43 +42,6 @@ body {
 .loading-placeholder {
   width: 100%;
   height: 100%;
-
-}
-
-.article {
-  font-family: Georgia, serif;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: auto;
-  width: 100%;
-
-  .body {
-    width: 70%;
-    max-width: 940px;
-    padding: (@padding * 2) 0 (@padding * 3);
-    margin: auto;
-
-    @media only screen and (max-width: 320px) {
-      width: 90%;
-      line-height: 150%;
-    }
-
-    img, code {
-      margin: 50px 0;
-    }
-
-    p, h1, h2, h3, h4, h5, h6 {
-      margin: 25px 0;
-    }
-  }
-
-  p {
-    -webkit-columns-break-inside: avoid;
-  }
-
-  img {
-    pointer-events: none;
-  }
 }
 
 .banner {
@@ -118,5 +72,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-@import "FeedList";
+@import "feed-list";
+@import "article-preview";
 @import "carousel";

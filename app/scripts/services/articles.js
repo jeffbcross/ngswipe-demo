@@ -11,7 +11,7 @@ angular.module('ngswipeDemoApp')
           output.contentType = input.content.type;
           output.id = input.id;
           output.link = input.link.href;
-          output.title = input.title;
+          output.title = input.title.content;
           output.updated = input.updated;
 
           return output;
