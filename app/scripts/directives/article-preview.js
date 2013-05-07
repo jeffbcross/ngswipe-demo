@@ -4,9 +4,9 @@ angular.module('ngswipeDemoApp')
   .directive('ioArticlePreview', function () {
     return {
       templateUrl: 'views/io-article-preview.html',
-      restrict: 'A',
+      restrict: 'EA',
       scope: {
-        "activeFeed": "=ioArticlePreview"
+        "activeFeed": "="
       },
       controller: 'IOArticlePreviewCtrl'
     };

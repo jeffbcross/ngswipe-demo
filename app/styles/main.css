@@ -5345,11 +5345,14 @@ body {
 [io-article-preview] .article,
 io-article-preview .article {
   font-family: Georgia, serif;
-  margin: 15px;
+  margin: 0;
   padding: 30px;
-  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+}
+[io-article-preview] .article:nth-child(2n + 2),
+io-article-preview .article:nth-child(2n + 2) {
+  background-color: #626262;
+  color: #ffffff;
 }
 [io-article-preview] .article > .content,
 io-article-preview .article > .content {

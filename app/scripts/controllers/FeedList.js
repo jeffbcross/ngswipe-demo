@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'feeds', function ($scope, feeds) {
+  .controller('FeedListCtrl', ['$scope', 'feeds', function ($scope, feeds, articles) {
 
     
 

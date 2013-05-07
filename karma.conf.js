@@ -12,6 +12,7 @@ files = [
   'components/angular-sanitize/*.js',
   'scripts/*.js',
   'scripts/**/*.js',
+  '../test/mock/*.js',
   '../test/spec/**/*.js',
   'views/**.html'
 ];

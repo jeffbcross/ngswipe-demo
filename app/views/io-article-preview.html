@@ -1,5 +1,5 @@
 <ul ng-swipe-right="reloadArticles()" ng-init="bootstrapArticles()" class="unstyled">
-  <li ng-repeat="article in articles" class="article" ng-swipe-left="showArticle(article.id)">
+  <li ng-repeat="article in articles" class="article" ng-swipe-left="showArticle(article.id)" ng-click="showArticle(article.id)">
     <h2 ng-bind="article.title" class="title"></h2>
     <div class="content" ng-bind-html="article.content"></div>
   </li>

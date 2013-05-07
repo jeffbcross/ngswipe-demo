@@ -1,9 +1,13 @@
 [io-article-preview], io-article-preview {
   .article {
     font-family: Georgia, serif;
-    margin: @padding;
+    margin: 0;
     padding: @padding * 2;
-    .box-shadow(0 0 @padding rgba(0, 0, 0, 0.25));
+    background-color: @white;
+    &:nth-child(2n + 2) {
+      background-color: lighten(@gray, 5%);
+      color: @white;
+    }
     
     & > .content {
       max-height: 100px;

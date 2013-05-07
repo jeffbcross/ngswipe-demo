@@ -26,6 +26,7 @@ angular.module('ngswipeDemoApp')
       var items, i;
       //If there was a problem loading data
       if (!res || !res.data || !res.data.query || !res.data.query.results || !res.data.query.results.entry || !Array.isArray(res.data.query.results.entry)) {
+        
         $scope.error = errorMessages.LOADING_ERROR;
       }
       //If there are just no articles in the results
@@ -64,4 +65,5 @@ angular.module('ngswipeDemoApp')
     }
 
     $scope.articles = [];
+    $scope.bootstrapArticles();
   }]);
