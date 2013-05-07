@@ -1,18 +1,12 @@
 angular.module('ngswipeDemoApp')
-  .factory('ArticlesMock', function ($q) {
+  .factory('ArticlesMock', function ($q, Articles) {
     return {
       fetch: function () {
-        return {
-          then: function (callback) {
-            callback.call(this, JSON.parse(angularJSFeed));
-          }
-        };
-      },
-      getEntries: function () {
-
-      },
-      normalize: function () {
-
-      }  
+        var deferred = $q.defer();
+          
+        deferred.resolve(Articles.parseResponse(angularJSFeed));
+        
+        return deferred.promise;
+      }
     }
   });

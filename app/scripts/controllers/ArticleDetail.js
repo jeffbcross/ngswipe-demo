@@ -8,14 +8,15 @@ angular.module('ngswipeDemoApp')
       $scope.pages = [];
       $scope.feed = { title: "Loading..." };
       
-      Articles.fetch($window.encodeURIComponent(feed.href), 'feed').then(function (data) {
-        $scope.pages = data.query.results.feed.entry;
+      Articles.fetch($window.encodeURIComponent(feed.href))
+        .then(function (feed) {
+          $scope.pages = feed.entries;
 
-        $scope.feed = {
-          url: data.query.results.feed.link[1].href,
-          title: data.query.results.feed.author.name
-        };
-      });
+          $scope.feed = {
+            url: feed.meta.href,
+            title: feed.meta.title
+          };
+        });
     };
     
     

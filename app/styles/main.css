@@ -5348,11 +5348,7 @@ io-article-preview .article {
   margin: 0;
   padding: 30px;
   background-color: #ffffff;
-}
-[io-article-preview] .article:nth-child(2n + 2),
-io-article-preview .article:nth-child(2n + 2) {
-  background-color: #626262;
-  color: #ffffff;
+  border-bottom: 1px solid #555555;
 }
 [io-article-preview] .article > .content,
 io-article-preview .article > .content {

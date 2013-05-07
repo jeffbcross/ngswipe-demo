@@ -1,7 +1,7 @@
 'use strict'; 
 
 angular.module('ngswipeDemoApp')
-  .factory('FeedManager', function (localData) {
+  .factory('FeedManager', function () {
     var selected, feeds = [{
       href: 'http://www.blogger.com/feeds/7159470537406093899/posts/default',
       name: 'AngularJS',
@@ -11,6 +11,7 @@ angular.module('ngswipeDemoApp')
       name: 'DailyJS',
       icon: "/img/rss.png"
     }];
+    
     // Public API here
     return {
       getSelected: function () {

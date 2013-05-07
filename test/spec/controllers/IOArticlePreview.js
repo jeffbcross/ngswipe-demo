@@ -16,8 +16,8 @@ describe('Controller: IOArticlePreviewCtrl', function () {
 
     scope.activeFeed = 'DailyJS';
 
-    scope.loadArticles(scope.activeFeed).then(function (data) {
-      scope.articles = data.query.results.feed.entry;
+    scope.loadArticles(scope.activeFeed).then(function (feed) {
+      scope.articles = feed.entries;
     });
 
     scope.$digest();
@@ -44,7 +44,7 @@ describe('Controller: IOArticlePreviewCtrl', function () {
       scope.activeFeed = "AngularJS";
       
       scope.$digest();
-      expect(scope.articles[0].content.title).toEqual('Angular');
+      expect(scope.articles[0].title).toEqual('Angular');
     });
 
     it('should load new articles when loadArticles method is called', function () {

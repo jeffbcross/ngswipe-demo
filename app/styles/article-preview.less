@@ -4,16 +4,12 @@
     margin: 0;
     padding: @padding * 2;
     background-color: @white;
-    &:nth-child(2n + 2) {
-      background-color: lighten(@gray, 5%);
-      color: @white;
-    }
+    border-bottom: 1px solid @gray;
     
     & > .content {
       max-height: 100px;
       text-overflow: ellipsis;
       overflow: hidden;
     }
-    
   }
 }

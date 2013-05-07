@@ -1,17 +1,12 @@
 'use strict';
 
-describe('Service: feeds', function () {
+describe('Service: FeedManager', function () {
   var FeedManager;
 
   beforeEach(module('ngswipeDemoApp'));
 
-  beforeEach(inject(function (localData, $injector) {
-    localData = $injector.get('localData');
+  beforeEach(inject(function ($injector) {
     FeedManager = $injector.get('FeedManager');
-
-    localData.get = function () {
-      return 'bar';
-    }
   }));
 
   it('should provide a list of all feeds available for the user', function () {
