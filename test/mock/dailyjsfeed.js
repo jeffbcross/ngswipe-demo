@@ -1,22 +1,20 @@
 var dailyJSFeed = JSON.stringify({
     query: {
       results:{
-        feed: {
-          entry: [
-            {
-              id: 'http://hello',
-              content: {
-                content: "Hello!"
-              }
+        entry: [
+          {
+            id: 'http://hello',
+            content: {
+              content: "Hello!"
             }
-          ],
-          author: {
-            name: 'DailyJS'
-          },
-          link: [{},{
-            href: 'http://dailyjs.com/feed.xml'
-          }]
-        }
+          }
+        ],
+        author: {
+          name: 'DailyJS'
+        },
+        link: [{},{
+          href: 'http://dailyjs.com/feed.xml'
+        }]
       }
     }
   })

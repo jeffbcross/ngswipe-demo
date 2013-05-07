@@ -19,6 +19,5 @@ angular.module('ngswipeDemoApp')
         });
     };
     
-    
     $scope.bootstrap();
   }]);

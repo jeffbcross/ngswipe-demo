@@ -1,22 +1,20 @@
 var angularJSFeed = {
   query: {
     results:{
-      feed: {
-        entry: [
-          {
-            content: {
-              title: "Angular",
-              content: "Hello!"
-            }
+      entry: [
+        {
+          content: {
+            title: "Angular",
+            content: "Hello!"
           }
-        ],
-        author: {
-          name: 'AngularJS'
-        },
-        link: [{},{
-          href: 'http://dailyjs.com/feed.xml'
-        }]
-      }
+        }
+      ],
+      author: {
+        name: 'AngularJS'
+      },
+      link: [{},{
+        href: 'http://dailyjs.com/feed.xml'
+      }]
     }
   }
 };

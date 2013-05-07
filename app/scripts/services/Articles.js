@@ -5,11 +5,9 @@ angular.module('ngswipeDemoApp')
     return {
       parseResponse: function (res) {
         var feed = {entries: [], meta: {}}, entries;
-        console.log('parsing response', res);
-
+        
         try {
           feed.entries = res.data.query.results.entry;
-          console.log('first entry', feed.entries[0]);
 
           // feed.meta.title = res.data.query.results.feed.author.name;
           // feed.meta.href = res.data.query.results.feed.link[1].href;

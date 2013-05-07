@@ -23,7 +23,6 @@ angular.module('ngswipeDemoApp')
     };
 
     $scope.articlesLoaded = function (feed) {
-      console.log('feed', feed);
       var items, i;
       //If there was a problem loading data
       if (!Array.isArray(feed.entries)) {
