@@ -5,7 +5,10 @@ describe('Directive: ioArticlePreview', function () {
 
   var element, $httpBackend, $compile, $rootScope, spinner;
 
-  beforeEach(inject(function ($injector, _$compile_, _$rootScope_) {
+  beforeEach(inject(function ($injector, _$compile_, _$rootScope_, _$httpBackend_) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.whenJSONP(angularFeedUrl).respond(angularJSFeed);
+
     $compile  = _$compile_;
     $rootScope = _$rootScope_;
   }));

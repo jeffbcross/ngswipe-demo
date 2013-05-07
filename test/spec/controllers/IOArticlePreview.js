@@ -1,12 +1,13 @@
 'use strict';
 
 describe('Controller: IOArticlePreviewCtrl', function () {
-  var IOArticlePreviewCtrl, scope, location;
+  var IOArticlePreviewCtrl, scope, location, FeedManager;
 
   beforeEach(module('ngswipeDemoApp'));
 
   beforeEach(inject(function ($controller, $rootScope, $injector, $location, ArticlesMock) {
     scope = $rootScope.$new();
+    FeedManager = $injector.get('FeedManager');
     IOArticlePreviewCtrl = $controller('IOArticlePreviewCtrl', {
       $scope: scope,
       Articles: ArticlesMock
@@ -38,13 +39,6 @@ describe('Controller: IOArticlePreviewCtrl', function () {
     it('should clear the articles from the scope when loading new articles', function () {
       scope.loadArticles('Foobar');
       expect(scope.articles.length).toBe(0);
-    });
-
-    it('should load new articles when the activeFeed property changes', function () {
-      scope.activeFeed = "AngularJS";
-      
-      scope.$digest();
-      expect(scope.articles[0].title).toEqual('Angular');
     });
 
     it('should load new articles when loadArticles method is called', function () {

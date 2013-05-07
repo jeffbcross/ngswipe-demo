@@ -45,16 +45,15 @@ angular.module('ngswipeDemoApp')
     };
 
     $scope.bootstrap = function () {
-      if ($scope.activeFeed) {
-        $scope.loadArticles($scope.activeFeed).then($scope.articlesLoaded, $scope.articlesLoadFailed);
-      }
+      $scope.loadArticles(FeedManager.getSelected().name).then($scope.articlesLoaded, $scope.articlesLoadFailed);
     };
 
     $scope.showArticle = function (id) {
       $location.url('/articles/' + $window.encodeURIComponent(id));
     };
-
-    $scope.$watch('activeFeed', $scope.bootstrap);
+    
     $scope.articles = [];
-    $scope.bootstrap();
+    $scope.$watch(function () {
+      return FeedManager.getSelected();
+    }, $scope.bootstrap);
   }]);

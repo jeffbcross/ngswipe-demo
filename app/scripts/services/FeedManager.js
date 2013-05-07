@@ -18,6 +18,14 @@ angular.module('ngswipeDemoApp')
         selected = selected ? selected : feeds[0];
         return selected;
       },
+      setSelected: function (name) {
+        for (var i = 0; i < feeds.length; i++) {
+          if (feeds[i].name === name) {
+            selected = feeds[i];
+            break;
+          }
+        }
+      },
       getAll: function () {
         return feeds;
       },

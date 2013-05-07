@@ -9,7 +9,7 @@ describe('Service: Article Loader', function () {
     Articles = $injector.get('Articles');
 
     $httpBackend.whenJSONP(dailyFeedUrl).respond(dailyJSFeed);
-    $httpBackend.whenJSONP(angularFeedUrl).respond({error: 'feed does not exist'}, {status: 404});
+    $httpBackend.whenJSONP(angularFeedUrl).respond(angularJSFeed);
 
     scope = $rootScope;
   }));
@@ -30,10 +30,12 @@ describe('Service: Article Loader', function () {
     expect(responseData.meta).toBeDefined();
   });
 
-  it('should make a truncated plaintext preview of the content', function () {
-    var normalizedAtom = Articles.normalize(atomArticle, 'atom');
-    expect(!!normalizedAtom.preview).toBe(true);
-    expect(normalizedAtom.preview).not.toContain('<img');
-    expect(normalizedAtom.preview.split(' ').length).toBeLessThan(50);
-  });
+  it('should give articles a preview property with a plaintext preview of the article', function () {
+    Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml')
+      .then(function success (feed) {
+        responseData = feed;
+      }, function failure (reason) {
+        throw new Error(reason);
+      });
+  })
 });

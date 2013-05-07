@@ -4,13 +4,7 @@ angular.module('ngswipeDemoApp')
   .controller('FeedListCtrl', ['$scope', 'FeedManager', 'Articles', function ($scope, FeedManager, Articles) {
 
     $scope.showFeed = function (name) {
-      var feed = FeedManager.get(name);
-      if (!feed) {
-        $scope.activeFeed = undefined;
-        return;
-      }
-
-      $scope.activeFeed = name;
+      FeedManager.setSelected(name);
     }
 
     $scope.bootstrap = function () {
