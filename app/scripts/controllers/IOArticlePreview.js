@@ -50,7 +50,7 @@ angular.module('ngswipeDemoApp')
       $scope.error = errorMessages.LOADING_ERROR
     };
 
-    $scope.bootstrapArticles = function () {
+    $scope.bootstrap = function () {
       if ($scope.activeFeed) {
         $scope.loadArticles($scope.activeFeed).then($scope.articlesLoaded, $scope.articlesLoadFailed);
       }
@@ -65,5 +65,5 @@ angular.module('ngswipeDemoApp')
     }
 
     $scope.articles = [];
-    $scope.bootstrapArticles();
+    $scope.bootstrap();
   }]);

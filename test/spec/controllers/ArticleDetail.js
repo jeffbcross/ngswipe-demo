@@ -7,7 +7,7 @@ describe('Controller: ArticleDetailCtrl', function () {
   var ArticleDetailCtrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, articlesMock) {
     scope = $rootScope.$new();
 
     ArticleDetailCtrl = $controller('ArticleDetailCtrl', {
@@ -17,6 +17,8 @@ describe('Controller: ArticleDetailCtrl', function () {
   }));
 
   it('should provide some pages', function () {
+    scope.bootstrap();
+    scope.$digest();
     expect(scope.pages.length).toBeGreaterThan(0);
   });
 });

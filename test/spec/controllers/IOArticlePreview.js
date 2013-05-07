@@ -1,13 +1,10 @@
 'use strict';
 
 describe('Controller: IOArticlePreviewCtrl', function () {
-
-  // load the controller's module
-  beforeEach(module('ngswipeDemoApp'));
-
   var IOArticlePreviewCtrl, scope, location, articles;
 
-  // Initialize the controller and a mock scope
+  beforeEach(module('ngswipeDemoApp'));
+
   beforeEach(inject(function ($controller, $rootScope, $injector, $location) {
     $httpBackend = $injector.get('$httpBackend');
 

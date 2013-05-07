@@ -14,7 +14,8 @@ angular.module('ngswipeDemoApp')
     // Public API here
     return {
       getSelected: function () {
-        return localData.get();
+        selected = selected ? selected : feeds[0];
+        return selected;
       },
       getAll: function () {
         return feeds;
