@@ -5,12 +5,13 @@ var angularJSFeed = JSON.stringify({
         entry: [
           {
             content: {
+              title: "Angular",
               content: "Hello!"
             }
           }
         ],
         author: {
-          name: 'DailyJS'
+          name: 'AngularJS'
         },
         link: [{},{
           href: 'http://dailyjs.com/feed.xml'

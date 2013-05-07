@@ -7,12 +7,12 @@ describe('Controller: ArticleDetailCtrl', function () {
   var ArticleDetailCtrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, articlesMock) {
+  beforeEach(inject(function ($controller, $rootScope, ArticlesMock) {
     scope = $rootScope.$new();
 
     ArticleDetailCtrl = $controller('ArticleDetailCtrl', {
       $scope: scope,
-      articles: articlesMock
+      Articles: ArticlesMock
     });
   }));
 

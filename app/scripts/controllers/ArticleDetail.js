@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('ArticleDetailCtrl', ['$scope', '$http', '$sanitize', '$window', 'articles', 'feeds', function ($scope, $http, $sanitize, $window, articles, feeds) {
+  .controller('ArticleDetailCtrl', ['$scope', '$http', '$sanitize', '$window', 'Articles', 'FeedManager', function ($scope, $http, $sanitize, $window, Articles, FeedManager) {
     $scope.bootstrap = function () {
-      var feed = feeds.getSelected();
+      var feed = FeedManager.getSelected();
+
+      $scope.pages = [];
+      $scope.feed = { title: "Loading..." };
       
-      articles.fetch($window.encodeURIComponent(feed.href), 'feed').then(function (data) {
+      Articles.fetch($window.encodeURIComponent(feed.href), 'feed').then(function (data) {
         $scope.pages = data.query.results.feed.entry;
 
         $scope.feed = {
@@ -15,7 +18,6 @@ angular.module('ngswipeDemoApp')
       });
     };
     
-    $scope.pages = [];
-    $scope.feed = { title: "Loading..." };
+    
     $scope.bootstrap();
   }]);

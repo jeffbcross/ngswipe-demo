@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'feeds', function ($scope, feeds, articles) {
-
-    
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', 'Articles', function ($scope, FeedManager, Articles) {
 
     $scope.showFeed = function (name) {
-      var feed = feeds.get(name);
+      var feed = FeedManager.get(name);
       if (!feed) {
         $scope.activeFeed = undefined;
         return;
@@ -15,8 +13,8 @@ angular.module('ngswipeDemoApp')
       $scope.activeFeed = name;
     }
 
-    function bootstrap () {
-      $scope.feeds = feeds.getAll();
+    $scope.bootstrap = function () {
+      $scope.feeds = FeedManager.getAll();
 
       if ($scope.feeds.length && $scope.feeds[0].name) {
         $scope.activeFeed = $scope.feeds[0].name  
@@ -24,5 +22,5 @@ angular.module('ngswipeDemoApp')
       
     }
 
-    bootstrap();
+    $scope.bootstrap();
   }]);

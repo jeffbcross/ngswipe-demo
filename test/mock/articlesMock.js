@@ -1,5 +1,5 @@
 angular.module('ngswipeDemoApp')
-  .factory('articlesMock', function ($q) {
+  .factory('ArticlesMock', function ($q) {
     return {
       fetch: function () {
         return {

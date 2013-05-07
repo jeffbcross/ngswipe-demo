@@ -1,7 +1,7 @@
 'use strict'; 
 
 angular.module('ngswipeDemoApp')
-  .factory('feeds', function (localData) {
+  .factory('FeedManager', function (localData) {
     var selected, feeds = [{
       href: 'http://www.blogger.com/feeds/7159470537406093899/posts/default',
       name: 'AngularJS',

@@ -1,15 +1,13 @@
 'use strict';
 
 describe('Service: feeds', function () {
+  var FeedManager;
 
-  // load the service's module
   beforeEach(module('ngswipeDemoApp'));
 
-  // instantiate service
-  var feeds;
-  beforeEach(inject(function (_feeds_, localData, $injector) {
-    feeds = _feeds_;
+  beforeEach(inject(function (localData, $injector) {
     localData = $injector.get('localData');
+    FeedManager = $injector.get('FeedManager');
 
     localData.get = function () {
       return 'bar';
@@ -17,40 +15,40 @@ describe('Service: feeds', function () {
   }));
 
   it('should provide a list of all feeds available for the user', function () {
-    var list = feeds.getAll();
+    var list = FeedManager.getAll();
     expect(list.length).toBeGreaterThan(0);
   });
 
   it('should provide the currently-selected feed', function () {
-    var feed = feeds.getSelected();
+    var feed = FeedManager.getSelected();
 
     expect(feed).toEqual('bar');
   });
 
   it('should support addition of a feed through the "add" method', function () {
-    feeds.add({name: 'Random Feed', href: "http://random.feed"});
+    FeedManager.add({name: 'Random Feed', href: "http://random.feed"});
 
-    expect(feeds.get('Random Feed').name).toEqual('Random Feed');
+    expect(FeedManager.get('Random Feed').name).toEqual('Random Feed');
   });
 
   it ('should not add a feed without a name', function () {
     var passes = true, all;
-    feeds.add({href: 'http://google.com/feed'});
+    FeedManager.add({href: 'http://google.com/feed'});
     
-    all = feeds.getAll();
+    all = FeedManager.getAll();
     for (var i = 0; i<all.length; i++) {
       expect(all[i].href).not.toEqual('http://google.com/feed');
     }
   });
 
   it ('should not add a feed without an href', function () {
-    feeds.add({name: 'Google'});
-    expect(feeds.get('Google')).toBe(undefined);
+    FeedManager.add({name: 'Google'});
+    expect(FeedManager.get('Google')).toBe(undefined);
   });
 
   it('should remove a feed', function () {
-    feeds.remove("Random Feed");
-    expect(feeds.get("Random Feed")).toBe(undefined);
+    FeedManager.remove("Random Feed");
+    expect(FeedManager.get("Random Feed")).toBe(undefined);
   });
 
 });

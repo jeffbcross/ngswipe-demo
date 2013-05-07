@@ -15,11 +15,4 @@ describe('Directive: ioArticlePreview', function () {
     $rootScope.$digest();
     expect(element.html()).toContain('<!--io-article-preview.html-->');
   });
-
-  it('should show a spinner while there are no articles on the scope', function () {
-    spinner = element.find('div');
-    
-    expect(spinner.css('display')).toEqual('');
-    expect(spinner.hasClass('spinner')).toBe(true);
-  });
 });

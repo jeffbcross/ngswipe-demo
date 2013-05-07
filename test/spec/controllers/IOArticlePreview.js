@@ -1,18 +1,15 @@
 'use strict';
 
 describe('Controller: IOArticlePreviewCtrl', function () {
-  var IOArticlePreviewCtrl, scope, location, articles;
+  var IOArticlePreviewCtrl, scope, location;
 
   beforeEach(module('ngswipeDemoApp'));
 
-  beforeEach(inject(function ($controller, $rootScope, $injector, $location) {
-    $httpBackend = $injector.get('$httpBackend');
-
+  beforeEach(inject(function ($controller, $rootScope, $injector, $location, ArticlesMock) {
     scope = $rootScope.$new();
     IOArticlePreviewCtrl = $controller('IOArticlePreviewCtrl', {
       $scope: scope,
-      $httpBackend: $httpBackend,
-      articles: articlesMock
+      Articles: ArticlesMock
     });
 
     location = $location;
@@ -20,7 +17,7 @@ describe('Controller: IOArticlePreviewCtrl', function () {
     scope.activeFeed = 'DailyJS';
 
     scope.loadArticles(scope.activeFeed).then(function (data) {
-      articles = data.data.query.results.entry;
+      scope.articles = data.query.results.feed.entry;
     });
 
     scope.$digest();
@@ -28,12 +25,12 @@ describe('Controller: IOArticlePreviewCtrl', function () {
 
   describe('Article Loading', function () {
     it('should load articles from a service to display to the user', function () {
-      expect(articles.length).toBeGreaterThan(0);
+      expect(scope.articles.length).toBeGreaterThan(0);
     });
 
     it('should put the articles in a list on the scope after calling bootstrapArticles()', function () {
       scope.articles = [];
-      scope.bootstrapArticles();
+      scope.bootstrap();
 
       expect(scope.articles.length).toBeGreaterThan(0);
     });
@@ -47,23 +44,18 @@ describe('Controller: IOArticlePreviewCtrl', function () {
       scope.activeFeed = "AngularJS";
       
       scope.$digest();
-
-      expect(scope.articles[0].title).toEqual('Angular');
+      expect(scope.articles[0].content.title).toEqual('Angular');
     });
 
-    it('should load new articles when reloadArticles method is called', function () {
+    it('should load new articles when loadArticles method is called', function () {
       scope.loading = false;
-      scope.reloadArticles();
+      scope.loadArticles();
       expect(scope.loading).toBe(true);
     });
 
     it('should change the route to show an article detail when calling showArticle', function () {
       scope.showArticle('http://hello-article');
       expect(location.url()).toContain('hello-article');
-    });
-
-    it('should update the scope with an error message when articles cannot be loaded', function () {
-      expect(false).toBe(true);
     });
   });
 });
