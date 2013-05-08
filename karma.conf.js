@@ -10,6 +10,7 @@ files = [
   'components/angular-mobile/*.js',
   'components/angular-resource/*.js',
   'components/angular-sanitize/*.js',
+  'components/angular-carousel/angular-carousel.js',
   'scripts/*.js',
   'scripts/**/*.js',
   '../test/mock/*.js',

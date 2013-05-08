@@ -2,6 +2,8 @@
 
 angular.module('ngswipeDemoApp')
   .factory('Articles', ['$q', '$http', function ($q, $http) {
+    var selected;
+
     return {
       parseResponse: function (res) {
         var feed = {entries: [], meta: {}}, entries;
@@ -35,6 +37,12 @@ angular.module('ngswipeDemoApp')
         });
 
         return deferred.promise;
+      },
+      setSelected: function (id) {
+        selected = id;
+      },
+      getSelected: function () {
+        return selected;
       }
     };
   }]);

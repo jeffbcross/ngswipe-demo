@@ -37,5 +37,10 @@ describe('Service: Article Loader', function () {
       }, function failure (reason) {
         throw new Error(reason);
       });
-  })
+  });
+
+  it('should allow setting and getting the selected article by id', function () {
+    Articles.setSelected('the-unique-id');
+    expect(Articles.getSelected()).toEqual('the-unique-id');
+  });
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize'])
+angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angular-carousel'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/articles/:feedId', {
