@@ -4,7 +4,7 @@
   },
   "name": "angular-momentum-scroll",
   "description": "Momentum scroll for AngularJS based on iScroll.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "scrollable.min.js",
   "scripts": [
     "scrollable.min.js"
@@ -18,8 +18,8 @@
     "angular": "1.0.6",
     "iscroll": ""
   },
-  "gitHead": "223c6eff0abb8316422ada655ebaa61b7eed1023",
+  "gitHead": "e9e65ceca67f732d664c270b71345127f57fb327",
   "readme": "# angular-momentum-scroll\n\nAngularJS directive that adds momentum scroll via iScroll (http://cubiq.org/iscroll-4).\n\n## Usage\n\n* Include `scrollable.js` or `scrollable.min.js` into your page\n* Declare `'angular-momentum-scroll'` as a dependency for your angular app: `angular.module('myApp', ['angular-momentum-scroll']);`\n* Add the `scrollable` attribute to a container of your choice:\n    * the container MUST have set width and height !!\n    * in order to scroll horizontally the .scroller class inside of your container MUST have set width and height !!\n* The container takes an additional attribute `parameters` according to iScroll docs. e.g. <div id=\"my-cont\" style=\"height: 400px; width: 100%;\" scrollable parameters=\"{{ {hScrollbar : true, snap: '.row'} }}\">\n",
   "readmeFilename": "README.md",
-  "_id": "angular-momentum-scroll@0.1.0"
+  "_id": "angular-momentum-scroll@0.1.1"
 }

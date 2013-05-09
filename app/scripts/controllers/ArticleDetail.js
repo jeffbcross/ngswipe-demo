@@ -13,9 +13,7 @@ angular.module('ngswipeDemoApp')
           $scope.pages = feed.entries;
 
           for (var i = 0; i < feed.entries.length; i++) {
-            console.log('checking path', $location.path(), feed.entries[i].id);
             if ($location.path().indexOf(feed.entries[i].id) > -1) {
-              console.log('match!');
               $scope.pages = $scope.pages.concat($scope.pages.splice(0, i));
               $scope.pageIndex = i;
             }

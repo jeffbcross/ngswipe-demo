@@ -25,7 +25,7 @@ angular.module('ngswipeDemoApp')
         var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'%feedUrl'%20and%20itemPath%3D'feed.entry'&format=json&diagnostics=true&callback=JSON_CALLBACK";
 
         url = url.replace("%feedUrl", feedUrl);
-
+        
         $http.jsonp(url).then(function (res) {
           var parsed = self.parseResponse(res);
           if (parsed) {

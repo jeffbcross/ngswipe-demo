@@ -1,42 +1,39 @@
 'use strict';
 
 describe('Service: Article Loader', function () {
-  var $httpBackend, scope, Articles;
+  var httpMock, scope, Articles;
   
   beforeEach(module('ngswipeDemoApp'));
-  beforeEach(inject(function ($injector, $rootScope) {
-    $httpBackend = $injector.get('$httpBackend');
+  beforeEach(inject(function ($injector, $rootScope, $httpBackend) {
+    httpMock = $httpBackend;
     Articles = $injector.get('Articles');
 
-    $httpBackend.whenJSONP(dailyFeedUrl).respond(dailyJSFeed);
-    $httpBackend.whenJSONP(angularFeedUrl).respond(angularJSFeed);
+    httpMock.whenJSONP(dailyFeedUrl).respond(dailyJSFeed);
+    httpMock.whenJSONP(angularFeedUrl).respond(angularJSFeed);
 
     scope = $rootScope;
   }));
 
   it('should return a promise for loading a feed', function () {
-    var responseData;
+    var promise;
 
-    Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml').then(function (feed) {
-      responseData = feed;
-    }, function failure (reason) {
-      throw new Error(reason);
-    });
-
-    $httpBackend.flush();
-    scope.$digest();
+    promise = Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
     
-    expect(responseData.entries).toBeDefined();
-    expect(responseData.meta).toBeDefined();
+    expect(typeof promise['then']).toEqual('function');
   });
 
   it('should give articles a preview property with a plaintext preview of the article', function () {
+    var responseData;
+    
     Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml')
       .then(function success (feed) {
         responseData = feed;
-      }, function failure (reason) {
-        throw new Error(reason);
       });
+
+    scope.$digest();
+    httpMock.flush();
+
+    expect(responseData).toBeDefined();
   });
 
   it('should allow setting and getting the selected article by id', function () {
