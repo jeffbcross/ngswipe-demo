@@ -8,18 +8,24 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
         controller: 'ArticleDetailCtrl',
         depth: 1
       })
+      .when('/articles/', {
+        templateUrl: '/views/article.html',
+        controller: 'ArticleDetailCtrl',
+        depth: 1
+      })
       .when('/', {
         templateUrl: '/views/feeds.html',
         controller: 'FeedListCtrl',
         depth: 0
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+      // .otherwise({
+      //   redirectTo: '/'
+      // });
   })
 
   .run(function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
+      $rootScope.controller = current.controller;
       // direction is true (slide from left) if new depth is less than previous depth
       var direction = current && previous && current.depth < previous.depth;
 

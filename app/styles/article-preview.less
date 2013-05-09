@@ -3,8 +3,12 @@
     font-family: Georgia, serif;
     margin: 0;
     padding: @padding * 2;
-    background-color: @white;
+    // background-color: @grayLight;
     border-bottom: 1px solid @gray;
+
+    &:active {
+      background-color: @white;
+    }
     
     & > .content {
       max-height: 100px;

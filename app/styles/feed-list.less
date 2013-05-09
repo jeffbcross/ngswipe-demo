@@ -1,35 +1,45 @@
-.feed-list {
-  .feed-box {
-    display: block;
-    height: 48px;
-    padding: @padding @padding / 2;
-    margin: 0 @padding;
-    background: #fff;
-    border-bottom: 1px solid @grayLight;
+.FeedListCtrl {
+  padding-top: 0;
+  .row-fluid {
+    background-color: @gray;
+    height: 100%;
+  }
+  
 
-    &:hover {
-      background-color: @grayLighter;
-    }
-
-    &:active {
-      background-color: @grayLight;
-      .name {
-        color: @white;
-      }
-    }
-
-    img {
-      float: left; 
-      width: 48px;
+  .feed-list {
+    .feed-box {
+      display: block;
       height: 48px;
-      margin-right: @padding;
-    }
+      padding: @padding @padding / 2;
+      margin: 0 @padding;
 
-    .name {
-      color: @gray;
-      font-weight: bold;
-      line-height: 48px;
-      font-size: 36px;
-    }
-  }  
+      &:hover {
+        .name {
+          color: @grayLight;
+        }
+      }
+
+      &:active {
+        background-color: @grayLight;
+        .name {
+          color: @white;
+        }
+      }
+
+      img {
+        float: left; 
+        width: 48px;
+        height: 48px;
+        margin-right: @padding;
+      }
+
+      .name {
+        color: @grayLighter;
+        font-weight: bold;
+        line-height: 48px;
+        font-size: 36px;
+      }
+    }  
+  }
+
 }

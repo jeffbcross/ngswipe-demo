@@ -5344,31 +5344,36 @@ body {
   font-size: 100%;
   color: #999999;
 }
-.feed-list .feed-box {
+.FeedListCtrl {
+  padding-top: 0;
+}
+.FeedListCtrl .row-fluid {
+  background-color: #555555;
+  height: 100%;
+}
+.FeedListCtrl .feed-list .feed-box {
   display: block;
   height: 48px;
   padding: 15px 7.5px;
   margin: 0 15px;
-  background: #fff;
-  border-bottom: 1px solid #999999;
 }
-.feed-list .feed-box:hover {
-  background-color: #eeeeee;
+.FeedListCtrl .feed-list .feed-box:hover .name {
+  color: #999999;
 }
-.feed-list .feed-box:active {
+.FeedListCtrl .feed-list .feed-box:active {
   background-color: #999999;
 }
-.feed-list .feed-box:active .name {
+.FeedListCtrl .feed-list .feed-box:active .name {
   color: #ffffff;
 }
-.feed-list .feed-box img {
+.FeedListCtrl .feed-list .feed-box img {
   float: left;
   width: 48px;
   height: 48px;
   margin-right: 15px;
 }
-.feed-list .feed-box .name {
-  color: #555555;
+.FeedListCtrl .feed-list .feed-box .name {
+  color: #eeeeee;
   font-weight: bold;
   line-height: 48px;
   font-size: 36px;
@@ -5378,8 +5383,11 @@ io-article-preview .article {
   font-family: Georgia, serif;
   margin: 0;
   padding: 30px;
-  background-color: #ffffff;
   border-bottom: 1px solid #555555;
+}
+[io-article-preview] .article:active,
+io-article-preview .article:active {
+  background-color: #ffffff;
 }
 [io-article-preview] .article > .content,
 io-article-preview .article > .content {

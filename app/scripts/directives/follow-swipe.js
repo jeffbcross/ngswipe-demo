@@ -5,11 +5,12 @@ angular.module('ngswipeDemoApp')
     return {
       restrict: 'EA',
       link: function postLink(scope, element, attrs) {
-        console.log('followSwipe');
-        var swipeEvent, snapThreshold = Math.round($document.width * 0.40), sliderX = 0, startPos = 0;
+        var swipeEvent, snapThreshold = Math.round($document[0].width * 0.40), sliderX = 0, startPos = 0;
+        console.log('snapThreshold', snapThreshold);
         function maybeFlipPage () {
           console.log('maybe flip page');
         }
+
         function onDoneSwiping(coords) {
           var x = coords && coords.x || swipeEvent.pointX;
           var dist = Math.abs(x - swipeEvent.startX);
@@ -27,14 +28,12 @@ angular.module('ngswipeDemoApp')
         }
 
         function moveSlider(x) {
-          console.log('moveSlider', x);
           sliderX = x;
           element.css('-webkit-transform', 'translate(' + x + 'px, 0)');
         }
 
         $swipe.bind(element, {
           "start": function(coords) {
-            console.log('start')
             swipeEvent = {
               moved: false,
               thresholdExceeded: false,
@@ -52,8 +51,6 @@ angular.module('ngswipeDemoApp')
             var deltaX = coords.x - swipeEvent.pointX;
             var newX = sliderX + deltaX;
             var dist = Math.abs(coords.x - swipeEvent.startX);
-
-            console.log(deltaX, newX, dist);
 
             swipeEvent.moved = true;
             swipeEvent.pointX = coords.x;
