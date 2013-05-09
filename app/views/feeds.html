@@ -1,4 +1,4 @@
-<div class="row-fluid feed-list">
+<div class="row-fluid feed-list" follow-swipe>
   <div ng-class="{span12: !activeFeed, span6: activeFeed}">
     <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box">
       <img ng-src="{{ feed.icon }}">
