@@ -1,29 +1,31 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .directive('followSwipe', ['$swipe', '$document', function ($swipe, $document) {
+  .directive('followSwipe', ['$swipe', '$document', '$location', 'Articles', function ($swipe, $document, $location, Articles) {
     return {
       restrict: 'EA',
       link: function postLink(scope, element, attrs) {
-        var swipeEvent, snapThreshold = Math.round($document[0].width * 0.40), sliderX = 0, startPos = 0;
-        console.log('snapThreshold', snapThreshold);
-        function maybeFlipPage () {
-          console.log('maybe flip page');
+        var swipeEvent, snapThreshold = Math.round($document[0].width * 0.15), sliderX = 0, startPos = 0;
+        
+        function flipPage () {
+          $location.path('/articles/' + Articles.getSelected());
         }
 
         function onDoneSwiping(coords) {
           var x = coords && coords.x || swipeEvent.pointX;
           var dist = Math.abs(x - swipeEvent.startX);
+          console.log('dist, snapThreshold, startPos', dist, snapThreshold, startPos);
 
           if (!swipeEvent.moved) {
             return;
           }
 
           if (dist < snapThreshold) {
+            console.log('dist < snapThreshold', dist, snapThreshold, startPos);
             element.css('-webkit-transition-duration', Math.floor(300 * dist / snapThreshold) + 'ms');
             moveSlider(startPos);
           } else {
-            maybeFlipPage();
+            flipPage();
           }
         }
 
@@ -34,6 +36,7 @@ angular.module('ngswipeDemoApp')
 
         $swipe.bind(element, {
           "start": function(coords) {
+            console.log('start');
             swipeEvent = {
               moved: false,
               thresholdExceeded: false,
@@ -47,7 +50,7 @@ angular.module('ngswipeDemoApp')
           },
 
           "move": function(coords) {
-            
+            console.log('move');
             var deltaX = coords.x - swipeEvent.pointX;
             var newX = sliderX + deltaX;
             var dist = Math.abs(coords.x - swipeEvent.startX);

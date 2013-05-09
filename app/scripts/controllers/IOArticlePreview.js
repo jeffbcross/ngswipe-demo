@@ -48,8 +48,8 @@ angular.module('ngswipeDemoApp')
       $scope.loadArticles(FeedManager.getSelected().name).then($scope.articlesLoaded, $scope.articlesLoadFailed);
     };
 
-    $scope.showArticle = function (id) {
-      $location.url('/articles/' + $window.encodeURIComponent(id));
+    $scope.setSelecteArticle = function (id) {
+      Articles.setSelected(id);
     };
     
     $scope.articles = [];
