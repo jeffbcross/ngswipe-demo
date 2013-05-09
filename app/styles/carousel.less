@@ -1,59 +1,35 @@
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
+.article {
+  font-family: Georgia, serif;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: auto;
+  width: 100%;
 
-  .carousel-wrapper {
-    position: relative;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    -webkit-transition-duration: 0;
-    -webkit-transform: translateZ(0);
-    -webkit-transition-timing-function: ease-out;
+  .body {
+    width: 70%;
+    max-width: 940px;
+    padding: (@padding * 2) 0 (@padding * 3);
+    margin: auto;
 
-    .carousel-slider {
-      -webkit-transform: translateZ(0);
-      position: absolute;
-      top: 0;
-      height:100%;
-      width: 100%;
-
-      .article {
-        font-family: Georgia, serif;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        height: auto;
-        width: 100%;
-
-        .body {
-          width: 70%;
-          max-width: 940px;
-          padding: (@padding * 2) 0 (@padding * 3);
-          margin: auto;
-
-          @media only screen and (max-width: 320px) {
-            width: 90%;
-            line-height: 150%;
-          }
-
-          img, code {
-            margin: 50px 0;
-          }
-
-          p, h1, h2, h3, h4, h5, h6 {
-            margin: 25px 0;
-          }
-        }
-
-        p {
-          -webkit-columns-break-inside: avoid;
-        }
-
-        img {
-          pointer-events: none;
-        }
-      }
+    @media only screen and (max-width: 320px) {
+      width: 90%;
+      line-height: 150%;
     }
+
+    img, code {
+      margin: 50px 0;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      margin: 25px 0;
+    }
+  }
+
+  p {
+    -webkit-columns-break-inside: avoid;
+  }
+
+  img {
+    pointer-events: none;
   }
 }

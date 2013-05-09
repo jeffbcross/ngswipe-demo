@@ -1,10 +1,12 @@
-<div ng-carousel="page in pages" style="height: 100%">
-  <div class="page">
-    <div class="article">
-      <div class="body" ng-bind-html="page.content.content"></div>
+<ul rn-carousel class="image">
+  <li ng-repeat="page in pages">
+    <div class="page">
+      <div class="article">
+        <div class="body" ng-bind-html="page.content.content"></div>
+      </div>
     </div>
-  </div>
-</div>
+  </li>
+</ul>
 <div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!pages.length"></div>
 <div class="banner navbar navbar-fixed-top">
   <a href="/"></a>

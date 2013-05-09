@@ -5395,63 +5395,42 @@ io-article-preview .article > .content {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-}
-.carousel-container .carousel-wrapper {
-  position: relative;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  -webkit-transition-duration: 0;
-  -webkit-transform: translateZ(0);
-  -webkit-transition-timing-function: ease-out;
-}
-.carousel-container .carousel-wrapper .carousel-slider {
-  -webkit-transform: translateZ(0);
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-}
-.carousel-container .carousel-wrapper .carousel-slider .article {
+.article {
   font-family: Georgia, serif;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   height: auto;
   width: 100%;
 }
-.carousel-container .carousel-wrapper .carousel-slider .article .body {
+.article .body {
   width: 70%;
   max-width: 940px;
   padding: 30px 0 45px;
   margin: auto;
 }
 @media only screen and (max-width: 320px) {
-  .carousel-container .carousel-wrapper .carousel-slider .article .body {
+  .article .body {
     width: 90%;
     line-height: 150%;
   }
 }
-.carousel-container .carousel-wrapper .carousel-slider .article .body img,
-.carousel-container .carousel-wrapper .carousel-slider .article .body code {
+.article .body img,
+.article .body code {
   margin: 50px 0;
 }
-.carousel-container .carousel-wrapper .carousel-slider .article .body p,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h1,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h2,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h3,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h4,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h5,
-.carousel-container .carousel-wrapper .carousel-slider .article .body h6 {
+.article .body p,
+.article .body h1,
+.article .body h2,
+.article .body h3,
+.article .body h4,
+.article .body h5,
+.article .body h6 {
   margin: 25px 0;
 }
-.carousel-container .carousel-wrapper .carousel-slider .article p {
+.article p {
   -webkit-columns-break-inside: avoid;
 }
-.carousel-container .carousel-wrapper .carousel-slider .article img {
+.article img {
   pointer-events: none;
 }
 .slide-enter-setup,
