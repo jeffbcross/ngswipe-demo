@@ -5,3 +5,4 @@ dist
 .sass-cache
 app/components/angular-carousel
 npm-debug.log
+components/

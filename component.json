@@ -7,7 +7,12 @@
     "angular-mobile": "~1.0.5",
     "angular-momentum-scroll": "~0.1.0",
     "jquery-masonry": "~2.1.08",
-    "ngInfiniteScroll": "1.0.0"
+    "ngInfiniteScroll": "1.0.0",
+    "angular-carousel" : "~0.0.1",
+    "angular-cookies" : "",
+    "angular-resource" : "",
+    "angular-sanitize": ""
+
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",
