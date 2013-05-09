@@ -6,3 +6,4 @@ dist
 app/components/angular-carousel
 npm-debug.log
 components/
+app/components
