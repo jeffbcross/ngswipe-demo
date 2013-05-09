@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'FeedManager', 'Articles', function ($scope, FeedManager, Articles) {
+  .controller('FeedListCtrl', ['$scope', '$rootScope', 'FeedManager', 'Articles', function ($scope, $rootScope, FeedManager, Articles) {
 
     $scope.showFeed = function (name) {
       FeedManager.setSelected(name);

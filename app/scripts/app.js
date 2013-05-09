@@ -26,15 +26,5 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
   .run(function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
       $rootScope.controller = current.controller;
-      // direction is true (slide from left) if new depth is less than previous depth
-      var direction = current && previous && current.depth < previous.depth;
-
-      //"slide-left" means _slide from left_
-      $rootScope.viewSlideAnimation = {
-        enter: direction ? 'slide-left-enter' : 'slide-right-enter',
-        leave: direction ? 'slide-right-leave' : 'slide-left-leave'
-      }
-      console.log('viewSlideAnimation', $rootScope.viewSlideAnimation);
-
     });
   });

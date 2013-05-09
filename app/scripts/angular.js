@@ -3247,6 +3247,7 @@ var $AnimatorProvider = function() {
 
       function animateActionFactory(type, beforeFn, afterFn) {
         var ngAnimateValue = ngAnimateAttr && scope.$eval(ngAnimateAttr);
+        console.log('ngAnimateValue', ngAnimateValue, 'ngAnimateAttr', ngAnimateAttr);
         var className = ngAnimateAttr
             ? isObject(ngAnimateValue) ? ngAnimateValue[type] : ngAnimateValue + '-' + type
             : '';
@@ -3282,6 +3283,7 @@ var $AnimatorProvider = function() {
             $window.setTimeout(beginAnimation, 1);
 
             function beginAnimation() {
+              console.log('startClass', startClass)
               element.addClass(startClass);
               if (polyfillStart) {
                 polyfillStart(element, done, memento);

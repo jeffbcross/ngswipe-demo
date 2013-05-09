@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('ArticleDetailCtrl', ['$scope', '$http', '$sanitize', '$window', 'Articles', 'FeedManager', '$location', function ($scope, $http, $sanitize, $window, Articles, FeedManager, $location) {
+  .controller('ArticleDetailCtrl', ['$scope', '$rootScope', '$http', '$sanitize', '$window', 'Articles', 'FeedManager', '$location', function ($scope, $rootScope, $http, $sanitize, $window, Articles, FeedManager, $location) {
     $scope.bootstrap = function () {
       var feed = FeedManager.getSelected();
 
