@@ -18,7 +18,7 @@ angular.module('ngswipeDemoApp')
 
         angular.forEach(feed.entries, function (entry, i) {
           //URL-encode IDs so they can easily be added to location.
-          if ($window.decodeURIComponent(entry.id) !== entry.id) {
+          if ($window.decodeURIComponent(entry.id) === entry.id) {
             entry.id = $window.encodeURIComponent(entry.id);
           }
 

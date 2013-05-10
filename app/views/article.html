@@ -1,5 +1,5 @@
 <ul rn-carousel class="image">
-  <li ng-repeat="page in feed.entries">
+  <li ng-repeat="page in detailFeed.entries">
     <div class="page">
       <div class="article">
         <div class="body" ng-bind-html="page.content.content"></div>
@@ -7,9 +7,9 @@
     </div>
   </li>
 </ul>
-<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!feed.entries.length"></div>
+<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!detailFeed.entries.length"></div>
 <div class="banner navbar navbar-fixed-top">
   <a href="/"></a>
-  <h3 class="title" ng-bind="feed.meta.title" ng-class="{loading: !feed.entries.length}"></h3>
-  <a class="url" target="_blank" href="{{feed.meta.href}}" ng-bind="feed.meta.href"></a>
+  <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>
+  <a class="url" target="_blank" href="{{detailFeed.meta.href}}" ng-bind="detailFeed.meta.href"></a>
 </div>
