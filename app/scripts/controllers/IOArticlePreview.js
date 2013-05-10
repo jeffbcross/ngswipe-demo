@@ -8,14 +8,14 @@ angular.module('ngswipeDemoApp')
       NO_ARTICLES: "No articles are available."
     };
 
-    $scope.openArticle = function (id) {
+    $scope.openArticle = function (id, index) {
       //Since it is part of a route, it must be encoded.
       if ($window.decodeURIComponent(id) === id) {
         id = $window.encodeURIComponent(id);
       }
       
       Articles.setSelected(id);
-      $location.path('/articles/' + id);
+      $location.path('/articles/' + id).search({index: index});
     }
 
     $scope.loadArticles = function (name) {
