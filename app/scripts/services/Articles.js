@@ -16,10 +16,9 @@ angular.module('ngswipeDemoApp')
         var links = res.data.query.results.feed.link;
         feed.meta.href = links[0].href;
 
-        angular.forEach(feed.entries, function (entry) {
-          if (entry.title && entry.title.content) {
-            entry.title = entry.title.content;
-          }
+        angular.forEach(feed.entries, function (entry, i) {
+          if (i === 4) console.log('4', entry.title.content)
+          entry.title = entry.title.content || entry.title;
         });
 
         //We want to get the link to the original source, not to a feed.

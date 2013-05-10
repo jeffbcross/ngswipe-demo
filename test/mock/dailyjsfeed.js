@@ -15,7 +15,7 @@ var dailyJSFeed = JSON.stringify({
             {
               id: 'Article2',
               title: {
-                content: "Title here"
+                type: "text"
               },
               content: {
                 content: "<p>Article 2 content</p>"

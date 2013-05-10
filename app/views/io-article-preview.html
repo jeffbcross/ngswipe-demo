@@ -4,6 +4,6 @@
     <h2 ng-bind="article.title" class="title"></h2>
   </li>
 </ul>
-<div class="loading" ng-show="loading">Loading</div>
+<div class="loading" ng-show="!feed.entries">Loading</div>
 <div class="alert-error alert" ng-bind="error" ng-show="error"></div>
 <!--io-article-preview.html-->
