@@ -10,6 +10,6 @@
 <div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!feed.entries.length"></div>
 <div class="banner navbar navbar-fixed-top">
   <a href="/"></a>
-  <h3 class="title" ng-bind="feed.title" ng-class="{loading: !pages.length}"></h3>
-  <a class="url" target="_blank" href="{{feed.url}}" ng-bind="feed.url"></a>
+  <h3 class="title" ng-bind="feed.meta.title" ng-class="{loading: !feed.entries.length}"></h3>
+  <a class="url" target="_blank" href="{{feed.meta.href}}" ng-bind="feed.meta.href"></a>
 </div>

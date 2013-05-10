@@ -5346,10 +5346,7 @@ body {
 }
 .FeedListCtrl {
   padding-top: 0;
-}
-.FeedListCtrl .row-fluid {
   background-color: #555555;
-  height: 100%;
 }
 .FeedListCtrl .feed-list .feed-box {
   display: block;

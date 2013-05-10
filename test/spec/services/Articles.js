@@ -50,4 +50,20 @@ describe('Service: Articles', function () {
 
     expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml']).toBeDefined();
   });
+
+  it('should provide a feed title and link', function () {
+    Articles.fetch('http://dailyjs.com/atom.xml');
+    scope.$digest();
+    httpMock.flush();
+
+    expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].meta.title).toEqual('DailyJS')
+  });
+
+  it('should provide a title string for a feed on the entry object', function () {
+    Articles.fetch('http://dailyjs.com/atom.xml');
+    scope.$digest();
+    httpMock.flush();
+    
+    expect(typeof Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].entries[0].title).toEqual('string')
+  });
 });

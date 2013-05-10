@@ -19,14 +19,11 @@ describe('Controller: ArticleDetailCtrl', function () {
   }));
 
   it('should have a feed', function () {
-    // scope.bootstrap();
     scope.$digest();
-    console.log('scope.feed', scope.feed);
     expect(scope.feed.entries.length).toBeGreaterThan(0);
   });
 
   it('should place the selected article at the beginning of the pages', function () {
-    // scope.bootstrap();
     scope.$digest();
     expect(scope.feed.entries[0].id).toEqual('Article2');
   }) 

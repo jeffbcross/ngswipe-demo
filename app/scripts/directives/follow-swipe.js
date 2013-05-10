@@ -14,14 +14,12 @@ angular.module('ngswipeDemoApp')
         function onDoneSwiping(coords) {
           var x = coords && coords.x || swipeEvent.pointX;
           var dist = Math.abs(x - swipeEvent.startX);
-          console.log('dist, snapThreshold, startPos', dist, snapThreshold, startPos);
 
           if (!swipeEvent.moved) {
             return;
           }
 
           if (dist < snapThreshold) {
-            console.log('dist < snapThreshold', dist, snapThreshold, startPos);
             element.css('-webkit-transition-duration', Math.floor(300 * dist / snapThreshold) + 'ms');
             moveSlider(startPos);
           } else {
@@ -36,7 +34,6 @@ angular.module('ngswipeDemoApp')
 
         $swipe.bind(element, {
           "start": function(coords) {
-            console.log('start');
             swipeEvent = {
               moved: false,
               thresholdExceeded: false,
@@ -50,7 +47,6 @@ angular.module('ngswipeDemoApp')
           },
 
           "move": function(coords) {
-            console.log('move');
             var deltaX = coords.x - swipeEvent.pointX;
             var newX = sliderX + deltaX;
             var dist = Math.abs(coords.x - swipeEvent.startX);
