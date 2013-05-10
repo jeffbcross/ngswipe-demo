@@ -7,6 +7,12 @@ var dailyJSFeed = JSON.stringify({
             content: {
               content: "<p>Hello!</p>"
             }
+          },
+          {
+            id: 'Article2',
+            content: {
+              content: "<p>Article 2 content</p>"
+            }
           }
         ],
         author: {

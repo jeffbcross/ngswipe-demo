@@ -5,21 +5,20 @@ angular.module('ngswipeDemoApp')
     $scope.bootstrap = function () {
       var feed = FeedManager.getSelected();
 
-      $scope.feed = Articles.fetch($window.encodeURIComponent(feed.href));
+      $scope.feed = Articles.fetch(feed.href);
       
       $scope.$watch('feed', function (newVal) {
-        if (newVal && newVal.entry && newVal.entry.length) {
-          $scope.feed.url = $scope.feed.meta.href;
-          $scope.feed.title =  $scope.feed.meta.title;
-
-          for (var i = 0; i < $scope.feed.entries.length; i++) {
-            if ($routeParameters.feedId($scope.feed.entries[i].id) > -1) {
-              $scope.feed.entries = $scope.feed.entries.concat($scope.feed.entries.splice(0, i));
-              $scope.pageIndex = i;
-            }
-          }    
+        if (newVal && newVal.entries) {
+          if ($routeParams.articleId) {
+            for (var i = 0; i < newVal.entries.length; i++) {
+              if ($routeParams.articleId.indexOf(newVal.entries[i].id) > -1) {
+                $scope.feed.entries = newVal.entries.concat(newVal.entries.splice(0, i));
+                $scope.pageIndex = i;
+              }
+            }    
+          }
         }
-      })
+      });
     };
     
     $scope.bootstrap();

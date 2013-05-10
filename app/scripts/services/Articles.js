@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .factory('Articles', ['$q', '$http', '$sanitize', '$window', function ($q, $http, $sanitize, $window) {
+  .factory('Articles', ['$q', '$http', '$window', function ($q, $http, $window) {
     var selected;
 
     return {
@@ -11,10 +11,6 @@ angular.module('ngswipeDemoApp')
         var feed = {entries: [], meta: {}}, entries;
         
         feed.entries = res.data.query.results.entry;
-        
-        angular.forEach(feed.entries, function (entry) {
-          entry.content.content = $sanitize(entry.content.content);
-        });
 
         // feed.meta.title = res.data.query.results.feed.author.name;
         // feed.meta.href = res.data.query.results.feed.link[1].href;

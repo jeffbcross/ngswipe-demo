@@ -2,7 +2,7 @@
   <li ng-repeat="page in feed.entries">
     <div class="page">
       <div class="article">
-        <div class="body" ng-bind="page.content.content"></div>
+        <div class="body" ng-bind-html="page.content.content"></div>
       </div>
     </div>
   </li>
