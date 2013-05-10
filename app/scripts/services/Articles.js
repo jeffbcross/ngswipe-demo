@@ -11,13 +11,18 @@ angular.module('ngswipeDemoApp')
         var feed = {entries: [], meta: {}}, entries;
         
         feed.entries = res.data.query.results.feed.entry;
-        feed.meta.title = res.data.query.results.feed.title.content;
+        feed.meta.title = res.data.query.results.feed.title.content || res.data.query.results.feed.title;
         
         var links = res.data.query.results.feed.link;
         feed.meta.href = links[0].href;
 
         angular.forEach(feed.entries, function (entry, i) {
-          if (i === 4) console.log('4', entry.title.content)
+          //URL-encode IDs so they can easily be added to location.
+          if ($window.decodeURIComponent(entry.id) !== entry.id) {
+            entry.id = $window.encodeURIComponent(entry.id);
+          }
+
+          //Title path isn't consistent in feeds. Make it so.
           entry.title = entry.title.content || entry.title;
         });
 

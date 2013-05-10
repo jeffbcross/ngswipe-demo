@@ -9,6 +9,11 @@ angular.module('ngswipeDemoApp')
     };
 
     $scope.openArticle = function (id) {
+      //Since it is part of a route, it must be encoded.
+      if ($window.decodeURIComponent(id) === id) {
+        id = $window.encodeURIComponent(id);
+      }
+      
       Articles.setSelected(id);
       $location.path('/articles/' + id);
     }
