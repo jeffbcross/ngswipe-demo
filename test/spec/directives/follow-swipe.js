@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 describe('Directive: followSwipe', function () {
   beforeEach(module('ngswipeDemoApp'));
@@ -11,3 +11,4 @@ describe('Directive: followSwipe', function () {
     expect(element.text()).toBe('this is the followSwipe directive');
   }));
 });
+*/

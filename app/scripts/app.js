@@ -3,20 +3,14 @@
 angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angular-carousel'])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/articles/:feedId', {
-        templateUrl: '/views/article.html',
-        controller: 'ArticleDetailCtrl',
-        depth: 1
-      })
-      .when('/articles/', {
+      .when('/articles/:articleId', {
         templateUrl: '/views/article.html',
         controller: 'ArticleDetailCtrl',
         depth: 1
       })
       .when('/', {
         templateUrl: '/views/feeds.html',
-        controller: 'FeedListCtrl',
-        depth: 0
+        controller: 'FeedListCtrl'
       })
       // .otherwise({
       //   redirectTo: '/'
@@ -25,6 +19,6 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
 
   .run(function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
-      $rootScope.controller = current.controller;
+      $rootScope.controller = current ? current.controller : 'FeedListCtrl';
     });
   });

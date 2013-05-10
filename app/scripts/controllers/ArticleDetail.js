@@ -1,29 +1,25 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('ArticleDetailCtrl', ['$scope', '$rootScope', '$http', '$sanitize', '$window', 'Articles', 'FeedManager', '$location', function ($scope, $rootScope, $http, $sanitize, $window, Articles, FeedManager, $location) {
+  .controller('ArticleDetailCtrl', ['$scope', '$rootScope', '$routeParams', '$http', '$sanitize', '$window', 'Articles', 'FeedManager', '$location', function ($scope, $rootScope, $routeParams, $http, $sanitize, $window, Articles, FeedManager, $location) {
     $scope.bootstrap = function () {
       var feed = FeedManager.getSelected();
 
-      $scope.pages = [];
-      $scope.feed = { title: "Loading..." };
+      $scope.feed = Articles.fetch($window.encodeURIComponent(feed.href));
       
-      Articles.fetch($window.encodeURIComponent(feed.href))
-        .then(function (feed) {
-          $scope.pages = feed.entries;
+      $scope.$watch('feed', function (newVal) {
+        if (newVal && newVal.entry && newVal.entry.length) {
+          $scope.feed.url = $scope.feed.meta.href;
+          $scope.feed.title =  $scope.feed.meta.title;
 
-          for (var i = 0; i < feed.entries.length; i++) {
-            if ($location.path().indexOf(feed.entries[i].id) > -1) {
-              $scope.pages = $scope.pages.concat($scope.pages.splice(0, i));
+          for (var i = 0; i < $scope.feed.entries.length; i++) {
+            if ($routeParameters.feedId($scope.feed.entries[i].id) > -1) {
+              $scope.feed.entries = $scope.feed.entries.concat($scope.feed.entries.splice(0, i));
               $scope.pageIndex = i;
             }
-          }
-
-          $scope.feed = {
-            url: feed.meta.href,
-            title: feed.meta.title
-          };
-        });
+          }    
+        }
+      })
     };
     
     $scope.bootstrap();

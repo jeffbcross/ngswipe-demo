@@ -3247,7 +3247,6 @@ var $AnimatorProvider = function() {
 
       function animateActionFactory(type, beforeFn, afterFn) {
         var ngAnimateValue = ngAnimateAttr && scope.$eval(ngAnimateAttr);
-        console.log('ngAnimateValue', ngAnimateValue, 'ngAnimateAttr', ngAnimateAttr);
         var className = ngAnimateAttr
             ? isObject(ngAnimateValue) ? ngAnimateValue[type] : ngAnimateValue + '-' + type
             : '';
@@ -10185,11 +10184,13 @@ function createHttpBackend($browser, XHR, $browserDefer, callbacks, rawDocument,
   };
 
   function jsonpReq(url, done) {
+    console.log('jsonpReq', url, done);
     // we can't use jQuery/jqLite here because jQuery does crazy shit with script elements, e.g.:
     // - fetches local scripts via XHR and evals them
     // - adds and immediately removes script elements from the document
     var script = rawDocument.createElement('script'),
         doneWrapper = function() {
+          console.log('doneWrapper');
           rawDocument.body.removeChild(script);
           if (done) done();
         };
@@ -10204,8 +10205,9 @@ function createHttpBackend($browser, XHR, $browserDefer, callbacks, rawDocument,
     } else {
       script.onload = script.onerror = doneWrapper;
     }
-
+    console.log('appending');
     rawDocument.body.appendChild(script);
+    console.log('appended')
   }
 }
 

@@ -1,4 +1,4 @@
-describe('Directive: Angular-Carousel', function () {
+/*describe('Directive: Angular-Carousel', function () {
   beforeEach(module('ngswipeDemoApp'));
 
   var element, $compile, $rootScope, spinner, view, CarouselPositioner;
@@ -52,4 +52,4 @@ describe('Directive: Angular-Carousel', function () {
 
     expect($rootScope.carouselHasChanged).toEqual(2);
   })
-});
+});*/

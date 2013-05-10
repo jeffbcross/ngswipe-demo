@@ -1,35 +1,37 @@
-.article {
-  font-family: Georgia, serif;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: auto;
-  width: 100%;
+.ArticleDetailCtrl {
+  .article {
+    font-family: Georgia, serif;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: auto;
+    width: 100%;
 
-  .body {
-    width: 70%;
-    max-width: 940px;
-    padding: (@padding * 2) 0 (@padding * 3);
-    margin: auto;
+    .body {
+      width: 70%;
+      max-width: 940px;
+      padding: (@padding * 2) 0 (@padding * 3);
+      margin: auto;
 
-    @media only screen and (max-width: 320px) {
-      width: 90%;
-      line-height: 150%;
+      @media only screen and (max-width: 320px) {
+        width: 90%;
+        line-height: 150%;
+      }
+
+      img, code {
+        margin: 50px 0;
+      }
+
+      p, h1, h2, h3, h4, h5, h6 {
+        margin: 25px 0;
+      }
     }
 
-    img, code {
-      margin: 50px 0;
+    p {
+      -webkit-columns-break-inside: avoid;
     }
 
-    p, h1, h2, h3, h4, h5, h6 {
-      margin: 25px 0;
+    img {
+      pointer-events: none;
     }
-  }
-
-  p {
-    -webkit-columns-break-inside: avoid;
-  }
-
-  img {
-    pointer-events: none;
-  }
+  }  
 }

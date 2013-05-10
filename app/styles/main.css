@@ -5383,7 +5383,6 @@ io-article-preview .article {
   font-family: Georgia, serif;
   margin: 0;
   padding: 30px;
-  border-bottom: 1px solid #555555;
 }
 [io-article-preview] .article:active,
 io-article-preview .article:active {
@@ -5395,42 +5394,42 @@ io-article-preview .article > .content {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.article {
+.ArticleDetailCtrl .article {
   font-family: Georgia, serif;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   height: auto;
   width: 100%;
 }
-.article .body {
+.ArticleDetailCtrl .article .body {
   width: 70%;
   max-width: 940px;
   padding: 30px 0 45px;
   margin: auto;
 }
 @media only screen and (max-width: 320px) {
-  .article .body {
+  .ArticleDetailCtrl .article .body {
     width: 90%;
     line-height: 150%;
   }
 }
-.article .body img,
-.article .body code {
+.ArticleDetailCtrl .article .body img,
+.ArticleDetailCtrl .article .body code {
   margin: 50px 0;
 }
-.article .body p,
-.article .body h1,
-.article .body h2,
-.article .body h3,
-.article .body h4,
-.article .body h5,
-.article .body h6 {
+.ArticleDetailCtrl .article .body p,
+.ArticleDetailCtrl .article .body h1,
+.ArticleDetailCtrl .article .body h2,
+.ArticleDetailCtrl .article .body h3,
+.ArticleDetailCtrl .article .body h4,
+.ArticleDetailCtrl .article .body h5,
+.ArticleDetailCtrl .article .body h6 {
   margin: 25px 0;
 }
-.article p {
+.ArticleDetailCtrl .article p {
   -webkit-columns-break-inside: avoid;
 }
-.article img {
+.ArticleDetailCtrl .article img {
   pointer-events: none;
 }
 .slide-enter-setup,

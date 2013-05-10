@@ -8,17 +8,21 @@ angular.module('ngswipeDemoApp')
       NO_ARTICLES: "No articles are available."
     };
 
+    $scope.openArticle = function (id) {
+      Articles.setSelected(id);
+      $location.path('/articles/' + id);
+    }
+
     $scope.loadArticles = function (name) {
       var promise
         , feedToLoad = FeedManager.get(name);
 
       $scope.loading = true;
 
-      $scope.articles = [];
+      $scope.feed = {};
 
       if (feedToLoad && feedToLoad.href) {
-        promise = Articles.fetch($window.encodeURIComponent(feedToLoad.href));
-        return promise;  
+        $scope.feed = Articles.fetch($window.encodeURIComponent(feedToLoad.href));
       }
     };
 
@@ -40,12 +44,9 @@ angular.module('ngswipeDemoApp')
       $scope.loading = false;
     };
 
-    $scope.articlesLoadFailed = function (data, err) {
-      $scope.error = errorMessages.LOADING_ERROR
-    };
 
     $scope.bootstrap = function () {
-      $scope.loadArticles(FeedManager.getSelected().name).then($scope.articlesLoaded, $scope.articlesLoadFailed);
+      $scope.loadArticles(FeedManager.getSelected().name)
     };
 
     $scope.setSelecteArticle = function (id) {

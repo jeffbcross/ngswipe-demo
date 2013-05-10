@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: Article Loader', function () {
+describe('Service: Articles', function () {
   var httpMock, scope, Articles;
   
   beforeEach(module('ngswipeDemoApp'));
@@ -10,6 +10,7 @@ describe('Service: Article Loader', function () {
 
     httpMock.whenJSONP(dailyFeedUrl).respond(dailyJSFeed);
     httpMock.whenJSONP(angularFeedUrl).respond(angularJSFeed);
+    httpMock.whenJSONP("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Fdailyjs.com%2Fatom.xml'%20and%20itemPath%3D'feed.entry'%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK").respond(dailyJSFeed);
 
     scope = $rootScope;
   }));
@@ -22,22 +23,17 @@ describe('Service: Article Loader', function () {
     expect(typeof promise['then']).toEqual('function');
   });
 
-  it('should give articles a preview property with a plaintext preview of the article', function () {
-    var responseData;
-    
-    Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml')
-      .then(function success (feed) {
-        responseData = feed;
-      });
-
-    scope.$digest();
-    httpMock.flush();
-
-    expect(responseData).toBeDefined();
-  });
-
   it('should allow setting and getting the selected article by id', function () {
     Articles.setSelected('the-unique-id');
     expect(Articles.getSelected()).toEqual('the-unique-id');
   });
+
+  it('should cache loaded articles, indexed by url-encoded feed url', function () {
+    var promise = Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
+    scope.$digest();
+    httpMock.flush();
+    
+    expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml']).toBeDefined();
+    
+  })
 });

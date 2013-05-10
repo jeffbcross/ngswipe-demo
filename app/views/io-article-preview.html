@@ -1,7 +1,7 @@
 <ul ng-init="bootstrapArticles()" class="unstyled">
-  <li ng-repeat="article in articles" class="article" ng-mouseover="setSelecteArticle(article.id)">
+  <!-- <li ng-repeat="article in feed.entries" class="article" ng-mouseover="setSelecteArticle(article.id)"> -->
+  <li ng-repeat="article in feed.entries" class="article" ng-click="openArticle(article.id)">
     <h2 ng-bind="article.title.content" class="title"></h2>
-    <div class="content" ng-bind-html="article.content.content"></div>
   </li>
 </ul>
 <div class="loading" ng-show="loading">Loading</div>

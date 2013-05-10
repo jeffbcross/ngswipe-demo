@@ -1,13 +1,13 @@
 <ul rn-carousel class="image">
-  <li ng-repeat="page in pages">
+  <li ng-repeat="page in feed.entries">
     <div class="page">
       <div class="article">
-        <div class="body" ng-bind-html="page.content.content"></div>
+        <div class="body" ng-bind="page.content.content"></div>
       </div>
     </div>
   </li>
 </ul>
-<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!pages.length"></div>
+<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!feed.entries.length"></div>
 <div class="banner navbar navbar-fixed-top">
   <a href="/"></a>
   <h3 class="title" ng-bind="feed.title" ng-class="{loading: !pages.length}"></h3>

@@ -12,7 +12,6 @@ angular.module('ngswipeDemoApp')
       icon: "/img/rss.png"
     }];
     
-    // Public API here
     return {
       getSelected: function () {
         selected = selected ? selected : feeds[0];
