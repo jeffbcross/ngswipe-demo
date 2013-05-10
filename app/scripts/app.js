@@ -4,12 +4,12 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/articles/:articleId', {
-        templateUrl: '/views/article.html',
+        templateUrl: 'views/article.html',
         controller: 'ArticleDetailCtrl',
         depth: 1
       })
       .when('/', {
-        templateUrl: '/views/feeds.html',
+        templateUrl: 'views/feeds.html',
         controller: 'FeedListCtrl'
       })
       // .otherwise({
