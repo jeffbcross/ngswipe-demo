@@ -10,7 +10,6 @@ describe('Service: Articles', function () {
 
     httpMock.whenJSONP(dailyFeedUrl).respond(dailyJSFeed);
     httpMock.whenJSONP(angularFeedUrl).respond(angularJSFeed);
-    httpMock.whenJSONP("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Fdailyjs.com%2Fatom.xml'%20and%20itemPath%3D'feed.entry'%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK").respond(dailyJSFeed);
 
     scope = $rootScope;
   }));
@@ -29,11 +28,26 @@ describe('Service: Articles', function () {
   });
 
   it('should cache loaded articles, indexed by url-encoded feed url', function () {
-    var promise = Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
+    Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
     scope.$digest();
     httpMock.flush();
     
     expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml']).toBeDefined();
-    
+  });
+
+  it('should not sanitize html returned from service', function () {
+    Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
+    scope.$digest();
+    httpMock.flush();
+
+    expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].entries[0].content.content.indexOf('<p>')).toEqual(0);
   })
+
+  it('should convert non-encoded feed urls to encoded', function () {
+    Articles.fetch('http://dailyjs.com/atom.xml');
+    scope.$digest();
+    httpMock.flush();
+
+    expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml']).toBeDefined();
+  });
 });

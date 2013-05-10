@@ -5,7 +5,7 @@ var dailyJSFeed = JSON.stringify({
           {
             id: 'http://hello',
             content: {
-              content: "Hello!"
+              content: "<p>Hello!</p>"
             }
           }
         ],
@@ -19,4 +19,4 @@ var dailyJSFeed = JSON.stringify({
     }
   })
 
-var dailyFeedUrl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Fdailyjs.com%2Fatom.xml'%20and%20itemPath%3D'feed.entry'&format=json&diagnostics=true&callback=JSON_CALLBACK";
+var dailyFeedUrl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'http%3A%2F%2Fdailyjs.com%2Fatom.xml'%20and%20itemPath%3D'feed.entry'%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK";
