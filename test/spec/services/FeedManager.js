@@ -33,7 +33,7 @@ describe('Service: FeedManager', function () {
   });
 
   it('should support addition of a feed through the "add" method', function () {
-    FeedManager.add({name: 'Random Feed', href: "http://random.feed"});
+    FeedManager.add('Random Feed', {href: "http://random.feed"});
 
     expect(FeedManager.get('Random Feed').name).toEqual('Random Feed');
   });

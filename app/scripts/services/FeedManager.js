@@ -2,53 +2,50 @@
 
 angular.module('ngswipeDemoApp')
   .factory('FeedManager', function () {
-    var selected, feeds = [{
-      href: 'http://www.blogger.com/feeds/7159470537406093899/posts/default',
-      name: 'AngularJS',
-      icon: "/img/rss.png"
-    },{
-      href: 'http://dailyjs.com/atom.xml',
-      name: 'DailyJS',
-      icon: "/img/rss.png"
-    }];
+    var selected
+      , feeds = {
+      AngularJS: {
+        href: 'http://www.blogger.com/feeds/7159470537406093899/posts/default',
+        icon: "/img/rss.png",
+        name: "AngularJS"
+      },
+      DailyJS: {
+        href: 'http://dailyjs.com/atom.xml',
+        icon: "/img/rss.png",
+        name: "DailyJS"
+      }
+    };
     
     return {
       getSelected: function () {
-        selected = selected ? selected : feeds[0];
-        return selected;
+        return selected = selected ? selected : feeds[Object.keys(feeds)[0]];
       },
       setSelected: function (name) {
-        for (var i = 0; i < feeds.length; i++) {
-          if (feeds[i].name === name) {
-            selected = feeds[i];
-            break;
-          }
+        if (typeof feeds[name] === "object") {
+          selected = feeds[name];
         }
       },
       getAll: function () {
-        return feeds;
+        //returns feeds as an array
+        var feedArray = []
+          , feedKeys = Object.keys(feeds);
+
+        angular.forEach(feedKeys, function (key) {
+          feedArray.push(feeds[key]);
+        });
+
+        return feedArray;
       },
       get: function (name) {
-        var i;
-        for (i = 0; i<feeds.length; i++) {
-          if (feeds[i].name === name) {
-            return feeds[i];
-          }
-        }
-        return;
+        return feeds[name];
       },
       remove: function (name) {
-        var i;
-        for (i = 0; i < feeds.length; i++) {
-          if (feeds[i].name === name) {
-            feeds.splice(i, 1);
-            break;
-          }
-        }
+        delete feeds[name];
       },
-      add: function (feed) {
-        if (feed.name && feed.href) {
-          feeds.push(feed);
+      add: function (name, meta) {
+        if (typeof name === "string" && name && meta && typeof meta.href === "string") {
+          meta.name = name;
+          feeds[name] = meta;
         }
       }
     };
