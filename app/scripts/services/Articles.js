@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .factory('Articles', ['$q', '$http', '$window', function ($q, $http, $window) {
+  .factory('Articles', ['$q', '$http', '$window', '$filter', function ($q, $http, $window, $filter) {
     var selected;
 
     return {
       _cache: {},
       //Take a deep JSON response and make it flatter
       parseResponse: function (res) {
-        var feed = {entries: [], meta: {}}, entries;
+        var feed = {entries: [], meta: {}}, entries
+          , preview = $filter('preview');
         
         feed.entries = res.data.query.results.feed.entry;
         feed.meta.title = res.data.query.results.feed.title.content || res.data.query.results.feed.title;
@@ -21,6 +22,9 @@ angular.module('ngswipeDemoApp')
           if ($window.decodeURIComponent(entry.id) === entry.id) {
             entry.id = $window.encodeURIComponent(entry.id);
           }
+
+          //Create a preview version of the content;
+          entry.preview = preview(entry.content.content);
 
           //Title path isn't consistent in feeds. Make it so.
           entry.title = entry.title.content || entry.title;

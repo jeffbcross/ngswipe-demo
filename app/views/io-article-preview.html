@@ -1,6 +1,7 @@
 <ul ng-init="bootstrapArticles()" class="unstyled">
   <li ng-repeat="article in feed.entries" class="article" ng-click="openArticle(article.id, $index)">
     <h2 ng-bind="article.title" class="title"></h2>
+    <p ng-bind="article.preview"></p>
   </li>
 </ul>
 <div class="loading" ng-show="!feed.entries">Loading</div>
