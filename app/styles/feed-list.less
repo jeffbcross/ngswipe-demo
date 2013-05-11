@@ -9,9 +9,10 @@
       padding: @padding @padding / 2;
       margin: 0 @padding;
 
-      &:hover {
+      &.selected, &.selected:hover {
+        background-color:@grayLight;
         .name {
-          color: @grayLight;
+          color: @gray;  
         }
       }
 
@@ -19,6 +20,13 @@
         background-color: @grayLight;
         .name {
           color: @white;
+        }
+      }
+
+      &:hover {
+        background-color: fadeout(@black, 90%);
+        .name {
+          color: fadeout(@grayLighter, 25%);
         }
       }
 

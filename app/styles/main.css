@@ -5354,14 +5354,25 @@ body {
   padding: 15px 7.5px;
   margin: 0 15px;
 }
-.FeedListCtrl .feed-list .feed-box:hover .name {
-  color: #999999;
+.FeedListCtrl .feed-list .feed-box.selected,
+.FeedListCtrl .feed-list .feed-box.selected:hover {
+  background-color: #999999;
+}
+.FeedListCtrl .feed-list .feed-box.selected .name,
+.FeedListCtrl .feed-list .feed-box.selected:hover .name {
+  color: #555555;
 }
 .FeedListCtrl .feed-list .feed-box:active {
   background-color: #999999;
 }
 .FeedListCtrl .feed-list .feed-box:active .name {
   color: #ffffff;
+}
+.FeedListCtrl .feed-list .feed-box:hover {
+  background-color: rgba(0, 0, 0, 0.09999999999999998);
+}
+.FeedListCtrl .feed-list .feed-box:hover .name {
+  color: rgba(238, 238, 238, 0.75);
 }
 .FeedListCtrl .feed-list .feed-box img {
   float: left;
