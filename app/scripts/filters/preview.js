@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .filter('preview', function ($document) {
+  .filter('preview', ['$document', '$filter', function ($document, $filter) {
     return function (input) {
-      var output, splitOutput, pMatch, match, brSplit, charTest;
+      var output, splitOutput, pMatch, match, brSplit, charTest
+        , striptags = $filter('striptags');
       if (input.indexOf('<p') > -1) {
         
         //Grab the first paragraph of text. Presumes this comes early in the document.
@@ -41,6 +42,10 @@ angular.module('ngswipeDemoApp')
         }
       }
       
+      if (output) {
+        output = striptags(output);
+      }
+
       return output;
     };
-  });
+  }]);
