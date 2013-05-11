@@ -5352,7 +5352,7 @@ body {
   display: block;
   height: 48px;
   padding: 15px 7.5px;
-  margin: 0 15px;
+  margin: 0;
 }
 .FeedListCtrl .feed-list .feed-box.selected,
 .FeedListCtrl .feed-list .feed-box.selected:hover {
