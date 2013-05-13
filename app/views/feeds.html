@@ -12,36 +12,7 @@
       <span class="name" ng-bind="feed.name"></span>
     </span>
 
-    <div ng-show="!newFeed" class="add-feed feed-box" ng-click="newFeed = {}">
-      <span class="name">
-        <i class="icon-plus"></i>
-        Add Atom Feed
-      </span>
-    </div>
-    
-    <div ng-show="newFeed" class="feed-box add-feed-form">
-      <form ng-submit="saveFeed()" class="form-horizontal" name="newFeedForm">
-        <div class="control-group" ng-class="{error: newFeedForm.name.$error.required && newFeedForm.$dirty }">
-          <label class="control-label" for="inputFeedName">Feed Name</label>
-          <div class="controls">
-            <input name="name" id="inputFeedName" ng-required="true" ng-model="newFeed.name" placeholder="Feed Name">
-            <label class="help-inline" for="inputFeedName" ng-show="newFeedForm.name.$error.required && newFeedForm.$dirty">Feed name is required</label>
-          </div>
-        </div>
-        <div class="control-group" ng-class="{error: (newFeedForm.href.$error.required || newFeedForm.href.$error.pattern) && newFeedForm.$dirty }">
-          <label class="control-label" for="inputFeedHref">Feed URL</label>
-          <div class="controls">
-            <input id="inputFeedHref" ng-required="true" name="href" ng-model="newFeed.href" placeholder="Feed URL" ng-pattern="/^(http)+s?:\/\/.+$/">
-            <label class="help-inline" for="inputFeedHref" ng-show="newFeedForm.href.$error.required && newFeedForm.$dirty">Feed url is required</label>
-            <label class="help-inline" for="inputFeedHref" ng-show="newFeedForm.href.$error.pattern && newFeedForm.$dirty">Please enter a valid feed url.</label>
-          </div>
-        </div>
-        
-        <input type="hidden" ng-model="newFeed.icon" value="/img/rss.png">
-        <input type="submit" value="Save" ng-disabled="newFeedForm.$invalid"> | 
-        <a ng-click="newFeed = undefined">Cancel</a>
-      </form>
-    </div>
+    <io-add-feed-form></io-add-feed-form>
   </div>
   <div class="article-preview-container" ng-show="activeFeed">
     <io-article-preview></io-acticle-preview>

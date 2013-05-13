@@ -8,16 +8,9 @@ angular.module('ngswipeDemoApp')
       FeedManager.setSelected(name);
     };
 
-    $scope.saveFeed = function () {
-      FeedManager.add($scope.newFeed.name, $scope.newFeed);
-      FeedManager.setSelected($scope.newFeed.name);
-      $scope.activeFeed = name;
-      $scope.newFeed = undefined;
-    };
-
     $scope.deleteFeed = function (name) {
       FeedManager.remove(name);
-    }
+    };
 
     $scope.bootstrap = function () {
       var activeFeed;
@@ -34,6 +27,14 @@ angular.module('ngswipeDemoApp')
       $scope.$watch(function () {
         return FeedManager._feedsCache;
       }, updateFeeds);
+
+      $scope.$watch(function () {
+        return FeedManager.getSelected();
+      }, function (newVal) {
+        if (newVal && newVal.name) {
+          $scope.activeFeed = newVal.name;
+        }
+      })
 
       
     }
