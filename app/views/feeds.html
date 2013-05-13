@@ -1,12 +1,16 @@
 <!--<div class="row-fluid feed-list" follow-swipe>-->
 <div class="row-fluid feed-list">
   <div class="span6">
-    <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box" ng-class="{selected: activeFeed == feed.name}">
+    <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box" ng-class="{selected: activeFeed == feed.name}" ng-swipe-left="deletePrompts[$index] = true" ng-swipe-right="deletePrompts[$index] = false">
+      <span class="pull-right" ng-show="deletePrompts[$index]">
+        <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
+      </span>
+      
       <img ng-src="{{ feed.icon }}">
       <span class="name" ng-bind="feed.name"></span>
     </span>
 
-    <div ng-show="!newFeed" class="add-feed feed-box" ng-click="newFeedForm()">
+    <div ng-show="!newFeed" class="add-feed feed-box" ng-click="newFeed = {}">
       <span class="name">
         <i class="icon-plus"></i>
         Add Atom Feed
@@ -16,8 +20,9 @@
       <form ng-submit="saveFeed()">
         <input required ng-model="newFeed.name" placeholder="Feed Name">
         <input required ng-model="newFeed.href" placeholder="Feed URL">
-        <input type="submit" value="Save">
-        <a ng-click="clearNewFeed()"></a>
+        <input type="hidden" ng-model="newFeed.icon" value="/img/rss.png">
+        <input type="submit" value="Save"> | 
+        <a ng-click="newFeed = undefined">Cancel</a>
       </form>
     </div>
   </div>
