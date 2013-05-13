@@ -51,7 +51,10 @@ angular.module('ngswipeDemoApp')
 
 
     $scope.bootstrap = function () {
-      $scope.loadArticles(FeedManager.getSelected().name)
+      var selectedFeed = FeedManager.getSelected();
+      if (selectedFeed.name) {
+        $scope.loadArticles(selectedFeed.name);
+      }
     };
 
     $scope.setSelecteArticle = function (id) {

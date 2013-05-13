@@ -5348,6 +5348,25 @@ body {
   padding-top: 0;
   background-color: #555555;
 }
+.FeedListCtrl .row-fluid {
+  display: -webkit-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.FeedListCtrl .article-preview-container {
+  -webkit-box-flex: 2;
+  top: 0;
+  bottom: 0;
+  max-height: 100%;
+  overflow: auto;
+}
+.FeedListCtrl .feed-list {
+  -webkit-box-flex: 1;
+  width: 50%;
+}
 .FeedListCtrl .feed-list .feed-box {
   display: block;
   height: 48px;
