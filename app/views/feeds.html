@@ -16,17 +16,18 @@
         Add Atom Feed
       </span>
     </div>
+    
     <div ng-show="newFeed" class="feed-box add-feed-form">
       <form ng-submit="saveFeed()">
         <input required ng-model="newFeed.name" placeholder="Feed Name">
-        <input required ng-model="newFeed.href" placeholder="Feed URL">
+        <input required ng-model="newFeed.href" placeholder="Feed URL" ng-pattern="^http://.*$">
         <input type="hidden" ng-model="newFeed.icon" value="/img/rss.png">
         <input type="submit" value="Save"> | 
         <a ng-click="newFeed = undefined">Cancel</a>
       </form>
     </div>
   </div>
-  <div class="article-preview-container" ng-show="activeFeed" ng-show="activeFeed">
+  <div class="article-preview-container" ng-show="activeFeed">
     <io-article-preview></io-acticle-preview>
   </div>
 </div>

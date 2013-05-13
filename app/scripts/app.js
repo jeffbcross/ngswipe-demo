@@ -12,9 +12,9 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
         templateUrl: 'views/feeds.html',
         controller: 'FeedListCtrl'
       })
-      // .otherwise({
-      //   redirectTo: '/'
-      // });
+      .otherwise({
+        redirectTo: '/'
+      });
   })
 
   .run(function ($rootScope) {

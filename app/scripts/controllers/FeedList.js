@@ -30,8 +30,6 @@ angular.module('ngswipeDemoApp')
         $scope.activeFeed = $scope.feeds[0].name  
       }
 
-      console.log('activeFeed', $scope.activeFeed);
-
       $scope.deletePrompts = {};
       $scope.$watch(function () {
         return FeedManager._feedsCache;
