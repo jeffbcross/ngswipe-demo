@@ -6,7 +6,7 @@ angular.module('ngswipeDemoApp')
         restrict: 'A',
         //transclude: true,
         //scope: { },
-        controller: function($scope, $element) {
+        controller: function($scope) {
           var listItems = $scope.soloListItems = [];
 
           this.select = function(listItem) {
@@ -17,7 +17,6 @@ angular.module('ngswipeDemoApp')
           };
 
           this.addItem = function(listItem) {
-            if (listItem.active) { dump("bad");}
             if (listItems.length == 0) this.select(listItem);
             listItems.push(listItem);
           };
