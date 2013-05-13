@@ -6,7 +6,6 @@ angular.module('ngswipeDemoApp')
       , selected
       , feeds = $window.localStorage.getItem(LOCAL_STORAGE_KEY);
 
-    console.log('feeds', feeds);
     if (feeds) {
       feeds = JSON.parse(feeds);
     }
@@ -34,7 +33,7 @@ angular.module('ngswipeDemoApp')
     return {
       _feedsCache: [],
       getSelected: function () {
-        return selected = selected ? selected : feeds[Object. keys(feeds)[0]];
+        return selected = selected ? selected : feeds[Object.keys(feeds)[0]];
       },
       setSelected: function (name) {
         if (typeof feeds[name] === "object") {

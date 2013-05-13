@@ -20,15 +20,24 @@ angular.module('ngswipeDemoApp')
     }
 
     $scope.bootstrap = function () {
+      var activeFeed;
       $scope.feeds = FeedManager.getAll();
+      activeFeed = FeedManager.getSelected();
+      if (activeFeed && activeFeed.name) {
+        $scope.activeFeed = activeFeed.name;
+      }
+      else if ($scope.feeds.length && $scope.feeds[0].name) {
+        $scope.activeFeed = $scope.feeds[0].name  
+      }
+
+      console.log('activeFeed', $scope.activeFeed);
+
       $scope.deletePrompts = {};
       $scope.$watch(function () {
         return FeedManager._feedsCache;
       }, updateFeeds);
 
-      if ($scope.feeds.length && $scope.feeds[0].name) {
-        $scope.activeFeed = $scope.feeds[0].name  
-      }
+      
     }
 
     function updateFeeds (newVal) {
