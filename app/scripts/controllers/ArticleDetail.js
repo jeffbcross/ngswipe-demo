@@ -7,6 +7,10 @@ angular.module('ngswipeDemoApp')
       $scope.articleIndex = $routeParams.index || 0;
       $scope.detailFeed = Articles.fetch(feed.href);
     };
+
+    $scope.goBack = function () {
+      $window.history.back();
+    };
     
     $scope.bootstrap();
   }]);

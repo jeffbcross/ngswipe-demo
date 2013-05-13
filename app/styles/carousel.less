@@ -1,4 +1,27 @@
 .ArticleDetailCtrl {
+  .banner {
+    padding-left: 0;
+
+    .back-link {
+      display: block;
+      height: 75px;
+      width: @padding * 3;
+      margin-right: @padding;
+      text-align: center;
+      color: @gray;
+      cursor: pointer;
+
+      .icon-angle-left {
+        font-size: 48px;
+        line-height: 75px;
+      }
+
+      &:hover, &:active {
+        background-color: @grayLight;
+        color: @grayLighter;
+      }
+    }
+  }
   .article {
     font-family: Georgia, serif;
     overflow-y: auto;
@@ -6,7 +29,7 @@
     height: auto;
     width: 100%;
 
-    .body {
+    .body, h1 {
       width: 70%;
       max-width: 940px;
       padding: (@padding * 2) 0 (@padding * 3);

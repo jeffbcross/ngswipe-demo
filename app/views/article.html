@@ -2,6 +2,7 @@
   <li ng-repeat="page in detailFeed.entries">
     <div class="page">
       <div class="article">
+        <h1 ng-bind="page.title"></h1>
         <div class="body" ng-bind-html="page.content.content"></div>
       </div>
     </div>
@@ -9,7 +10,7 @@
 </ul>
 <div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!detailFeed.entries.length"></div>
 <div class="banner navbar navbar-fixed-top">
-  <a href="/"></a>
+  <span class="back-link pull-left" ng-click="goBack()"><i class="icon-angle-left"></i></span>
   <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>
   <a class="url" target="_blank" href="{{detailFeed.meta.href}}" ng-bind="detailFeed.meta.href"></a>
 </div>

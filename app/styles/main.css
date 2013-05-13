@@ -5440,6 +5440,27 @@ io-article-preview .article > .content {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.ArticleDetailCtrl .banner {
+  padding-left: 0;
+}
+.ArticleDetailCtrl .banner .back-link {
+  display: block;
+  height: 75px;
+  width: 45px;
+  margin-right: 15px;
+  text-align: center;
+  color: #555555;
+  cursor: pointer;
+}
+.ArticleDetailCtrl .banner .back-link .icon-angle-left {
+  font-size: 48px;
+  line-height: 75px;
+}
+.ArticleDetailCtrl .banner .back-link:hover,
+.ArticleDetailCtrl .banner .back-link:active {
+  background-color: #999999;
+  color: #eeeeee;
+}
 .ArticleDetailCtrl .article {
   font-family: Georgia, serif;
   overflow-y: auto;
@@ -5447,29 +5468,40 @@ io-article-preview .article > .content {
   height: auto;
   width: 100%;
 }
-.ArticleDetailCtrl .article .body {
+.ArticleDetailCtrl .article .body,
+.ArticleDetailCtrl .article h1 {
   width: 70%;
   max-width: 940px;
   padding: 30px 0 45px;
   margin: auto;
 }
 @media only screen and (max-width: 320px) {
-  .ArticleDetailCtrl .article .body {
+  .ArticleDetailCtrl .article .body,
+  .ArticleDetailCtrl .article h1 {
     width: 90%;
     line-height: 150%;
   }
 }
 .ArticleDetailCtrl .article .body img,
-.ArticleDetailCtrl .article .body code {
+.ArticleDetailCtrl .article h1 img,
+.ArticleDetailCtrl .article .body code,
+.ArticleDetailCtrl .article h1 code {
   margin: 50px 0;
 }
 .ArticleDetailCtrl .article .body p,
+.ArticleDetailCtrl .article h1 p,
 .ArticleDetailCtrl .article .body h1,
+.ArticleDetailCtrl .article h1 h1,
 .ArticleDetailCtrl .article .body h2,
+.ArticleDetailCtrl .article h1 h2,
 .ArticleDetailCtrl .article .body h3,
+.ArticleDetailCtrl .article h1 h3,
 .ArticleDetailCtrl .article .body h4,
+.ArticleDetailCtrl .article h1 h4,
 .ArticleDetailCtrl .article .body h5,
-.ArticleDetailCtrl .article .body h6 {
+.ArticleDetailCtrl .article h1 h5,
+.ArticleDetailCtrl .article .body h6,
+.ArticleDetailCtrl .article h1 h6 {
   margin: 25px 0;
 }
 .ArticleDetailCtrl .article p {
