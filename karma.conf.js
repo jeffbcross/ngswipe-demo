@@ -5,12 +5,12 @@ basePath = 'app/';
 
 // list of files / patterns to load in the browser
 files = [
+  JASMINE, JASMINE_ADAPTER,
   'scripts/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/angular-mobile/*.js',
   'components/angular-resource/*.js',
   'components/angular-sanitize/*.js',
-  'components/angular-carousel/angular-carousel.js',
   'scripts/*.js',
   'scripts/**/*.js',
   '../test/mock/*.js',
@@ -18,7 +18,7 @@ files = [
   'views/**.html'
 ];
 
-plugins = ['karma-ng-html2js-preprocessor', 'karma-jasmine', 'karma-chrome-launcher']
+plugins = ['karma-ng-html2js-preprocessor', 'karma-jasmine', 'karma-chrome-launcher'];
 
 frameworks = [
   'jasmine'
