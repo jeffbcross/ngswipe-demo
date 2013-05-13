@@ -12,7 +12,7 @@ angular.module('ngswipeDemoApp')
       FeedManager.add($scope.newFeed.name, $scope.newFeed);
       FeedManager.setSelected($scope.newFeed.name);
       $scope.activeFeed = name;
-      $scope.clearNewFeed();
+      $scope.newFeed = undefined;
     };
 
     $scope.deleteFeed = function (name) {

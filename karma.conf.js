@@ -5,7 +5,6 @@ basePath = 'app/';
 
 // list of files / patterns to load in the browser
 files = [
-  JASMINE, JASMINE_ADAPTER,
   'scripts/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/angular-mobile/*.js',
