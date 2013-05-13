@@ -20,11 +20,6 @@ describe('Controller: ArticleDetailCtrl', function () {
 
   it('should have a feed', function () {
     scope.$digest();
-    expect(scope.feed.entries.length).toBeGreaterThan(0);
+    expect(scope.detailFeed.entries.length).toBeGreaterThan(0);
   });
-
-  it('should place the selected article at the beginning of the pages', function () {
-    scope.$digest();
-    expect(scope.feed.entries[0].id).toEqual('Article2');
-  }) 
 });

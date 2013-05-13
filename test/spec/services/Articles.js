@@ -66,12 +66,4 @@ describe('Service: Articles', function () {
     
     expect(typeof Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].entries[0].title).toEqual('string')
   });
-
-  it('should omit an entry if it has no title', function () {
-    Articles.fetch('http://dailyjs.com/atom.xml');
-    scope.$digest();
-    httpMock.flush();
-    
-    expect(Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].entries.length).toEqual(1);
-  })
 });
