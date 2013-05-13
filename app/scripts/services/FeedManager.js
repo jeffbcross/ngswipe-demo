@@ -1,12 +1,11 @@
 'use strict'; 
 
 angular.module('ngswipeDemoApp')
-  .factory('FeedManager', ['$window', function ($window) {
+  .factory('FeedManager', function () {
     var LOCAL_STORAGE_KEY = 'ngReaderFeeds'
       , selected
       , feeds;
 
-    
     feeds = {
       AngularJS: {
         href: 'http://www.blogger.com/feeds/7159470537406093899/posts/default',
@@ -63,4 +62,4 @@ angular.module('ngswipeDemoApp')
         }
       }
     };
-  }]);
+  });

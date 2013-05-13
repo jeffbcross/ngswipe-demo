@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .filter('preview', ['$document', '$filter', function ($document, $filter) {
+  .filter('preview', ['$filter', function ( $filter) {
     return function (input) {
       var output, splitOutput, pMatch, match, brSplit, charTest
         , striptags = $filter('striptags');
