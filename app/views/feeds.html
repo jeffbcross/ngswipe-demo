@@ -1,8 +1,10 @@
 <!--<div class="row-fluid feed-list" follow-swipe>-->
 <div class="row-fluid">
-  <div class="feed-list">
-    <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box" ng-class="{selected: activeFeed == feed.name}" ng-swipe-left="deletePrompts[$index] = true" ng-swipe-right="deletePrompts[$index] = false">
-      <span class="pull-right" ng-show="deletePrompts[$index]">
+  <div class="feed-list" solo-active-list>
+    <span ng-repeat="feed in feeds" solo-active-item  class="feed-box"
+          ng-swipe-left="showDelete = true"
+          ng-swipe-right="showDelete = false">
+      <span class="pull-right" ng-show="showDelete">
         <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
       </span>
       
