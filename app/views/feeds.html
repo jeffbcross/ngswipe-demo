@@ -1,8 +1,10 @@
 <!--<div class="row-fluid feed-list" follow-swipe>-->
 <div class="row-fluid">
-  <div class="feed-list">
-    <span ng-repeat="feed in feeds" ng-click="showFeed(feed.name)" class="feed-box" ng-class="{selected: activeFeed == feed.name}" ng-swipe-left="deletePrompts[$index] = true" ng-swipe-right="deletePrompts[$index] = false">
-      <span class="pull-right" ng-show="deletePrompts[$index]">
+  <div class="feed-list" solo-active-list>
+    <span ng-repeat="feed in feeds" solo-active-item  class="feed-box"
+          ng-swipe-left="showDelete = true"
+          ng-swipe-right="showDelete = false">
+      <span class="pull-right" ng-show="showDelete">
         <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
       </span>
       
@@ -20,7 +22,7 @@
     <div ng-show="newFeed" class="feed-box add-feed-form">
       <form ng-submit="saveFeed()">
         <input required ng-model="newFeed.name" placeholder="Feed Name">
-        <input required ng-model="newFeed.href" placeholder="Feed URL" ng-pattern="^http://.*$">
+        <input required ng-model="newFeed.href" placeholder="Feed URL" ng-pattern="">
         <input type="hidden" ng-model="newFeed.icon" value="/img/rss.png">
         <input type="submit" value="Save"> | 
         <a ng-click="newFeed = undefined">Cancel</a>
