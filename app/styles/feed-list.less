@@ -1,10 +1,15 @@
 .FeedListCtrl {
-  @feedName: @grayLighter;
+  @feedName: @grayLight;
   @feedNameSelected: @gray;
-  @feedNameHover: @white;
+  @feedNameHover: @gray;
+
+  @feedBackground: @white;
+  @feedBackgroundSelected: @blue;
+  @feedBackgroundActive: @grayLight;
+  @feedBackgroundHover: @grayLighter;
+
 
   padding-top: 0;
-  background-color: @gray;
   .row-fluid {
     display: -webkit-box;
     position: absolute;
@@ -24,32 +29,37 @@
 
   .feed-list {
     -webkit-box-flex: 1;
+    margin: @padding;
+    .box-shadow(0 0 5px rgba(0, 0, 0, 0.25));
     width: 50%;
 
     .feed-box {
+      background-color: @feedBackground;
       display: block;
       height: 48px;
       padding: @padding @padding / 2;
       margin: 0;
 
       &.selected, &.selected:hover {
-        background-color:@grayLight;
+        #gradient.horizontal(lighten(@feedBackgroundSelected, 50%), lighten(@feedBackgroundSelected, 20%));
+        
         .name {
           color: @feedNameSelected;
         }
       }
 
       &:active {
-        background-color: @grayLight;
+        background-color: @feedBackgroundActive;
+        
         .name {
           color: @feedNameHover;
         }
       }
 
       &:hover {
-        background-color: fadeout(@black, 90%);
+        background-color: @feedBackgroundHover;
         .name {
-          color: fadeout(@grayLighter, 25%);
+          color: @feedNameHover;
         }
       }
 

@@ -5266,6 +5266,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: Georgia, serif;
 }
 body {
   padding-top: 75px;
@@ -5327,7 +5328,6 @@ body {
   padding-left: 15px;
   text-align: left;
   background-color: #eeeeee;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 .banner .title {
   margin: 15px 0 3.75px;
@@ -5346,7 +5346,6 @@ body {
 }
 .FeedListCtrl {
   padding-top: 0;
-  background-color: #555555;
 }
 .FeedListCtrl .row-fluid {
   display: -webkit-box;
@@ -5365,9 +5364,14 @@ body {
 }
 .FeedListCtrl .feed-list {
   -webkit-box-flex: 1;
+  margin: 15px;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   width: 50%;
 }
 .FeedListCtrl .feed-list .feed-box {
+  background-color: #ffffff;
   display: block;
   height: 48px;
   padding: 15px 7.5px;
@@ -5375,7 +5379,14 @@ body {
 }
 .FeedListCtrl .feed-list .feed-box.selected,
 .FeedListCtrl .feed-list .feed-box.selected:hover {
-  background-color: #999999;
+  background-color: #49c7fc;
+  background-image: -moz-linear-gradient(left, #e0f5fe, #49c7fc);
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#e0f5fe), to(#49c7fc));
+  background-image: -webkit-linear-gradient(left, #e0f5fe, #49c7fc);
+  background-image: -o-linear-gradient(left, #e0f5fe, #49c7fc);
+  background-image: linear-gradient(to right, #e0f5fe, #49c7fc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe0f5fe', endColorstr='#ff49c7fc', GradientType=1);
 }
 .FeedListCtrl .feed-list .feed-box.selected .name,
 .FeedListCtrl .feed-list .feed-box.selected:hover .name {
@@ -5385,13 +5396,13 @@ body {
   background-color: #999999;
 }
 .FeedListCtrl .feed-list .feed-box:active .name {
-  color: #ffffff;
+  color: #555555;
 }
 .FeedListCtrl .feed-list .feed-box:hover {
-  background-color: rgba(0, 0, 0, 0.09999999999999998);
+  background-color: #eeeeee;
 }
 .FeedListCtrl .feed-list .feed-box:hover .name {
-  color: rgba(238, 238, 238, 0.75);
+  color: #555555;
 }
 .FeedListCtrl .feed-list .feed-box img {
   float: left;
@@ -5400,7 +5411,7 @@ body {
   margin-right: 15px;
 }
 .FeedListCtrl .feed-list .feed-box .name {
-  color: #eeeeee;
+  color: #999999;
   font-weight: bold;
   line-height: 48px;
   font-size: 36px;
@@ -5416,7 +5427,6 @@ body {
 }
 [io-article-preview] .article,
 io-article-preview .article {
-  font-family: Georgia, serif;
   margin: 0;
   padding: 30px;
 }
