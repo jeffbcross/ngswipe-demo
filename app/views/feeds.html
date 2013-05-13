@@ -5,6 +5,21 @@
       <img ng-src="{{ feed.icon }}">
       <span class="name" ng-bind="feed.name"></span>
     </span>
+
+    <div ng-show="!newFeed" class="add-feed feed-box" ng-click="newFeedForm()">
+      <span class="name">
+        <i class="icon-plus"></i>
+        Add Atom Feed
+      </span>
+    </div>
+    <div ng-show="newFeed" class="feed-box add-feed-form">
+      <form ng-submit="saveFeed()">
+        <input ng-model="newFeed.name" placeholder="Feed Name">
+        <input ng-model="newFeed.href" placeholder="Feed URL">
+        <input type="submit" value="Save">
+        <a ng-click="clearNewFeed()"></a>
+      </form>
+    </div>
   </div>
   <div ng-show="activeFeed" ng-class="{span6: activeFeed}" ng-show="activeFeed">
     <io-article-preview></io-acticle-preview>

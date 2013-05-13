@@ -1,4 +1,8 @@
 .FeedListCtrl {
+  @feedName: @grayLighter;
+  @feedNameSelected: @gray;
+  @feedNameHover: @white;
+
   padding-top: 0;
   background-color: @gray;
 
@@ -12,14 +16,14 @@
       &.selected, &.selected:hover {
         background-color:@grayLight;
         .name {
-          color: @gray;  
+          color: @feedNameSelected;
         }
       }
 
       &:active {
         background-color: @grayLight;
         .name {
-          color: @white;
+          color: @feedNameHover;
         }
       }
 
@@ -38,12 +42,25 @@
       }
 
       .name {
-        color: @grayLighter;
+        color: @feedName;
         font-weight: bold;
         line-height: 48px;
         font-size: 36px;
       }
-    }  
+    }
+
+    .add-feed {
+      &.expanded {
+        background-color: @grayLight;
+      }
+      .icon-plus {
+        color: ;
+      }
+      .name {
+        font-size: 24px;  
+      }
+      
+    }
   }
 
 }

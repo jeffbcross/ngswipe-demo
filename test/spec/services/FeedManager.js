@@ -57,5 +57,4 @@ describe('Service: FeedManager', function () {
     FeedManager.remove("Random Feed");
     expect(FeedManager.get("Random Feed")).toBe(undefined);
   });
-
 });

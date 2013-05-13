@@ -5386,6 +5386,15 @@ body {
   line-height: 48px;
   font-size: 36px;
 }
+.FeedListCtrl .feed-list .add-feed.expanded {
+  background-color: #999999;
+}
+.FeedListCtrl .feed-list .add-feed .icon-plus {
+  color: ;
+}
+.FeedListCtrl .feed-list .add-feed .name {
+  font-size: 24px;
+}
 [io-article-preview] .article,
 io-article-preview .article {
   font-family: Georgia, serif;
