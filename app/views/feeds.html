@@ -20,7 +20,7 @@
     <div ng-show="newFeed" class="feed-box add-feed-form">
       <form ng-submit="saveFeed()">
         <input required ng-model="newFeed.name" placeholder="Feed Name">
-        <input required ng-model="newFeed.href" placeholder="Feed URL" ng-pattern="^http://.*$">
+        <input required ng-model="newFeed.href" placeholder="Feed URL">
         <input type="hidden" ng-model="newFeed.icon" value="/img/rss.png">
         <input type="submit" value="Save"> | 
         <a ng-click="newFeed = undefined">Cancel</a>
