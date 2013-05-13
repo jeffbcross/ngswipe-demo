@@ -14,8 +14,8 @@
     </div>
     <div ng-show="newFeed" class="feed-box add-feed-form">
       <form ng-submit="saveFeed()">
-        <input ng-model="newFeed.name" placeholder="Feed Name">
-        <input ng-model="newFeed.href" placeholder="Feed URL">
+        <input required ng-model="newFeed.name" placeholder="Feed Name">
+        <input required ng-model="newFeed.href" placeholder="Feed URL">
         <input type="submit" value="Save">
         <a ng-click="clearNewFeed()"></a>
       </form>

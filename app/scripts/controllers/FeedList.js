@@ -24,6 +24,15 @@ angular.module('ngswipeDemoApp')
 
     $scope.bootstrap = function () {
       $scope.feeds = FeedManager.getAll();
+      $scope.$watch(function () {
+        return FeedManager._feedsCache;
+      },
+      function (newVal) {
+        if (newVal === undefined || Array.isArray(newVal)) {
+          $scope.feeds = newVal;
+        }
+        
+      })
 
       if ($scope.feeds.length && $scope.feeds[0].name) {
         $scope.activeFeed = $scope.feeds[0].name  
