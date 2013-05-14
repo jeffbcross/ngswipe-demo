@@ -5,8 +5,9 @@ angular.module('ngswipeDemoApp')
 
     $scope.$watch('soloListActiveItem', function(activeItem) {
       if (activeItem) {
-        $scope.activeFeed = name;
+        $scope.activeFeed = activeItem.feed.name;
         FeedManager.setSelected(activeItem.feed.name);
+      }
     });
 
     $scope.showFeed = function (name) {
