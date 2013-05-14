@@ -5441,11 +5441,9 @@ io-article-preview .article {
 io-article-preview .article:active {
   background-color: #ffffff;
 }
-[io-article-preview] .article > .content,
-io-article-preview .article > .content {
-  max-height: 100px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+[io-article-preview] .article p,
+io-article-preview .article p {
+  max-width: 800px;
 }
 io-add-feed-form .add-feed {
   color: #555555;
