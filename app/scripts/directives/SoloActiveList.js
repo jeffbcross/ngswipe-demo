@@ -14,6 +14,7 @@ angular.module('ngswipeDemoApp')
               listItem.active = false;
             });
             listItem.active = true;
+            $scope.soloListActiveItem = listItem;
           };
 
           this.addItem = function(listItem) {
