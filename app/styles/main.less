@@ -3,6 +3,9 @@
 @padding: 15px;
 @bannerHeight: 75px;
 
+@contentFont: Georgia, serif;
+@metaFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 html, body {
   margin:0;
   padding:0;
@@ -17,7 +20,7 @@ html, body {
   -ms-user-select: none;
   user-select: none;
   
-  font-family: Georgia, serif;
+  font-family: @contentFont;
 }
 
 body {
@@ -96,6 +99,7 @@ body {
 
 @import "feed-list";
 @import "article-preview";
+@import "io-add-feed-form";
 @import "carousel";
 
 .slide-enter-setup, .slide-leave-setup {

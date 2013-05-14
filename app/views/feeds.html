@@ -1,19 +1,22 @@
-<div class="row-fluid">
-  <div class="feed-list" solo-active-list>
-    <span ng-repeat="feed in feeds" solo-active-item  class="feed-box"
-          ng-swipe-left="showDelete = true"
-          ng-swipe-right="showDelete = false">
-      <span class="pull-right" ng-show="showDelete">
-        <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
+<div class="box-row">
+  <div class="column">
+    <div class="feed-list" solo-active-list>
+      <span ng-repeat="feed in feeds" solo-active-item  class="feed-box"
+            ng-swipe-left="showDelete = true"
+            ng-swipe-right="showDelete = false">
+        <span class="pull-right" ng-show="showDelete">
+          <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
+        </span>
+        
+        <img ng-src="{{ feed.icon }}">
+        <span class="name" ng-bind="feed.name"></span>
       </span>
-      
-      <img ng-src="{{ feed.icon }}">
-      <span class="name" ng-bind="feed.name"></span>
-    </span>
+    </div>
 
     <io-add-feed-form></io-add-feed-form>
+
   </div>
-  <div class="article-preview-container" ng-show="activeFeed">
+  <div class="column article-preview-container" ng-show="activeFeed">
     <io-article-preview></io-acticle-preview>
   </div>
 </div>

@@ -5347,13 +5347,31 @@ body {
 .FeedListCtrl {
   padding-top: 0;
 }
-.FeedListCtrl .row-fluid {
+.FeedListCtrl .box-row {
   display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-flex-basis: auto;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
+}
+.FeedListCtrl .column {
+  -webkit-flex-flow: column;
+  -webkit-box-flex: 2;
+  box-flex: 2;
+}
+.FeedListCtrl .column:first-child {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  width: 320px;
+  min-width: 320px;
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -webkit-box-orient: vertical;
 }
 .FeedListCtrl .article-preview-container {
   -webkit-box-flex: 2;
@@ -5361,14 +5379,6 @@ body {
   bottom: 0;
   max-height: 100%;
   overflow: auto;
-}
-.FeedListCtrl .feed-list {
-  -webkit-box-flex: 1;
-  margin: 15px;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  width: 50%;
 }
 .FeedListCtrl .feed-list .feed-box {
   background-color: #ffffff;
@@ -5416,14 +5426,11 @@ body {
   line-height: 48px;
   font-size: 36px;
 }
-.FeedListCtrl .feed-list .add-feed.expanded {
-  background-color: #999999;
-}
-.FeedListCtrl .feed-list .add-feed .icon-plus {
-  color: ;
-}
-.FeedListCtrl .feed-list .add-feed .name {
-  font-size: 24px;
+[io-article-preview] .loading,
+io-article-preview .loading {
+  font-size: 150%;
+  line-height: 150%;
+  text-align: center;
 }
 [io-article-preview] .article,
 io-article-preview .article {
@@ -5439,6 +5446,27 @@ io-article-preview .article > .content {
   max-height: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+io-add-feed-form .add-feed {
+  color: #555555;
+  cursor: pointer;
+  background: #eeeeee;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 15px;
+}
+io-add-feed-form .add-feed .icon-plus {
+  color: #555555;
+}
+io-add-feed-form .add-feed .name {
+  font-size: 24px;
+}
+io-add-feed-form .add-feed-form {
+  padding: 15px;
+  background-color: #eeeeee;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+io-add-feed-form .add-feed-form h4 {
+  margin-top: 0;
 }
 .ArticleDetailCtrl .banner {
   padding-left: 0;
