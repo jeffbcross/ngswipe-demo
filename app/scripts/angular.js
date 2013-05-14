@@ -3173,7 +3173,6 @@ var $AnimatorProvider = function() {
     return function(scope, attrs) {
       var ngAnimateAttr = attrs.ngAnimate;
       var animator = {};
-      console.log('attr', attrs.ngAnimate);
       /**
        * @ngdoc function
        * @name ng.animator#enter
@@ -3242,12 +3241,11 @@ var $AnimatorProvider = function() {
        *
        * @param {jQuery/jqLite element} element the element that will be rendered visible or hidden
       */
-      animator.hide = animateActionFactory('hide', noop, hide);
+      animator.hide = animateActionFactory('hide', noop, hide, true);
       return animator;
 
-      function animateActionFactory(type, beforeFn, afterFn) {
+      function animateActionFactory(type, beforeFn, afterFn, skipFirst) {
         var ngAnimateValue = ngAnimateAttr && scope.$eval(ngAnimateAttr);
-        console.log('ngAnimateValue', ngAnimateValue)
         var className = ngAnimateAttr
             ? isObject(ngAnimateValue) ? ngAnimateValue[type] : ngAnimateValue + '-' + type
             : '';
@@ -3257,13 +3255,11 @@ var $AnimatorProvider = function() {
         var polyfillStart = animationPolyfill && animationPolyfill.start;
 
         if (!className) {
-          console.log('!className')
           return function(element, parent, after) {
             beforeFn(element, parent, after);
             afterFn(element, parent, after);
           }
         } else {
-          console.log('className', className);
           var setupClass = className + '-setup';
           var startClass = className + '-start';
 
@@ -3271,6 +3267,13 @@ var $AnimatorProvider = function() {
             if (!$sniffer.supportsTransitions && !polyfillSetup && !polyfillStart) {
               beforeFn(element, parent, after);
               afterFn(element, parent, after);
+              return;
+            }
+
+            if (skipFirst) {
+              beforeFn(element, parent, after)
+              afterFn(element, parent, after);
+              skipFirst = false;
               return;
             }
             

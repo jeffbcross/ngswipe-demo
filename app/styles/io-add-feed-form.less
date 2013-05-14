@@ -21,13 +21,15 @@ io-add-feed-form {
     padding: @padding;
     background-color: @grayLighter;
     font-family: @metaFont;
+    
+    input[type=text] {
+      width: 100%;
+      height: 28px;
+      box-sizing: border-box;
+    }
 
     h4 {
       margin-top: 0;
-    }
-    
-    .fake-input {
-      display: none;
     }
   }
 
@@ -37,15 +39,6 @@ io-add-feed-form {
     opacity: 1;
     height: @formHeight;
     padding: @padding;
-    
-    input[ng-model] {
-      display: none;
-    }
-
-    /* Fake inputs used during animation to hide browser error messages. */
-    .fake-input {
-      display: block;
-    }
   }
 
   .form-hidden () {
@@ -74,7 +67,7 @@ io-add-feed-form {
     -webkit-transition:0.25s linear all;
     -moz-transition:0.25s linear all;
     -o-transition:0.25s linear all;
-    transition:0.25s linear all; /* future proof */
+    transition:0.25s linear all;
   }
 
   .add-hide-setup {

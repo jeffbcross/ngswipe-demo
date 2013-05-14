@@ -5,9 +5,9 @@ angular.module('ngswipeDemoApp')
     return {
       templateUrl: 'views/io-add-feed-form.html',
       restrict: 'E',
-/*      scope: {
-        'activeFeed': '='
-      },*/
+      scope: {
+        'feed' : '='
+      },
       link: function postLink(scope, element, attrs) {
         scope.saveFeed = function () {
           FeedManager.add(scope.newFeed.name, scope.newFeed);
