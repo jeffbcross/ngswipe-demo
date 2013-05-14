@@ -1,7 +1,13 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', '$rootScope', 'FeedManager', 'Articles', function ($scope, $rootScope, FeedManager, Articles) {
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', function ($scope, FeedManager) {
+
+    $scope.$watch('soloListActiveItem', function(activeItem) {
+      if (activeItem) {
+        $scope.activeFeed = name;
+        FeedManager.setSelected(activeItem.feed.name);
+    });
 
     $scope.showFeed = function (name) {
       $scope.activeFeed = name;

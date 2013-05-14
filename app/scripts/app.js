@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angular-carousel'])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/articles/:articleId', {
         templateUrl: 'views/article.html',
