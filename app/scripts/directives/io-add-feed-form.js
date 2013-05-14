@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .directive('ioAddFeedForm', function (FeedManager) {
+  .directive('ioAddFeedForm', ['FeedManager', 'RecommendedFeeds', function (FeedManager, RecommendedFeeds) {
     return {
       templateUrl: 'views/io-add-feed-form.html',
       restrict: 'E',
@@ -16,14 +16,14 @@ angular.module('ngswipeDemoApp')
           scope.newFeedForm = null;
         };
 
-        scope.sources = FeedManager.recommended;
+        scope.sources = RecommendedFeeds;
 
         scope.$watch('newFeed.name', function (name) {
-          if (scope.sources[name]) {
-            scope.newFeed.href = scope.sources[name];  
+          if (name && scope.sources[name]) {
+            scope.newFeed.href = scope.sources[name];
             scope.newFeed.icon = '/img/rss.png';
           }
         });
       }
     };
-  });
+  }]);
