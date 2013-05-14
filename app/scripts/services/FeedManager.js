@@ -26,6 +26,11 @@ angular.module('ngswipeDemoApp')
     
     return {
       _feedsCache: [],
+      recommended: {
+        'Hacker News' : {
+          href: 'http://hacker.new'
+        }
+      },
       getSelected: function () {
         return selected = selected ? selected : feeds[Object.keys(feeds)[0]];
       },

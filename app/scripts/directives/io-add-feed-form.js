@@ -14,6 +14,13 @@ angular.module('ngswipeDemoApp')
           FeedManager.setSelected(scope.newFeed.name);
           scope.newFeed = undefined;
         };
+
+        scope.sources = FeedManager.recommended;
+        scope.$watch('newFeed.name', function (name) {
+          if (scope.sources[name]) {
+            scope.newFeed.href = scope.sources[name].href;  
+          }
+        });
       }
     };
   });
