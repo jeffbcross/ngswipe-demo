@@ -42,12 +42,12 @@ angular.module('ngswipeDemoApp')
         
       },
       fetch: function (feedUrl) {
-        if (this._cache[feedUrl]) return this._cache[feedUrl];
-
         if (feedUrl.indexOf('http://') === 0) {
           feedUrl = $window.encodeURIComponent(feedUrl);
         }
-        
+
+        if (this._cache[feedUrl]) return this._cache[feedUrl];
+
         var deferred = $q.defer()
           , self = this;
         var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'%feedUrl'%20and%20itemPath%3D'feed'%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK";
