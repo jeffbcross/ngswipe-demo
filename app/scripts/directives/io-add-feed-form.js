@@ -12,13 +12,16 @@ angular.module('ngswipeDemoApp')
         scope.saveFeed = function () {
           FeedManager.add(scope.newFeed.name, scope.newFeed);
           FeedManager.setSelected(scope.newFeed.name);
-          scope.newFeed = undefined;
+          scope.newFeed = null;
+          scope.newFeedForm = null;
         };
 
         scope.sources = FeedManager.recommended;
+
         scope.$watch('newFeed.name', function (name) {
           if (scope.sources[name]) {
-            scope.newFeed.href = scope.sources[name].href;  
+            scope.newFeed.href = scope.sources[name];  
+            scope.newFeed.icon = '/img/rss.png';
           }
         });
       }
