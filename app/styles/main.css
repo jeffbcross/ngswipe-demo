@@ -5384,11 +5384,27 @@ body {
   overflow: auto;
 }
 .FeedListCtrl .feed-list .feed-box {
-  background-color: #ffffff;
   display: block;
   height: 48px;
   padding: 15px 7.5px;
   margin: 0;
+  background-color: #ffffff;
+}
+.FeedListCtrl .feed-list .feed-box img {
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 15px;
+}
+.FeedListCtrl .feed-list .feed-box .name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999999;
+  font-weight: bold;
+  line-height: 48px;
+  font-size: 36px;
+  white-space: nowrap;
 }
 .FeedListCtrl .feed-list .feed-box.selected,
 .FeedListCtrl .feed-list .feed-box.selected:hover {
@@ -5416,18 +5432,6 @@ body {
 }
 .FeedListCtrl .feed-list .feed-box:hover .name {
   color: #555555;
-}
-.FeedListCtrl .feed-list .feed-box img {
-  float: left;
-  width: 48px;
-  height: 48px;
-  margin-right: 15px;
-}
-.FeedListCtrl .feed-list .feed-box .name {
-  color: #999999;
-  font-weight: bold;
-  line-height: 48px;
-  font-size: 36px;
 }
 [io-article-preview] .loading,
 io-article-preview .loading {

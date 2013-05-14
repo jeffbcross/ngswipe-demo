@@ -49,11 +49,29 @@
   
   .feed-list {
     .feed-box {
-      background-color: @feedBackground;
       display: block;
       height: 48px;
       padding: @padding @padding / 2;
       margin: 0;
+      background-color: @feedBackground;
+
+      img {
+        float: left; 
+        width: 48px;
+        height: 48px;
+        margin-right: @padding;
+      }
+
+      .name {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: @feedName;
+        font-weight: bold;
+        line-height: 48px;
+        font-size: 36px;
+        white-space: nowrap;
+      }
 
       &.selected, &.selected:hover {
         #gradient.horizontal(lighten(@feedBackgroundSelected, 50%), lighten(@feedBackgroundSelected, 20%));
@@ -76,20 +94,6 @@
         .name {
           color: @feedNameHover;
         }
-      }
-
-      img {
-        float: left; 
-        width: 48px;
-        height: 48px;
-        margin-right: @padding;
-      }
-
-      .name {
-        color: @feedName;
-        font-weight: bold;
-        line-height: 48px;
-        font-size: 36px;
       }
     }
   }
