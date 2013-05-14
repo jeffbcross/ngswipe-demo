@@ -3173,7 +3173,7 @@ var $AnimatorProvider = function() {
     return function(scope, attrs) {
       var ngAnimateAttr = attrs.ngAnimate;
       var animator = {};
-
+      console.log('attr', attrs.ngAnimate);
       /**
        * @ngdoc function
        * @name ng.animator#enter
@@ -3247,6 +3247,7 @@ var $AnimatorProvider = function() {
 
       function animateActionFactory(type, beforeFn, afterFn) {
         var ngAnimateValue = ngAnimateAttr && scope.$eval(ngAnimateAttr);
+        console.log('ngAnimateValue', ngAnimateValue)
         var className = ngAnimateAttr
             ? isObject(ngAnimateValue) ? ngAnimateValue[type] : ngAnimateValue + '-' + type
             : '';
@@ -3256,11 +3257,13 @@ var $AnimatorProvider = function() {
         var polyfillStart = animationPolyfill && animationPolyfill.start;
 
         if (!className) {
+          console.log('!className')
           return function(element, parent, after) {
             beforeFn(element, parent, after);
             afterFn(element, parent, after);
           }
         } else {
+          console.log('className', className);
           var setupClass = className + '-setup';
           var startClass = className + '-start';
 

@@ -1,6 +1,7 @@
 <div class="add-feed feed-box"
   ng-click="newFeed = {}"
-  ng-show="!newFeed">
+  ng-show="!newFeed"
+  ng-animate=" 'add' ">
 
   <span class="name">
     <i class="icon-plus"></i>
@@ -8,7 +9,7 @@
   </span>
 </div>
 
-<div ng-show="newFeed" class="add-feed-form">
+<div ng-show="newFeed" class="add-feed-form" ng-animate=" 'form' ">
   <h4>New atom feed</h4>
   <form class="form" name="newFeedForm" 
     ng-submit="saveFeed()">
@@ -20,6 +21,7 @@
         <input class="input-medium" name="name" id="inputFeedName" placeholder="Feed Name"
           ng-required="true" 
           ng-model="newFeed.name">
+        <input class="input-medium fake-input">
 
         <label class="help-inline" for="inputFeedName" 
           ng-show="newFeedForm.name.$error.required && newFeedForm.name.$dirty">
@@ -34,6 +36,7 @@
         <input id="inputFeedHref" name="href" ng-required="true" placeholder="Feed URL" class="input-medium"
           ng-model="newFeed.href" 
           ng-pattern="/^(http)+s?:\/\/.+$/">
+        <input class="input-medium fake-input">
         
         <label class="help-inline" for="inputFeedHref"
           ng-show="newFeedForm.href.$error.required && newFeedForm.href.$dirty">

@@ -5445,26 +5445,113 @@ io-article-preview .article:active {
 io-article-preview .article p {
   max-width: 800px;
 }
+io-add-feed-form {
+  /* General Styles */
+
+  /*Animation mix-ins*/
+
+}
 io-add-feed-form .add-feed {
   color: #555555;
   cursor: pointer;
   background: #eeeeee;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 15px;
+  height: 28px;
 }
 io-add-feed-form .add-feed .icon-plus {
   color: #555555;
 }
 io-add-feed-form .add-feed .name {
   font-size: 24px;
+  line-height: 28px;
 }
 io-add-feed-form .add-feed-form {
+  height: 160px;
   padding: 15px;
   background-color: #eeeeee;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 io-add-feed-form .add-feed-form h4 {
   margin-top: 0;
+}
+io-add-feed-form .add-feed-form .fake-input {
+  display: none;
+}
+io-add-feed-form .add-hide-setup,
+io-add-feed-form .add-show-setup,
+io-add-feed-form .form-hide-setup,
+io-add-feed-form .form-show-setup {
+  -webkit-transition: 0.25s linear all;
+  -moz-transition: 0.25s linear all;
+  -o-transition: 0.25s linear all;
+  transition: 0.25s linear all;
+  /* future proof */
+
+}
+io-add-feed-form .add-hide-setup {
+  height: 28px;
+  overflow: hidden;
+  padding: 15px;
+  opacity: 1;
+}
+io-add-feed-form .add-hide-start {
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  opacity: 0;
+}
+io-add-feed-form .add-show-setup {
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  opacity: 0;
+}
+io-add-feed-form .add-show-start {
+  height: 28px;
+  overflow: hidden;
+  padding: 15px;
+  opacity: 1;
+}
+io-add-feed-form .form-hide-setup {
+  opacity: 1;
+  height: 160px;
+  padding: 15px;
+  /* Fake inputs used during animation to hide browser error messages. */
+
+}
+io-add-feed-form .form-hide-setup input[ng-model] {
+  display: none;
+}
+io-add-feed-form .form-hide-setup .fake-input {
+  display: block;
+}
+io-add-feed-form .form-hide-start {
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  height: 0;
+}
+io-add-feed-form .form-show-setup {
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 15px;
+  height: 0;
+}
+io-add-feed-form .form-show-start {
+  opacity: 1;
+  height: 160px;
+  padding: 15px;
+  /* Fake inputs used during animation to hide browser error messages. */
+
+}
+io-add-feed-form .form-show-start input[ng-model] {
+  display: none;
+}
+io-add-feed-form .form-show-start .fake-input {
+  display: block;
 }
 .ArticleDetailCtrl .banner {
   padding-left: 0;
@@ -5498,7 +5585,8 @@ io-add-feed-form .add-feed-form h4 {
 .ArticleDetailCtrl .article h1 {
   width: 70%;
   max-width: 940px;
-  padding: 30px 0 45px;
+  padding: 15px 0;
+  line-height: 125%;
   margin: auto;
 }
 @media only screen and (max-width: 320px) {

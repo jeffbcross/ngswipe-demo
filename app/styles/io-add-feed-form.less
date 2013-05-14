@@ -1,24 +1,110 @@
 io-add-feed-form {
+  /* General Styles */
   .add-feed {
     color: @gray;
     cursor: pointer;
     background: @grayLighter;
     font-family: @metaFont;
     padding: @padding;
+    height: 28px;
 
     .icon-plus {
       color: @gray;
     }
     .name {
-      font-size: 24px;  
+      font-size: 24px;
+      line-height: 28px;
     }
   }
   .add-feed-form {
-    h4 {
-      margin-top: 0;
-    }
+    height: @formHeight;
     padding: @padding;
     background-color: @grayLighter;
     font-family: @metaFont;
+
+    h4 {
+      margin-top: 0;
+    }
+    
+    .fake-input {
+      display: none;
+    }
+  }
+
+  /*Animation mix-ins*/
+  @formHeight: 160px;
+  .form-shown () {
+    opacity: 1;
+    height: @formHeight;
+    padding: @padding;
+    
+    input[ng-model] {
+      display: none;
+    }
+
+    /* Fake inputs used during animation to hide browser error messages. */
+    .fake-input {
+      display: block;
+    }
+  }
+
+  .form-hidden () {
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 @padding;
+    height: 0;
+  }
+
+  .add-shown () {
+    height: 28px;
+    overflow: hidden;
+    padding: @padding;
+    opacity: 1;
+  }
+
+  .add-hidden () {
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0 @padding;
+    opacity: 0;
+  }
+
+  .add-hide-setup, .add-show-setup, .form-hide-setup, .form-show-setup {
+    -webkit-transition:0.25s linear all;
+    -moz-transition:0.25s linear all;
+    -o-transition:0.25s linear all;
+    transition:0.25s linear all; /* future proof */
+  }
+
+  .add-hide-setup {
+    .add-shown();
+  }
+  .add-hide-start {
+    .add-hidden();
+  }
+
+  .add-show-setup {
+    .add-hidden();
+  }
+
+  .add-show-start {
+    .add-shown();
+  }
+
+  .form-hide-setup {
+    .form-shown();
+  }
+
+  .form-hide-start {
+    .form-hidden();
+  }
+  
+  .form-show-setup {
+    .form-hidden();
+  }
+
+  .form-show-start {
+    .form-shown();
   }
 }
