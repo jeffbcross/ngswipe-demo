@@ -18,8 +18,8 @@ angular.module('ngswipeDemoApp')
           };
 
           this.addItem = function(listItem) {
-            if (listItems.length == 0) this.select(listItem);
             listItems.push(listItem);
+            this.select(listItem);
           };
         }
       };
