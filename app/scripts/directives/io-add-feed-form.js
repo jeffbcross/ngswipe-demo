@@ -17,15 +17,19 @@ angular.module('ngswipeDemoApp')
           scope.newFeedForm = null;
 
           $location.path('/feeds/' + name);
-
         };
 
         scope.sources = RecommendedFeeds;
-
+        scope.$watch('newFeed', function (newVal, oldVal) {
+          if (newVal && !oldVal) {
+            $('#inputFeedName').focus();
+          }
+        });
+        
         scope.$watch('newFeed.name', function (name) {
           if (name && scope.sources[name]) {
-            scope.newFeed.href = scope.sources[name];
-            scope.newFeed.icon = 'img/rss.png';
+            scope.newFeed.href = scope.sources[name].href;
+            scope.newFeed.icon = scope.sources[name].icon || 'img/rss.png';
           }
         });
       }
