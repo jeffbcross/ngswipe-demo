@@ -9,7 +9,10 @@
     </div>
   </li>
 </ul>
-<div class="loading-placeholder" spinner style="position:fixed; top:0;" ng-show="!detailFeed.entries.length"></div>
+<div class="loading-placeholder" ng-show="!detailFeed.entries.length">
+  <i class="icon-spin icon-refresh"></i>
+  Loading
+</div>
 <div class="banner navbar navbar-fixed-top">
   <span class="back-link pull-left" ng-click="goBack()"><i class="icon-angle-left"></i></span>
   <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>

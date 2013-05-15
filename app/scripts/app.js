@@ -5,8 +5,7 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
     $routeProvider
       .when('/articles/:articleId', {
         templateUrl: 'views/article.html',
-        controller: 'ArticleDetailCtrl',
-        depth: 1
+        controller: 'ArticleDetailCtrl'
       })
       .when('/', {
         templateUrl: 'views/feeds.html',

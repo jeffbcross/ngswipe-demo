@@ -5637,6 +5637,12 @@ io-add-feed-form .form-show-start {
 .ArticleDetailCtrl .article p {
   -webkit-columns-break-inside: avoid;
 }
+.ArticleDetailCtrl .article .loading-placeholder {
+  position: fixed;
+  top: 49%;
+  text-align: center;
+  font-size: 200%;
+}
 .ArticleDetailCtrl .article .date {
   color: #999999;
 }
