@@ -1,0 +1,16 @@
+<div class="add-feed feed-box"
+
+  ng-show="!newFeed"
+  ng-click="newFeed = {}"
+  ng-animate=" 'add' ">
+
+  <span class="name">
+    <i class="icon-plus"></i>
+    Add Atom Feed [{{newFeed}}]
+  </span>
+</div>
+
+<div ng-show="newFeed" class="add-feed-form" ng-animate=" 'form' ">
+  <h4>New atom feed</h4>
+
+</div>

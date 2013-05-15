@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.1.5-3814986
+ * @license AngularJS v1.1.5-d551d72
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -18,107 +18,20 @@
 var ngMobile = angular.module('ngMobile', []);
 
 /**
- * A service for abstracting swipe behavior. Deliberately internal; it is only intended for use in
- * ngSwipeLeft/Right and ngCarousel.
- *
- * Determining whether the user is swiping or scrolling, and handling both mouse and touch events,
- * make writing swipe code challenging. This service allows setting callbacks on the start,
- * movement and completion of a swipe gesture, without worrying about the complications.
- *
- */
-
-ngMobile.factory('$swipe', [function() {
-  // The total distance in any direction before we make the call on swipe vs. scroll.
-  var MOVE_BUFFER_RADIUS = 10;
-
-  // Absolute total movement, used to control swipe vs. scroll.
-  var totalX, totalY;
-  // Coordinates of the start position.
-  var startCoords;
-  // Last event's position.
-  var lastPos;
-  // Whether a swipe is active.
-  var active = false;
-
-  function getCoordinates(event) {
-    var touches = event.touches && event.touches.length ? event.touches : [event];
-    var e = (event.changedTouches && event.changedTouches[0]) ||
-        (event.originalEvent && event.originalEvent.changedTouches &&
-            event.originalEvent.changedTouches[0]) ||
-        touches[0].originalEvent || touches[0];
-
-    return {
-      x: e.clientX,
-      y: e.clientY
-    };
-  }
-
-  return {
-    bind: function(element, events) {
-      element.bind('touchstart mousedown', function(event) {
-        startCoords = getCoordinates(event);
-        active = true;
-        totalX = 0;
-        totalY = 0;
-        lastPos = startCoords;
-        events['start'] && events['start'](startCoords);
-      });
-
-      element.bind('touchcancel', function(event) {
-        active = false;
-        events['cancel'] && events['cancel']();
-      });
-
-      element.bind('touchmove mousemove', function(event) {
-        if (!active) return;
-
-        // Android will send a touchcancel if it thinks we're starting to scroll.
-        // So when the total distance (+ or - or both) exceeds 10px in either direction,
-        // we either:
-        // - On totalX > totalY, we send preventDefault() and treat this as a swipe.
-        // - On totalY > totalX, we let the browser handle it as a scroll.
-
-        if (!startCoords) return;
-        var coords = getCoordinates(event);
-
-        totalX += Math.abs(coords.x - lastPos.x);
-        totalY += Math.abs(coords.y - lastPos.y);
-
-        lastPos = coords;
-
-        if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
-          return;
-        }
-
-        // One of totalX or totalY has exceeded the buffer, so decide on swipe vs. scroll.
-        if (totalY > totalX) {
-          // Allow native scrolling to take over.
-          active = false;
-          return;
-        } else {
-          // Prevent the browser from scrolling.
-          event.preventDefault();
-
-          events['move'] && events['move'](coords);
-        }
-      });
-
-      element.bind('touchend mouseup', function(event) {
-        if (!active) return;
-        active = false;
-        events['end'] && events['end'](getCoordinates(event));
-      });
-    }
-  };
-}]);
-
-/**
  * @ngdoc directive
- * @name ngMobile.directive:ngTap
+ * @name ngMobile.directive:ngClick
  *
  * @description
- * Specify custom behavior when element is tapped on a touchscreen device.
- * A tap is a brief, down-and-up touch without much motion.
+ * A more powerful replacement for the default ngClick designed to be used on touchscreen
+ * devices. Most mobile browsers wait about 300ms after a tap-and-release before sending
+ * the click event. This version handles them immediately, and then prevents the
+ * following click event from propagating.
+ *
+ * This directive can fall back to using an ordinary click event, and so works on desktop
+ * browsers as well as mobile.
+ *
+ * This directive also sets the CSS class `ng-click-active` while the element is being held
+ * down (by a mouse click or touch) so you can restyle the depressed element if you wish.
  *
  * @element ANY
  * @param {expression} ngClick {@link guide/expression Expression} to evaluate
@@ -127,7 +40,7 @@ ngMobile.factory('$swipe', [function() {
  * @example
     <doc:example>
       <doc:source>
-        <button ng-tap="count = count + 1" ng-init="count=0">
+        <button ng-click="count = count + 1" ng-init="count=0">
           Increment
         </button>
         count: {{ count }}
@@ -149,6 +62,8 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
   var MOVE_TOLERANCE = 12; // 12px seems to work in most mobile browsers.
   var PREVENT_DURATION = 2500; // 2.5 seconds maximum from preventGhostClick call to click
   var CLICKBUSTER_THRESHOLD = 25; // 25 pixels in any dimension is the limit for busting clicks.
+
+  var ACTIVE_CLASS_NAME = 'ng-click-active';
   var lastPreventedTime;
   var touchCoordinates;
 
@@ -284,6 +199,7 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
 
     function resetState() {
       tapping = false;
+      element.removeClass(ACTIVE_CLASS_NAME);
     }
 
     element.bind('touchstart', function(event) {
@@ -293,6 +209,8 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
       if(tapElement.nodeType == 3) {
         tapElement = tapElement.parentNode;
       }
+
+      element.addClass(ACTIVE_CLASS_NAME);
 
       startTime = Date.now();
 
@@ -336,7 +254,8 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
           clickHandler(scope, {$event: event});
         });
       }
-      tapping = false;
+
+      resetState();
     });
 
     // Hack for iOS Safari's benefit. It goes searching for onclick handlers and is liable to click
@@ -351,6 +270,15 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
         clickHandler(scope, {$event: event});
       });
     });
+
+    element.bind('mousedown', function(event) {
+      element.addClass(ACTIVE_CLASS_NAME);
+    });
+
+    element.bind('mousemove mouseup', function(event) {
+      element.removeClass(ACTIVE_CLASS_NAME);
+    });
+
   };
 }]);
 
@@ -409,20 +337,36 @@ ngMobile.directive('ngClick', ['$parse', '$timeout', '$rootElement',
  */
 
 function makeSwipeDirective(directiveName, direction) {
-  ngMobile.directive(directiveName, ['$parse', '$swipe', function($parse, $swipe) {
+  ngMobile.directive(directiveName, ['$parse', function($parse) {
     // The maximum vertical delta for a swipe should be less than 75px.
     var MAX_VERTICAL_DISTANCE = 75;
     // Vertical distance should not be more than a fraction of the horizontal distance.
     var MAX_VERTICAL_RATIO = 0.3;
     // At least a 30px lateral motion is necessary for a swipe.
     var MIN_HORIZONTAL_DISTANCE = 30;
+    // The total distance in any direction before we make the call on swipe vs. scroll.
+    var MOVE_BUFFER_RADIUS = 10;
+
+    function getCoordinates(event) {
+      var touches = event.touches && event.touches.length ? event.touches : [event];
+      var e = (event.changedTouches && event.changedTouches[0]) ||
+          (event.originalEvent && event.originalEvent.changedTouches &&
+              event.originalEvent.changedTouches[0]) ||
+          touches[0].originalEvent || touches[0];
+
+      return {
+        x: e.clientX,
+        y: e.clientY
+      };
+    }
 
     return function(scope, element, attr) {
       var swipeHandler = $parse(attr[directiveName]);
-
       var startCoords, valid;
+      var totalX, totalY;
+      var lastX, lastY;
 
-      function validSwipe(coords) {
+      function validSwipe(event) {
         // Check that it's within the coordinates.
         // Absolute vertical distance must be within tolerances.
         // Horizontal distance, we take the current X - the starting X.
@@ -432,6 +376,7 @@ function makeSwipeDirective(directiveName, direction) {
         // illegal ones a negative delta.
         // Therefore this delta must be positive, and larger than the minimum.
         if (!startCoords) return false;
+        var coords = getCoordinates(event);
         var deltaY = Math.abs(coords.y - startCoords.y);
         var deltaX = (coords.x - startCoords.x) * direction;
         return valid && // Short circuit for already-invalidated swipes.
@@ -441,20 +386,65 @@ function makeSwipeDirective(directiveName, direction) {
             deltaY / deltaX < MAX_VERTICAL_RATIO;
       }
 
-      $swipe.bind(element, {
-        'start': function(coords) {
-          startCoords = coords;
-          valid = true;
-        },
-        'cancel': function() {
+      element.bind('touchstart mousedown', function(event) {
+        startCoords = getCoordinates(event);
+        valid = true;
+        totalX = 0;
+        totalY = 0;
+        lastX = startCoords.x;
+        lastY = startCoords.y;
+      });
+
+      element.bind('touchcancel', function(event) {
+        valid = false;
+      });
+
+      element.bind('touchmove mousemove', function(event) {
+        if (!valid) return;
+
+        // Android will send a touchcancel if it thinks we're starting to scroll.
+        // So when the total distance (+ or - or both) exceeds 10px in either direction,
+        // we either:
+        // - On totalX > totalY, we send preventDefault() and treat this as a swipe.
+        // - On totalY > totalX, we let the browser handle it as a scroll.
+
+        // Invalidate a touch while it's in progress if it strays too far away vertically.
+        // We don't want a scroll down and back up while drifting sideways to be a swipe just
+        // because you happened to end up vertically close in the end.
+        if (!startCoords) return;
+        var coords = getCoordinates(event);
+
+        if (Math.abs(coords.y - startCoords.y) > MAX_VERTICAL_DISTANCE) {
           valid = false;
-        },
-        'end': function(coords) {
-          if (validSwipe(coords)) {
-            scope.$apply(function() {
-              swipeHandler(scope);
-            });
-          }
+          return;
+        }
+
+        totalX += Math.abs(coords.x - lastX);
+        totalY += Math.abs(coords.y - lastY);
+
+        lastX = coords.x;
+        lastY = coords.y;
+
+        if (totalX < MOVE_BUFFER_RADIUS && totalY < MOVE_BUFFER_RADIUS) {
+          return;
+        }
+
+        // One of totalX or totalY has exceeded the buffer, so decide on swipe vs. scroll.
+        if (totalY > totalX) {
+          valid = false;
+          return;
+        } else {
+          event.preventDefault();
+        }
+      });
+
+      element.bind('touchend mouseup', function(event) {
+        if (validSwipe(event)) {
+          // Prevent this swipe from bubbling up to any other elements with ngSwipes.
+          event.stopPropagation();
+          scope.$apply(function() {
+            swipeHandler(scope, {$event:event});
+          });
         }
       });
     };
