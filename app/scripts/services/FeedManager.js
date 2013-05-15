@@ -13,7 +13,7 @@ angular.module('ngswipeDemoApp')
       },
       DailyJS: {
         href: 'http://dailyjs.com/atom.xml',
-        icon: "/img/rss.png",
+        icon: "img/rss.png",
         name: "DailyJS"
       },
       Chrome: {

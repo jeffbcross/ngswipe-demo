@@ -12,7 +12,7 @@ describe('Service: RecommendedFeeds', function () {
   }));
 
   it('return a dictionary of feeds', function () {
-    expect(RecommendedFeeds['YouTube']).toBeDefined();
+    expect(RecommendedFeeds['YouTube Blog']).toBeDefined();
   });
 
 });
