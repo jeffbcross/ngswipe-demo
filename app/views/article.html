@@ -3,6 +3,7 @@
     <div class="page">
       <div class="article">
         <h1 ng-bind="page.title"></h1>
+        <p class="date" ng-bind="page.updated | date:'medium' "></p>
         <div class="body" ng-bind-html="page.content.content"></div>
       </div>
     </div>

@@ -5441,16 +5441,30 @@ io-article-preview .loading {
 }
 [io-article-preview] .article,
 io-article-preview .article {
-  margin: 0;
-  padding: 30px;
+  margin: 0 15px;
+  padding: 30px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eeeeee;
+}
+[io-article-preview] .article:hover,
+io-article-preview .article:hover {
+  background-color: #eeeeee;
 }
 [io-article-preview] .article:active,
 io-article-preview .article:active {
-  background-color: #ffffff;
+  background-color: #999999;
+}
+[io-article-preview] .article:active .date,
+io-article-preview .article:active .date {
+  color: #555555;
 }
 [io-article-preview] .article p,
 io-article-preview .article p {
   max-width: 800px;
+}
+[io-article-preview] .article .date,
+io-article-preview .article .date {
+  color: #999999;
 }
 io-add-feed-form {
   /* General Styles */
@@ -5573,7 +5587,8 @@ io-add-feed-form .form-show-start {
   width: 100%;
 }
 .ArticleDetailCtrl .article .body,
-.ArticleDetailCtrl .article h1 {
+.ArticleDetailCtrl .article h1,
+.ArticleDetailCtrl .article .date {
   width: 70%;
   max-width: 940px;
   padding: 15px 0;
@@ -5582,35 +5597,48 @@ io-add-feed-form .form-show-start {
 }
 @media only screen and (max-width: 320px) {
   .ArticleDetailCtrl .article .body,
-  .ArticleDetailCtrl .article h1 {
+  .ArticleDetailCtrl .article h1,
+  .ArticleDetailCtrl .article .date {
     width: 90%;
     line-height: 150%;
   }
 }
 .ArticleDetailCtrl .article .body img,
 .ArticleDetailCtrl .article h1 img,
+.ArticleDetailCtrl .article .date img,
 .ArticleDetailCtrl .article .body code,
-.ArticleDetailCtrl .article h1 code {
+.ArticleDetailCtrl .article h1 code,
+.ArticleDetailCtrl .article .date code {
   margin: 50px 0;
 }
 .ArticleDetailCtrl .article .body p,
 .ArticleDetailCtrl .article h1 p,
+.ArticleDetailCtrl .article .date p,
 .ArticleDetailCtrl .article .body h1,
 .ArticleDetailCtrl .article h1 h1,
+.ArticleDetailCtrl .article .date h1,
 .ArticleDetailCtrl .article .body h2,
 .ArticleDetailCtrl .article h1 h2,
+.ArticleDetailCtrl .article .date h2,
 .ArticleDetailCtrl .article .body h3,
 .ArticleDetailCtrl .article h1 h3,
+.ArticleDetailCtrl .article .date h3,
 .ArticleDetailCtrl .article .body h4,
 .ArticleDetailCtrl .article h1 h4,
+.ArticleDetailCtrl .article .date h4,
 .ArticleDetailCtrl .article .body h5,
 .ArticleDetailCtrl .article h1 h5,
+.ArticleDetailCtrl .article .date h5,
 .ArticleDetailCtrl .article .body h6,
-.ArticleDetailCtrl .article h1 h6 {
+.ArticleDetailCtrl .article h1 h6,
+.ArticleDetailCtrl .article .date h6 {
   margin: 25px 0;
 }
 .ArticleDetailCtrl .article p {
   -webkit-columns-break-inside: avoid;
+}
+.ArticleDetailCtrl .article .date {
+  color: #999999;
 }
 .ArticleDetailCtrl .article img {
   pointer-events: none;

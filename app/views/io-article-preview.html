@@ -2,6 +2,7 @@
   <li ng-repeat="article in feed.entries" class="article" ng-click="openArticle(article.id, $index)">
     <h2 ng-bind="article.title" class="title"></h2>
     <p ng-bind="article.preview"></p>
+    <p class="date" ng-bind="article.updated | date:'medium'"></p>
   </li>
 </ul>
 <div class="loading" ng-show="!feed.entries"><span class="icon-refresh icon-spin"></span> Loading</div>

@@ -6,17 +6,28 @@
   }
 
   .article {
-    margin: 0;
-    padding: @padding * 2;
-
-
-
+    margin: 0 @padding;
+    padding: @padding * 2 @padding;
+    cursor: pointer;
+    border-bottom: 1px solid @grayLighter;
+    
+    &:hover {
+      background-color: @grayLighter;
+    }
     &:active {
-      background-color: @white;
+      background-color: @grayLight;
+
+      .date {
+        color: @gray
+      }
     }
     
     p {
       max-width: 800px;
+    }
+
+    .date {
+      color: @grayLight;
     }
   }
 }

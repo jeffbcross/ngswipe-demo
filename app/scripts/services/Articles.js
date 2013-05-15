@@ -13,7 +13,7 @@ angular.module('ngswipeDemoApp')
         
         feed.entries = res.data.query.results.feed.entry;
         feed.meta.title = res.data.query.results.feed.title.content || res.data.query.results.feed.title;
-        
+        console.log('first entry', feed.entries[0]);
         var links = res.data.query.results.feed.link;
         feed.meta.href = links[0].href;
 
