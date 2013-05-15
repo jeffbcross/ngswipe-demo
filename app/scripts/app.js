@@ -3,16 +3,16 @@
 angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angular-carousel'])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/articles/:articleId', {
+      .when('/articles/:feedId/:articleId', {
         templateUrl: 'views/article.html',
         controller: 'ArticleDetailCtrl'
       })
-      .when('/', {
+      .when('/feeds/:feedId', {
         templateUrl: 'views/feeds.html',
         controller: 'FeedListCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/feeds/'
       });
   })
 

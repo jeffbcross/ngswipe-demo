@@ -1,18 +1,10 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'FeedManager', function ($scope, FeedManager) {
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', '$window', function ($scope, FeedManager, $routeParams, $location, $window) {
 
-    $scope.$watch('soloListActiveItem', function(activeItem) {
-      if (activeItem) {
-        $scope.activeFeed = activeItem.feed.name;
-        FeedManager.setSelected(activeItem.feed.name);
-      }
-    });
-
-    $scope.showFeed = function (name) {
-      $scope.activeFeed = name;
-      FeedManager.setSelected(name);
+    $scope.showFeed = function (feed) {
+      $location.path('/feeds/' + feed.name);
     };
 
     $scope.deleteFeed = function (name) {
@@ -22,28 +14,17 @@ angular.module('ngswipeDemoApp')
     $scope.bootstrap = function () {
       var activeFeed;
       $scope.feeds = FeedManager.getAll();
-      activeFeed = FeedManager.getSelected();
-      if (activeFeed && activeFeed.name) {
-        $scope.activeFeed = activeFeed.name;
+      if ($routeParams.feedId) {
+        $scope.activeFeed = $routeParams.feedId;
       }
       else if ($scope.feeds.length && $scope.feeds[0].name) {
-        $scope.activeFeed = $scope.feeds[0].name  
+        $scope.showFeed($scope.feeds[0]);
       }
 
       $scope.deletePrompts = {};
       $scope.$watch(function () {
         return FeedManager._feedsCache;
       }, updateFeeds);
-
-      $scope.$watch(function () {
-        return FeedManager.getSelected();
-      }, function (newVal) {
-        if (newVal && newVal.name) {
-          $scope.activeFeed = newVal.name;
-        }
-      })
-
-      
     }
 
     function updateFeeds (newVal) {

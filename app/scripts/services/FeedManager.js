@@ -3,7 +3,6 @@
 angular.module('ngswipeDemoApp')
   .factory('FeedManager', function () {
     var LOCAL_STORAGE_KEY = 'ngReaderFeeds'
-      , selected
       , feeds;
 
     feeds = {
@@ -26,14 +25,7 @@ angular.module('ngswipeDemoApp')
     
     return {
       _feedsCache: [],
-      getSelected: function () {
-        return selected = selected ? selected : feeds[Object.keys(feeds)[0]];
-      },
-      setSelected: function (name) {
-        if (typeof feeds[name] === "object") {
-          selected = feeds[name];
-        }
-      },
+
       getAll: function () {
         //returns feeds as an array
         var feedArray = []

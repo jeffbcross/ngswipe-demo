@@ -1,7 +1,8 @@
 <div class="box-row">
   <div class="column">
-    <div class="feed-list" solo-active-list>
-      <span ng-repeat="feed in feeds" solo-active-item  class="feed-box"
+    <div class="feed-list">
+      <span ng-repeat="feed in feeds" ng-click="showFeed(feed)" class="feed-box"
+            ng-class="{selected: feed.name == activeFeed}"
             ng-swipe-left="showDelete = true"
             ng-swipe-right="showDelete = false">
         <span class="pull-right" ng-show="showDelete">

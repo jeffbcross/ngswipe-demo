@@ -3,7 +3,7 @@
 angular.module('ngswipeDemoApp')
   .controller('ArticleDetailCtrl', ['$scope', '$routeParams', '$window', 'Articles', 'FeedManager', function ($scope, $routeParams,$window, Articles, FeedManager) {
     
-    var feed = FeedManager.getSelected();
+    var feed = FeedManager.get($routeParams.feedId);
     $scope.detailFeed = Articles.fetch(feed.href);
     //TODO: Check index against actual position within feed, in case link is an outdated bookmark.
     $scope.articleIndex = $routeParams.index || 0;

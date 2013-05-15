@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .directive('ioAddFeedForm', ['FeedManager', 'RecommendedFeeds', function (FeedManager, RecommendedFeeds) {
+  .directive('ioAddFeedForm', ['FeedManager', 'RecommendedFeeds', '$location', '$window', function (FeedManager, RecommendedFeeds, $location, $window) {
     return {
       templateUrl: 'views/io-add-feed-form.html',
       restrict: 'E',
@@ -10,10 +10,14 @@ angular.module('ngswipeDemoApp')
       },
       link: function postLink(scope, element, attrs) {
         scope.saveFeed = function () {
-          FeedManager.add(scope.newFeed.name, scope.newFeed);
-          FeedManager.setSelected(scope.newFeed.name);
+          var name = scope.newFeed.name;
+          FeedManager.add(name, scope.newFeed);
+
           scope.newFeed = null;
           scope.newFeedForm = null;
+
+          $location.path('/feeds/' + name);
+
         };
 
         scope.sources = RecommendedFeeds;

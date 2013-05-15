@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', 'Articles', 'FeedManager', '$window', '$location', function ($scope, Articles, FeedManager, $window, $location) {
+  .controller('IOArticlePreviewCtrl', ['$scope', 'Articles', 'FeedManager', '$window', '$location', '$routeParams', function ($scope, Articles, FeedManager, $window, $location, $routeParams) {
 
     var errorMessages = {
       LOADING_ERROR: "There was an error loading articles",
@@ -15,7 +15,7 @@ angular.module('ngswipeDemoApp')
       }
       
       Articles.setSelected(id);
-      $location.path('/articles/' + id).search({index: index});
+      $location.path('/articles/' + $routeParams.feedId + '/' + id).search({index: index});
     }
 
     $scope.loadArticles = function (name) {
@@ -49,20 +49,14 @@ angular.module('ngswipeDemoApp')
       $scope.loading = false;
     };
 
-
-    $scope.bootstrap = function () {
-      $scope.selectedFeed = FeedManager.getSelected();
-      if ($scope.selectedFeed.name) {
-        $scope.loadArticles($scope.selectedFeed.name);
-      }
-    };
-
     $scope.setSelecteArticle = function (id) {
       Articles.setSelected(id);
     };
     
     $scope.articles = [];
-    $scope.$watch(function () {
-      return FeedManager.getSelected();
-    }, $scope.bootstrap);
+
+    var feedId = $routeParams.feedId;
+    if (feedId) {
+      $scope.loadArticles(feedId);
+    }
   }]);
