@@ -25,7 +25,7 @@ angular.module('ngswipeDemoApp')
         scope.$watch('newFeed.name', function (name) {
           if (name && scope.sources[name]) {
             scope.newFeed.href = scope.sources[name];
-            scope.newFeed.icon = '/img/rss.png';
+            scope.newFeed.icon = 'img/rss.png';
           }
         });
       }
