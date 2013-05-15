@@ -8,13 +8,12 @@ describe('Controller: ArticleDetailCtrl', function () {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, ArticlesMock, FeedManager) {
-    FeedManager.setSelected('DailyJS');
     scope = $rootScope.$new();
 
     ArticleDetailCtrl = $controller('ArticleDetailCtrl', {
       $scope: scope,
       Articles: ArticlesMock,
-      $routeParams: { articleId: 'http://hello' }
+      $routeParams: { articleId: 'http://hello', feedId: 'DailyJS' }
     });
   }));
 

@@ -14,24 +14,6 @@ describe('Service: FeedManager', function () {
     expect(list.length).toBeGreaterThan(0);
   });
 
-  it('should set selected feed when calling setSelected', function () {
-    FeedManager.setSelected('DailyJS');
-    expect(FeedManager.getSelected().name).toEqual('DailyJS');
-    FeedManager.setSelected('AngularJS');
-    expect(FeedManager.getSelected().name).toEqual('AngularJS');
-  });
-
-  it('should not set selected feed when calling setSelected with invalid name', function () {
-    FeedManager.setSelected('DailyJS');
-    FeedManager.setSelected('Foobar');
-    expect(FeedManager.getSelected().name).toEqual('DailyJS');
-  });
-
-  it('should provide the currently-selected feed', function () {
-    FeedManager.setSelected('AngularJS');
-    expect(FeedManager.getSelected().name).toEqual('AngularJS');
-  });
-
   it('should support addition of a feed through the "add" method', function () {
     FeedManager.add('Random Feed', {href: "http://random.feed"});
 

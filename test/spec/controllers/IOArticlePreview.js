@@ -27,9 +27,8 @@ describe('Controller: IOArticlePreviewCtrl', function () {
       expect(scope.feed.entries.length).toBeGreaterThan(0);
     });
 
-    it('should put the articles in a list on the scope after calling bootstrapArticles()', function () {
+    it('should put the articles in a list on the scope after creating the controller', function () {
       scope.articles = [];
-      scope.bootstrap();
       scope.$digest();
 
       expect(scope.feed.entries.length).toBeGreaterThan(0);
