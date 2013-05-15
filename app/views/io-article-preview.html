@@ -5,6 +5,9 @@
     <p class="date" ng-bind="article.updated | date:'medium'"></p>
   </li>
 </ul>
-<div class="loading" ng-show="!feed.entries"><span class="icon-refresh icon-spin"></span> Loading</div>
+<div class="loading" ng-show="!feed.entries">
+  <span class="icon-refresh icon-spin"></span> 
+  Loading {{ selectedFeed.href }}
+</div>
 <div class="alert-error alert" ng-bind="error" ng-show="error"></div>
 <!--io-article-preview.html-->
