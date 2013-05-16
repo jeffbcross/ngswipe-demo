@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .directive('ioAddFeedForm', ['FeedManager', 'RecommendedFeeds', '$location', '$window', function (FeedManager, RecommendedFeeds, $location, $window) {
+  .directive('ioAddFeedForm', ['FeedManager', 'RecommendedFeeds', '$location', '$window', '$timeout', function (FeedManager, RecommendedFeeds, $location, $window, $timeout) {
     return {
       templateUrl: 'views/io-add-feed-form.html',
       restrict: 'E',
@@ -22,7 +22,10 @@ angular.module('ngswipeDemoApp')
         scope.sources = RecommendedFeeds;
         scope.$watch('newFeed', function (newVal, oldVal) {
           if (newVal && !oldVal) {
-            $('#inputFeedName').focus();
+            //Focus on the name input
+            $timeout(function () {
+              $('#inputFeedName').focus();  
+            }, 250);
           }
         });
         

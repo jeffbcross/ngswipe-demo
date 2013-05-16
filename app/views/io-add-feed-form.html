@@ -19,14 +19,13 @@
 
       <div class="controls">
         <input type="text" class="input-medium" name="name" id="inputFeedName" placeholder="Feed Name"
-          ng-required="true" 
+          ng-required="true"
           ng-model="newFeed.name"
           list="atomSources">
         
         <datalist id="atomSources">
           <option ng-repeat="(name, href) in sources" value="{{ name }}"></option>
         </datalist>
-
 
         <label class="help-inline" for="inputFeedName" 
           ng-show="newFeedForm.name.$error.required && newFeedForm.name.$dirty">
@@ -38,8 +37,9 @@
       ng-class="{error: (newFeedForm.href.$error.required || newFeedForm.href.$error.pattern) && newFeedForm.href.$dirty }">
 
       <div class="controls">
-        <input type="text" id="inputFeedHref" name="href" ng-required="true" placeholder="Feed URL" class="input-medium"
+        <input type="text" id="inputFeedHref" name="href" placeholder="Feed URL"  class="input-medium"
           ng-model="newFeed.href" 
+          ng-required="true"
           ng-pattern="/^(http)+s?:\/\/.+$/">
         
         <label class="help-inline" for="inputFeedHref"

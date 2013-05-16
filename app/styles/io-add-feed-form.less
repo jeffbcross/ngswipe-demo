@@ -18,7 +18,7 @@ io-add-feed-form {
     }
   }
   .add-feed-form {
-    height: @formHeight;
+    min-height: @formHeight;
     padding: @padding;
     background-color: @grayLighter;
     font-family: @metaFont;
@@ -38,6 +38,7 @@ io-add-feed-form {
   .form-shown () {
     opacity: 1;
     height: @formHeight;
+    min-height: 0;
     padding: @padding;
   }
 
@@ -68,6 +69,7 @@ io-add-feed-form {
     -moz-transition:0.25s linear all;
     -o-transition:0.25s linear all;
     transition:0.25s linear all;
+    min-height: 0;
   }
 
   .add-hide-setup {
