@@ -20,14 +20,6 @@ angular.module('ngswipeDemoApp')
         };
 
         scope.sources = RecommendedFeeds;
-        scope.$watch('newFeed', function (newVal, oldVal) {
-          if (newVal && !oldVal) {
-            //Focus on the name input
-            $timeout(function () {
-              $('#inputFeedName').focus();  
-            }, 250);
-          }
-        });
         
         scope.$watch('newFeed.name', function (name) {
           if (name && scope.sources[name]) {
