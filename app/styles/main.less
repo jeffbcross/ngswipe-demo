@@ -23,12 +23,25 @@ html, body {
   font-family: @contentFont;
 }
 
-body {
-  padding-top: @bannerHeight;
-}
-
 [ng-cloak] {
   display: none;
+}
+
+.page-enter {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+  // position: absolute;
+}
+.page-leave {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+  // position: absolute;
+}
+
+.null-enter {
+  -webkit-transition:all linear 10s;
+}
+
+.null-leave {
+  -webkit-transition: all linear 10s;
 }
 
 

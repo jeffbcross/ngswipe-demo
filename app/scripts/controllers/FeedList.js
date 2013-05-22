@@ -5,6 +5,7 @@ angular.module('ngswipeDemoApp')
 
     $scope.showFeed = function (feed) {
       $location.path('/feeds/' + feed.name);
+      $location.replace();
     };
 
     $scope.deleteFeed = function (name) {

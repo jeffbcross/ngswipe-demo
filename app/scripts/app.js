@@ -20,4 +20,12 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
     $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
       $rootScope.controller = current ? current.controller : 'FeedListCtrl';
     });
+
+    $rootScope.pageEnterAnimation = function () {
+      return 'page-enter';
+    };
+
+    $rootScope.pageLeaveAnimation = function () {
+      return 'page-leave';
+    }
   });

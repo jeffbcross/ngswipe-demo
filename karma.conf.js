@@ -5,7 +5,7 @@ basePath = 'app/';
 
 // list of files / patterns to load in the browser
 files = [
-  'scripts/angular.js',
+  'scripts/angular/angular.js',
   'components/angular-mocks/angular-mocks.js',
   'components/angular-mobile/*.js',
   'components/angular-resource/*.js',

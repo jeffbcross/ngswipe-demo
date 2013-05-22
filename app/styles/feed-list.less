@@ -1,4 +1,5 @@
-.FeedListCtrl {
+
+.feed-list-page {
   @feedName: @grayLight;
   @feedNameSelected: @gray;
   @feedNameHover: @gray;
@@ -8,18 +9,16 @@
   @feedBackgroundActive: @grayLight;
   @feedBackgroundHover: @grayLighter;
 
-
-  padding-top: 0;
-  .box-row {
-    display: -webkit-box;
-    -webkit-box-align: center;
-    -webkit-flex-basis: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-flex-basis: auto;
+  max-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 
   .column {
     -webkit-flex-flow: column;
@@ -97,4 +96,21 @@
       }
     }
   }
+}
+
+.page-enter.feed-list-page {
+  position: relative;
+  display: -webkit-box;
+  left: -100%;
+}
+.page-enter-active.feed-list-page {
+  left: 0;
+}
+.page-leave.feed-list-page {
+  display: -webkit-box;
+  position: relative;
+  left: 0;
+}
+.page-leave-active.feed-list-page {
+  left: -100%;
 }

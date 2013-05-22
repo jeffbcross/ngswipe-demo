@@ -1,4 +1,7 @@
+
 .ArticleDetailCtrl {
+  padding-top: @bannerHeight;
+  
   .banner {
     padding-left: 0;
 
@@ -70,4 +73,17 @@
       pointer-events: none;
     }
   }  
+}
+
+.page-enter-setup.rn-carousel-container{
+  left: 100%;
+}
+.page-enter-start.rn-carousel-container{
+  left: 0;
+}
+.page-leave-setup.rn-carousel-container{
+  left: 0;
+}
+.page-leave-start.rn-carousel-container{
+  left: 100%;
 }

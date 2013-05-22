@@ -1,4 +1,4 @@
-<div class="box-row">
+<div class="box-row feed-list-page" ng-animate=" 'page' " ng-show="activeFeed">
   <div class="column">
     <div class="feed-list">
       <span ng-repeat="feed in feeds" ng-click="showFeed(feed)" class="feed-box"
@@ -17,7 +17,7 @@
     <io-add-feed-form></io-add-feed-form>
 
   </div>
-  <div class="column article-preview-container" ng-show="activeFeed">
+  <div class="column article-preview-container">
     <io-article-preview></io-acticle-preview>
   </div>
 </div>
