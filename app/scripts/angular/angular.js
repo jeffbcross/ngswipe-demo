@@ -7845,7 +7845,6 @@ function $RouteProvider(){
    */
   this.when = function(path, route) {
     routes[path] = extend({reloadOnSearch: true, caseInsensitiveMatch: false}, route);
-    console.log(route, routes[path]);
 
     // create redirection for trailing slashes
     if (path) {

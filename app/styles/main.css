@@ -5279,17 +5279,41 @@ body {
 [ng-cloak] {
   display: none;
 }
-.page-enter {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+.page-enter-left,
+.page-enter-right,
+.page-leave-left,
+.page-leave-right {
+  -webkit-transition: all cubic-bezier(0.3, 0.5, 0.4, 0.2) 0.3s;
+  position: absolute;
 }
-.page-leave {
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+.page-enter-left {
+  left: -100% !important;
+  right: auto !important;
 }
-.null-enter {
-  -webkit-transition: all linear 10s;
+.page-leave-right,
+.page-leave-left {
+  left: 0 !important;
+  right: auto !important;
 }
-.null-leave {
-  -webkit-transition: all linear 10s;
+.page-enter-right {
+  left: 100% !important;
+  right: auto !important;
+}
+.page-leave-right-active {
+  left: 100% !important;
+  right: auto !important;
+}
+.page-enter-left-active {
+  left: 0 !important;
+  right: auto !important;
+}
+.page-leave-left-active {
+  left: -100% !important;
+  right: auto !important;
+}
+.page-enter-right-active {
+  left: 0 !important;
+  right: auto !important;
 }
 .slide-left-enter-setup,
 .slide-left-leave-setup,
@@ -5370,6 +5394,7 @@ body {
   -webkit-flex-basis: auto;
   max-height: 100%;
   height: 100%;
+  width: 100%;
   overflow: hidden;
   top: 0;
   right: 0;
@@ -5594,10 +5619,13 @@ io-add-feed-form .form-show-start {
   padding: 15px;
 }
 .ArticleDetailCtrl {
-  padding-top: 75px;
+  width: 100%;
+  height: 100%;
 }
 .ArticleDetailCtrl .banner {
   padding-left: 0;
+  position: fixed;
+  z-index: 1;
 }
 .ArticleDetailCtrl .banner .back-link {
   display: block;
@@ -5623,13 +5651,13 @@ io-add-feed-form .form-show-start {
   -webkit-overflow-scrolling: touch;
   height: auto;
   width: 100%;
+  padding: 90px 0 15px;
 }
 .ArticleDetailCtrl .article .body,
 .ArticleDetailCtrl .article h1,
 .ArticleDetailCtrl .article .date {
   width: 70%;
   max-width: 940px;
-  padding: 15px 0;
   line-height: 125%;
   margin: auto;
 }
@@ -5675,29 +5703,17 @@ io-add-feed-form .form-show-start {
 .ArticleDetailCtrl .article p {
   -webkit-columns-break-inside: avoid;
 }
-.ArticleDetailCtrl .article .loading-placeholder {
-  position: fixed;
-  top: 49%;
-  text-align: center;
-  font-size: 200%;
-}
 .ArticleDetailCtrl .article .date {
   color: #999999;
 }
 .ArticleDetailCtrl .article img {
   pointer-events: none;
 }
-.page-enter-setup.rn-carousel-container {
-  left: 100%;
-}
-.page-enter-start.rn-carousel-container {
-  left: 0;
-}
-.page-leave-setup.rn-carousel-container {
-  left: 0;
-}
-.page-leave-start.rn-carousel-container {
-  left: 100%;
+.ArticleDetailCtrl .loading-placeholder {
+  position: fixed;
+  top: 49%;
+  text-align: center;
+  font-size: 200%;
 }
 .slide-enter-setup,
 .slide-leave-setup {

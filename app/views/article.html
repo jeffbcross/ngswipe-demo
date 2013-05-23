@@ -1,20 +1,22 @@
-<ul rn-carousel rn-carousel-index="articleIndex">
-  <li ng-repeat="page in detailFeed.entries">
-    <div class="page">
-      <div class="article">
-        <h1 ng-bind="page.title"></h1>
-        <p class="date" ng-bind="page.updated | date:'medium' "></p>
-        <div class="body" ng-bind-html="page.content.content"></div>
+<div class="ArticleDetailCtrl">
+  <div class="banner">
+    <span class="back-link pull-left" ng-click="goBack()"><i class="icon-angle-left"></i></span>
+    <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>
+    <a class="url" target="_blank" href="{{detailFeed.meta.href}}" ng-bind="detailFeed.meta.href"></a>
+  </div>
+  <ul>
+    <li ng-repeat="page in detailFeed.entries">
+      <div class="page">
+        <div class="article">
+          <h1 ng-bind="page.title"></h1>
+          <p class="date" ng-bind="page.updated | date:'medium' "></p>
+          <div class="body" ng-bind-html="page.content.content"></div>
+        </div>
       </div>
-    </div>
-  </li>
-</ul>
-<div class="loading-placeholder" ng-show="!detailFeed.entries.length">
-  <i class="icon-spin icon-refresh"></i>
-  Loading
-</div>
-<div class="banner navbar navbar-fixed-top">
-  <span class="back-link pull-left" ng-click="goBack()"><i class="icon-angle-left"></i></span>
-  <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>
-  <a class="url" target="_blank" href="{{detailFeed.meta.href}}" ng-bind="detailFeed.meta.href"></a>
+    </li>
+  </ul>
+  <div class="loading-placeholder" ng-show="!detailFeed.entries.length" style="margin-top:75px;">
+    <i class="icon-spin icon-refresh"></i>
+    Loading
+  </div>
 </div>

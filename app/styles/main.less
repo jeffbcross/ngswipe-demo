@@ -27,21 +27,44 @@ html, body {
   display: none;
 }
 
-.page-enter {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-  // position: absolute;
-}
-.page-leave {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
-  // position: absolute;
+.page-enter-left, .page-enter-right, .page-leave-left, .page-leave-right {
+  -webkit-transition:all cubic-bezier(0.3, 0.5, 0.4, 0.2) 0.3s;
+  position: absolute;
+  
 }
 
-.null-enter {
-  -webkit-transition:all linear 10s;
+.page-enter-left {
+  left: -100% !important;
+  right: auto !important;
+}
+.page-leave-right, .page-leave-left {
+  left: 0 !important;
+  right: auto !important;
 }
 
-.null-leave {
-  -webkit-transition: all linear 10s;
+.page-enter-right {
+  left: 100% !important;
+  right: auto !important;
+}
+
+.page-leave-right-active {
+  left: 100% !important;
+  right: auto !important;
+}
+
+.page-enter-left-active {
+  left: 0 !important;
+  right: auto !important;
+}
+
+.page-leave-left-active {
+  left: -100% !important;
+  right: auto !important;
+}
+
+.page-enter-right-active {
+  left: 0 !important;
+  right: auto !important;
 }
 
 

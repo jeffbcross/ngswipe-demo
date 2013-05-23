@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('ArticleDetailCtrl', ['$scope', '$routeParams', '$window', 'Articles', 'FeedManager', function ($scope, $routeParams,$window, Articles, FeedManager) {
+  .controller('ArticleDetailCtrl', ['$scope', '$rootScope', '$routeParams', '$window', 'Articles', 'FeedManager', function ($scope, $rootScope, $routeParams,$window, Articles, FeedManager) {
+
+    $rootScope.pageAnimation = {enter: 'page-enter-left', leave: 'page-leave-right'};
     
     var feed = FeedManager.get($routeParams.feedId);
     $scope.detailFeed = Articles.fetch(feed.href);

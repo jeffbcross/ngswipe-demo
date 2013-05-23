@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angular-carousel'])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/articles/:feedId/:articleId', {
         templateUrl: 'views/article.html',
@@ -14,18 +14,26 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
       .otherwise({
         redirectTo: '/feeds/'
       });
-  })
+  }])
 
-  .run(function ($rootScope) {
+  .run(function ($rootScope, $route) {
+    var previousTemplate = $route.current ? $route.current.loadedTemplateUrl : $route.loadedTemplateUrl;
+
+    function matchCtrl (route, name) {
+      return route && route.$$route && route.$$route.controller === name;
+    }
+
     $rootScope.$on('$routeChangeSuccess', function(e, current, previous) {
       $rootScope.controller = current ? current.controller : 'FeedListCtrl';
+      previousTemplate = $route.current ? $route.current.loadedTemplateUrl : $route.loadedTemplateUrl;
     });
 
-    $rootScope.pageEnterAnimation = function () {
-      return 'page-enter';
-    };
+    $rootScope.pageAnimation = {enter: '', leave: ''};
 
-    $rootScope.pageLeaveAnimation = function () {
-      return 'page-leave';
+    function onRouteChange (next, last) {
+      var shouldAnimate = !(!$route.current || !previousTemplate || $route.current.loadedTemplateUrl === previousTemplate);
+      $rootScope.pageAnimation = shouldAnimate ? { enter: 'page-enter-right', leave: 'page-leave-left' } : { enter: '', leave: '' };
     }
+    
+    $rootScope.$on('$routeChangeStart', onRouteChange);
   });
