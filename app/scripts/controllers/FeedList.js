@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', '$window', function ($scope, FeedManager, $routeParams, $location, $window) {
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', function ($scope, FeedManager, $routeParams, $location) {
+    var updateFeeds;
 
     $scope.showFeed = function (feed) {
       $location.path('/feeds/' + feed.name);
@@ -13,7 +14,6 @@ angular.module('ngswipeDemoApp')
     };
 
     $scope.bootstrap = function () {
-      var activeFeed;
       $scope.feeds = FeedManager.getAll();
       if ($routeParams.feedId) {
         $scope.activeFeed = $routeParams.feedId;
@@ -26,13 +26,13 @@ angular.module('ngswipeDemoApp')
       $scope.$watch(function () {
         return FeedManager._feedsCache;
       }, updateFeeds);
-    }
+    };
 
-    function updateFeeds (newVal) {
+    updateFeeds = function (newVal) {
       if (newVal === undefined || Array.isArray(newVal)) {
         $scope.feeds = newVal;
       }
-    }
+    };
 
     $scope.bootstrap();
   }]);

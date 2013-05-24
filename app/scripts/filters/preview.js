@@ -3,16 +3,16 @@
 angular.module('ngswipeDemoApp')
   .filter('preview', ['$filter', function ( $filter) {
     return function (input) {
-      var output, splitOutput, pMatch, match, brSplit, charTest
-        , striptags = $filter('striptags');
+      var output, splitOutput, pMatch, match, brSplit, charTest,
+        striptags = $filter('striptags');
+
       if (input.indexOf('<p') > -1) {
-        
         //Grab the first paragraph of text. Presumes this comes early in the document.
         pMatch = /<p\b[^>]*>(.*?)<\/p>/;
         match = pMatch.exec(input);
         
         if (match && match.length > 1) {
-          output = match[1];  
+          output = match[1];
         }
         else {
           return;

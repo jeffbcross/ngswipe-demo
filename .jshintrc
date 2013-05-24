@@ -1,11 +1,11 @@
 {
   "node": true,
   "browser": true,
-  "es5": true,
+  "es5": false,
   "esnext": true,
   "bitwise": true,
   "camelcase": true,
-  "curly": true,
+  "curly": false,
   "eqeqeq": true,
   "immed": true,
   "indent": 2,
@@ -22,5 +22,6 @@
   "globals": {
     "angular": false
   },
-  "loopfunc": true
+  "loopfunc": true,
+  "laxcomma": true
 }

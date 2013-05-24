@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     less: { 
       development: {
         files: {
-          "app/styles/main.css": "app/styles/main.less"
+          "app/styles/css/main.css": "app/styles/main.less"
         }  
       }
     },
@@ -102,11 +102,17 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        jshintrc: '.jshintrc'
+        jshintrc: '.jshintrc',
+        laxcomma: true,
+        curly: false
       },
       all: [
-        'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/{,*/}*.js'
+        'app/scripts/app.js',
+        'app/scripts/controllers/*.js',
+        'app/scripts/directives/io-article-preview.js',
+        'app/scripts/directives/io-add-feed-form.js',
+        'app/scripts/filters/*.js',
+        'app/scripts/services/*.js'
       ]
     },
     karma: {

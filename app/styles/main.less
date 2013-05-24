@@ -1,8 +1,7 @@
 @import "../../node_modules/bootstrap/less/bootstrap";
 
 @padding: 15px;
-@bannerHeight: 75px;
-
+@bannerHeight: @padding * 5;
 @contentFont: Georgia, serif;
 @metaFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -27,66 +26,6 @@ html, body {
   display: none;
 }
 
-.page-enter-left, .page-enter-right, .page-leave-left, .page-leave-right {
-  -webkit-transition:all cubic-bezier(0.3, 0.5, 0.4, 0.2) 0.3s;
-  position: absolute;
-  
-}
-
-.page-enter-left {
-  left: -100% !important;
-  right: auto !important;
-}
-.page-leave-right, .page-leave-left {
-  left: 0 !important;
-  right: auto !important;
-}
-
-.page-enter-right {
-  left: 100% !important;
-  right: auto !important;
-}
-
-.page-leave-right-active {
-  left: 100% !important;
-  right: auto !important;
-}
-
-.page-enter-left-active {
-  left: 0 !important;
-  right: auto !important;
-}
-
-.page-leave-left-active {
-  left: -100% !important;
-  right: auto !important;
-}
-
-.page-enter-right-active {
-  left: 0 !important;
-  right: auto !important;
-}
-
-
-.slide-left-enter-setup, .slide-left-leave-setup,
-.slide-right-enter-setup, .slide-right-leave-setup {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .3s;
-  position: absolute;
-}
-
-
-.slide-right-enter-setup { left: 100%; }
-.slide-right-enter-start { left: 0; }
-
-.slide-right-leave-setup { left: 0; }
-.slide-right-leave-start { left: 100%; }
-
-
-.slide-left-enter-setup  { left: -100%; }
-.slide-left-enter-start  { left: 0; }
-
-.slide-left-leave-setup  { left: 0; }
-.slide-left-leave-start  { left: -100%; }
 
 .container {
   height: 100%;
@@ -96,72 +35,50 @@ html, body {
   }
 }
 
-.page {
-  height: 100%;
-  overflow-x: hidden;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.loading-placeholder {
-  width: 100%;
-  height: 100%;
-}
-
-.banner {
-  position: fixed;
-  top:0;
-  height: @bannerHeight;
-  width: 100%;
-  padding-left: @padding;
-  text-align: left;
-  background-color: @grayLighter;
-  
-  .title {
-    margin:@padding 0 @padding / 4;
-    line-height: 100%;
-    font-size: 150%;
-    color: @gray;
-
-    &.loading, &.no-subtitle {
-      line-height: @bannerHeight;
-      margin: 0;
-    }
-  }
-  .url {
-    font-size:100%;
-    color: @grayLight;
-  }
-  
-  
-}
-
-@import "feed-list";
-@import "article-preview";
-@import "io-add-feed-form";
-@import "carousel";
-
-.slide-enter-setup, .slide-leave-setup {
-  -webkit-transition:all linear .3s;
-}
-
-.slide-left-enter-setup, .slide-left-leave-setup,
-.slide-right-enter-setup, .slide-right-leave-setup {
-  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .3s;
+/*
+Animation classes for top-level ng-view
+*/
+.page-enter-left, .page-enter-right, .page-leave-left, .page-leave-right {
+  -webkit-transition:all cubic-bezier(0.3, 0.5, 0.4, 0.2) 0.3s;
   position: absolute;
 }
 
+.page-enter-left {
+  left: -100% !important;
+  right: auto !important;
 
-/*.slide-right-enter-setup { margin-left: 300px;  opacity: 0; }
-.slide-right-enter-start { margin-left: 0;      opacity: 1; }
+  &.page-enter-left-active {
+    left: 0 !important;
+    right: auto !important;
+  }
+}
+.page-leave-right, .page-leave-left {
+  left: 0 !important;
+  right: auto !important;
 
-.slide-right-leave-setup { margin-left: 0;      opacity: 1; }
-.slide-right-leave-start { margin-left: 300px;  opacity: 0; }
+  &.page-leave-right-active {
+    left: 100% !important;
+    right: auto !important;
+  }
 
+  &.page-leave-left-active {
+    left: -100% !important;
+    right: auto !important;
+  }
+}
 
-.slide-left-enter-setup  { margin-left: -300px; opacity: 0; }
-.slide-left-enter-start  { margin-left: 0;      opacity: 1; }
+.page-enter-right {
+  left: 100% !important;
+  right: auto !important;
 
-.slide-left-leave-setup  { margin-left: 0;      opacity: 1; }
-.slide-left-leave-start  { margin-left: -300px; opacity: 0; }*/
+  &.page-enter-right-active {
+    left: 0 !important;
+    right: auto !important;
+  }
+}
+
+@import "controller/feed-list";
+@import "controller/article-detail";
+@import "directive/io-article-preview";
+@import "directive/io-add-feed-form";
+@import "directive/angular-carousel";

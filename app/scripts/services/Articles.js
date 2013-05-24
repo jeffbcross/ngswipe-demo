@@ -8,8 +8,7 @@ angular.module('ngswipeDemoApp')
       _cache: {},
       //Take a deep JSON response and make it flatter
       parseResponse: function (res) {
-        var feed = {entries: [], meta: {}}, entries
-          , preview = $filter('preview');
+        var feed = {entries: [], meta: {}}, preview = $filter('preview');
         
         feed.entries = res.data.query.results.feed.entry;
         feed.meta.title = res.data.query.results.feed.title.content || res.data.query.results.feed.title;
@@ -17,7 +16,7 @@ angular.module('ngswipeDemoApp')
         var links = res.data.query.results.feed.link;
         feed.meta.href = links[0].href;
 
-        angular.forEach(feed.entries, function (entry, i) {
+        angular.forEach(feed.entries, function (entry) {
           //URL-encode IDs so they can easily be added to location.
           if ($window.decodeURIComponent(entry.id) === entry.id) {
             entry.id = $window.encodeURIComponent(entry.id);
@@ -50,9 +49,9 @@ angular.module('ngswipeDemoApp')
 
         var deferred = $q.defer()
           , self = this;
-        var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'%feedUrl'%20and%20itemPath%3D'feed'%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK";
+        var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D"%feedUrl"%20and%20itemPath%3D"feed"%20limit%2010&format=json&diagnostics=true&callback=JSON_CALLBACK';
 
-        url = url.replace("%feedUrl", feedUrl);
+        url = url.replace('%feedUrl', feedUrl);
 
         $http.jsonp(url).then(function (res) {
           
@@ -63,7 +62,7 @@ angular.module('ngswipeDemoApp')
             deferred.resolve(parsed);
           }
           else {
-            deferred.reject("Badly formed data");
+            deferred.reject('Badly formed data');
           }
         });
 

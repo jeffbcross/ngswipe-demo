@@ -2,11 +2,27 @@
 .ArticleDetailCtrl {
   width: 100%;
   height: 100%;
-  
+
   .banner {
-    padding-left: 0;
     position: fixed;
+    top:0;
+    height: @bannerHeight;
+    width: 100%;
+    padding-left: 0;
     z-index: 1;
+    background-color: @grayLighter;
+
+    .title {
+      margin:@padding 0 @padding / 4;
+      line-height: 100%;
+      font-size: 150%;
+      color: @gray;
+
+      &.loading, &.no-subtitle {
+        line-height: @bannerHeight;
+        margin: 0;
+      }
+    }
 
     .back-link {
       display: block;
@@ -26,6 +42,19 @@
         background-color: @grayLight;
         color: @grayLighter;
       }
+    }
+
+    .url {
+      font-size:100%;
+      color: @grayLight;
+    }
+  }
+
+  .page {
+    height: 100%;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 
@@ -72,6 +101,8 @@
    
   .loading-placeholder {
     position:fixed;
+    width: 100%;
+    height: 100%;
     top:49%;
     text-align:center;
     font-size: 200%;
