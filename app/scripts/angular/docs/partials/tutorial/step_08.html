@@ -17,7 +17,7 @@ our data, and we'll flesh out the <code>phone-detail.html</code> view template.<
 
 <p>The most important changes are listed below. You can see the full diff on <a href="https://github.com/angular/angular-phonecat/compare/step-7...step-8">GitHub</a>:</p>
 
-<h3 id="data">Data</h2>
+<h3>Data</h3>
 
 <p>In addition to <code>phones.json</code>, the <code>app/phones/</code> directory also contains one json file for each
 phone:</p>
@@ -47,7 +47,7 @@ phone:</p>
 <p>Each of these files describes various properties of the phone using the same data structure. We'll
 show this data in the phone detail view.</p>
 
-<h2 id="controller">Controller</h2>
+<h3>Controller</h3>
 
 <p>We'll expand the <code>PhoneDetailCtrl</code> by using the <code>$http</code> service to fetch the json files. This works
 the same way as the phone list controller.</p>
@@ -66,7 +66,7 @@ function PhoneDetailCtrl($scope, $routeParams, $http) {
 <p>To construct the URL for the HTTP request, we use <code>$routeParams.phoneId</code> extracted from the current
 route by the <code>$route</code> service.</p>
 
-<h2 id="template">Template</h2>
+<h3>Template</h3>
 
 <p>The TBD placeholder line has been replaced with lists and bindings that comprise the phone details.
 Note where we use the angular <code>{{expression}}</code> markup and <code>ngRepeat</code> to project phone data from
@@ -107,7 +107,7 @@ TODO!
 <img  class="diagram" src="img/tutorial/tutorial_08-09_final.png">
 </div>
 
-<h2 id="test">Test</h3>
+<h3>Test</h3>
 
 <p>We wrote a new unit test that is similar to the one we wrote for the <code>PhoneListCtrl</code> controller in
 step 5.</p>
@@ -138,7 +138,7 @@ step 5.</p>
 ...
 </pre>
 
-<p>You should now see the following output in the Karma tab:</p>
+<p>You should now see the following output in the Testacular tab:</p>
 
 <pre><code>Chrome 22.0: Executed 3 of 3 SUCCESS (0.039 secs / 0.012 secs)
 </code></pre>
@@ -166,14 +166,14 @@ heading on the page is "Nexus S".</p>
 <p>You can now rerun <code>./scripts/e2e-test.sh</code> or refresh the browser tab with the end-to-end test
 runner to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-8/test/e2e/runner.html">Angular's server</a>.</p>
 
-<h2 id="experiments">Experiments</h1>
+<h2>Experiments</h2>
 
 <ul>
 <li>Using the <a href="guide/dev_guide.e2e-testing">Angular's end-to-end test runner API</a>, write a test
 that verifies that we display 4 thumbnail images on the Nexus S details page.</li>
 </ul>
 
-<h1 id="summary">Summary</h2>
+<h2>Summary</h2>
 
 <p>Now that the phone details view is in place, proceed to <a href="tutorial/step_09">step 9</a> to learn how to
 write your own custom display filter.</p>

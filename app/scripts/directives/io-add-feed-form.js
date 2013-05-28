@@ -13,7 +13,7 @@ angular.module('ngswipeDemoApp')
           var name = scope.newFeed.name;
           FeedManager.add(name, scope.newFeed);
 
-          scope.newFeed = null;
+          // scope.newFeed = null;
           scope.newFeedForm = null;
 
           $location.path('/feeds/' + name);

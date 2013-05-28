@@ -17,17 +17,17 @@ $provide.value("$locale", {
     },
     "MONTH": {
       "0": "janvier",
-      "1": "f\u00e9vrier",
+      "1": "février",
       "2": "mars",
       "3": "avril",
       "4": "mai",
       "5": "juin",
       "6": "juillet",
-      "7": "ao\u00fbt",
+      "7": "août",
       "8": "septembre",
       "9": "octobre",
       "10": "novembre",
-      "11": "d\u00e9cembre"
+      "11": "décembre"
     },
     "SHORTDAY": {
       "0": "dim.",
@@ -40,17 +40,17 @@ $provide.value("$locale", {
     },
     "SHORTMONTH": {
       "0": "janv.",
-      "1": "f\u00e9vr.",
+      "1": "févr.",
       "2": "mars",
       "3": "avr.",
       "4": "mai",
       "5": "juin",
       "6": "juil.",
-      "7": "ao\u00fbt",
+      "7": "août",
       "8": "sept.",
       "9": "oct.",
       "10": "nov.",
-      "11": "d\u00e9c."
+      "11": "déc."
     },
     "fullDate": "EEEE d MMMM y",
     "longDate": "d MMMM y",
@@ -62,9 +62,9 @@ $provide.value("$locale", {
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "\u20ac",
+    "CURRENCY_SYM": "€",
     "DECIMAL_SEP": ",",
-    "GROUP_SEP": "\u00a0",
+    "GROUP_SEP": " ",
     "PATTERNS": {
       "0": {
         "gSize": 3,
@@ -86,9 +86,9 @@ $provide.value("$locale", {
         "minFrac": 2,
         "minInt": 1,
         "negPre": "(",
-        "negSuf": "\u00a0\u00a4)",
+        "negSuf": " \u00A4)",
         "posPre": "",
-        "posSuf": "\u00a0\u00a4"
+        "posSuf": " \u00A4"
       }
     }
   },

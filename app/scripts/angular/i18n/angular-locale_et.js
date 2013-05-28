@@ -3,22 +3,22 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": {
-      "0": "enne keskp\u00e4eva",
-      "1": "p\u00e4rast keskp\u00e4eva"
+      "0": "enne keskpäeva",
+      "1": "pärast keskpäeva"
     },
     "DAY": {
-      "0": "p\u00fchap\u00e4ev",
-      "1": "esmasp\u00e4ev",
-      "2": "teisip\u00e4ev",
-      "3": "kolmap\u00e4ev",
-      "4": "neljap\u00e4ev",
+      "0": "pühapäev",
+      "1": "esmaspäev",
+      "2": "teisipäev",
+      "3": "kolmapäev",
+      "4": "neljapäev",
       "5": "reede",
-      "6": "laup\u00e4ev"
+      "6": "laupäev"
     },
     "MONTH": {
       "0": "jaanuar",
       "1": "veebruar",
-      "2": "m\u00e4rts",
+      "2": "märts",
       "3": "aprill",
       "4": "mai",
       "5": "juuni",
@@ -41,7 +41,7 @@ $provide.value("$locale", {
     "SHORTMONTH": {
       "0": "jaan",
       "1": "veebr",
-      "2": "m\u00e4rts",
+      "2": "märts",
       "3": "apr",
       "4": "mai",
       "5": "juuni",
@@ -62,9 +62,9 @@ $provide.value("$locale", {
     "shortTime": "H:mm"
   },
   "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "\u20ac",
+    "CURRENCY_SYM": "€",
     "DECIMAL_SEP": ",",
-    "GROUP_SEP": "\u00a0",
+    "GROUP_SEP": " ",
     "PATTERNS": {
       "0": {
         "gSize": 3,
@@ -86,9 +86,9 @@ $provide.value("$locale", {
         "minFrac": 2,
         "minInt": 1,
         "negPre": "(",
-        "negSuf": "\u00a4)",
+        "negSuf": "\u00A4)",
         "posPre": "",
-        "posSuf": "\u00a4"
+        "posSuf": "\u00A4"
       }
     }
   },

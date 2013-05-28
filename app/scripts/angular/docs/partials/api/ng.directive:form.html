@@ -9,14 +9,14 @@
 <p>If <code>name</code> attribute is specified, the form controller is published onto the current scope under
 this name.</p>
 
-<h3 id="aliasahrefapingdirectivengformcodengformcodea">Alias: <a href="api/ng.directive:ngForm"><code><code>ngForm</code></code></a></h1>
+<h3>Alias: <a href="api/ng.directive:ngForm"><code><code>ngForm</code></code></a></h3>
 
 <p>In angular forms can be nested. This means that the outer form is valid when all of the child
 forms are valid as well. However browsers do not allow nesting of <code>&lt;form&gt;</code> elements, for this
 reason angular provides <a href="api/ng.directive:ngForm"><code><code>ngForm</code></code></a> alias
 which behaves identical to <code>&lt;form&gt;</code> but allows form nesting.</p>
 
-<h1 id="cssclasses">CSS classes</h1>
+<h3>CSS classes</h3>
 
 <ul>
 <li><code>ng-valid</code> Is set if the form is valid.</li>
@@ -25,7 +25,7 @@ which behaves identical to <code>&lt;form&gt;</code> but allows form nesting.</p
 <li><code>ng-dirty</code> Is set if the form is dirty.</li>
 </ul>
 
-<h1 id="submittingaformandpreventingdefaultaction">Submitting a form and preventing default action</h3>
+<h3>Submitting a form and preventing default action</h3>
 
 <p>Since the role of forms in client-side Angular applications is different than in classical
 roundtrip apps, it is desirable for the browser not to translate the form submission into a full
@@ -57,17 +57,21 @@ hitting enter in any of the input fields will trigger the click handler on the <
 input[type=submit] (<code>ngClick</code>) <em>and</em> a submit handler on the enclosing form (<code>ngSubmit</code>)</li>
 </ul></div>
 <h2 id="Usage">Usage</h2>
-<div class="usage"><p>This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>.</p>as element:<pre class="prettyprint linenums">&lt;form
+<div class="usage">This directive can be used as custom element, but we aware of <a href="guide/ie">IE restrictions</a>.as element:<pre class="prettyprint linenums">&lt;form
        [name="{string}"]&gt;
 &lt;/form&gt;</pre>
-<h4 id="parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>name <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><p>Name of the form. If specified, the form controller will be published into
-related scope, under this name.</p></td></tr></tbody></table></div>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">name<i>(optional)</i> – {string=} – </code>
+<p>Name of the form. If specified, the form controller will be published into
+related scope, under this name.</p></li>
+</ul>
+</div>
 <h2 id="Example">Example</h2>
-<div class="example"><h4>Source</h2>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-103" source-edit-css="" source-edit-js="script.js-102" source-edit-unit="" source-edit-scenario="scenario.js-104"></div>
+<div class="example"><h4>Source</h4>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-99" source-edit-css="" source-edit-js="script.js-98" source-edit-unit="" source-edit-scenario="scenario.js-100"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-103" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-103">
+<pre class="prettyprint linenums" ng-set-text="index.html-99" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-99">
  
  <form name="myForm" ng-controller="Ctrl">
    userType: <input name="input" ng-model="userType" required>
@@ -81,16 +85,16 @@ related scope, under this name.</p></td></tr></tbody></table></div>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-102"></pre>
-<script type="text/ng-template" id="script.js-102">
+<pre class="prettyprint linenums" ng-set-text="script.js-98"></pre>
+<script type="text/ng-template" id="script.js-98">
    function Ctrl($scope) {
      $scope.userType = 'guest';
    }
  </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-104"></pre>
-<script type="text/ng-template" id="scenario.js-104">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-100"></pre>
+<script type="text/ng-template" id="scenario.js-100">
   it('should initialize to model', function() {
    expect(binding('userType')).toEqual('guest');
    expect(binding('myForm.input.$valid')).toEqual('true');
@@ -103,6 +107,6 @@ related scope, under this name.</p></td></tr></tbody></table></div>
   });
 </script>
 </div>
-</div><h2>Demo</h4>
-<div class="well doc-example-live animator-container" ng-embed-app="" ng-set-html="index.html-103" ng-eval-javascript="script.js-102"></div></div>
+</div><h4>Demo</h4>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-99" ng-eval-javascript="script.js-98"></div></div>
 </div>

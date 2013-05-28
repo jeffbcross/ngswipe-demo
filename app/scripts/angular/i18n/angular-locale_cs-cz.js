@@ -7,48 +7,48 @@ $provide.value("$locale", {
       "1": "odp."
     },
     "DAY": {
-      "0": "ned\u011ble",
-      "1": "pond\u011bl\u00ed",
-      "2": "\u00fater\u00fd",
-      "3": "st\u0159eda",
-      "4": "\u010dtvrtek",
-      "5": "p\u00e1tek",
+      "0": "neděle",
+      "1": "pondělí",
+      "2": "úterý",
+      "3": "středa",
+      "4": "čtvrtek",
+      "5": "pátek",
       "6": "sobota"
     },
     "MONTH": {
       "0": "ledna",
-      "1": "\u00fanora",
-      "2": "b\u0159ezna",
+      "1": "února",
+      "2": "března",
       "3": "dubna",
-      "4": "kv\u011btna",
-      "5": "\u010dervna",
-      "6": "\u010dervence",
+      "4": "května",
+      "5": "června",
+      "6": "července",
       "7": "srpna",
-      "8": "z\u00e1\u0159\u00ed",
-      "9": "\u0159\u00edjna",
+      "8": "září",
+      "9": "října",
       "10": "listopadu",
       "11": "prosince"
     },
     "SHORTDAY": {
       "0": "ne",
       "1": "po",
-      "2": "\u00fat",
+      "2": "út",
       "3": "st",
-      "4": "\u010dt",
-      "5": "p\u00e1",
+      "4": "čt",
+      "5": "pá",
       "6": "so"
     },
     "SHORTMONTH": {
       "0": "Led",
-      "1": "\u00dano",
-      "2": "B\u0159e",
+      "1": "Úno",
+      "2": "Bře",
       "3": "Dub",
-      "4": "Kv\u011b",
-      "5": "\u010cer",
-      "6": "\u010cvc",
+      "4": "Kvě",
+      "5": "Čer",
+      "6": "Čvc",
       "7": "Srp",
-      "8": "Z\u00e1\u0159",
-      "9": "\u0158\u00edj",
+      "8": "Zář",
+      "9": "Říj",
       "10": "Lis",
       "11": "Pro"
     },
@@ -62,9 +62,9 @@ $provide.value("$locale", {
     "shortTime": "H:mm"
   },
   "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "K\u010d",
+    "CURRENCY_SYM": "Kč",
     "DECIMAL_SEP": ",",
-    "GROUP_SEP": "\u00a0",
+    "GROUP_SEP": " ",
     "PATTERNS": {
       "0": {
         "gSize": 3,
@@ -86,9 +86,9 @@ $provide.value("$locale", {
         "minFrac": 2,
         "minInt": 1,
         "negPre": "-",
-        "negSuf": "\u00a0\u00a4",
+        "negSuf": " \u00A4",
         "posPre": "",
-        "posSuf": "\u00a0\u00a4"
+        "posSuf": " \u00A4"
       }
     }
   },

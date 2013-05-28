@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.1.5-5bc2836
+ * @license AngularJS v1.1.6-b8ea7f6
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -77,7 +77,7 @@ function setupModuleLoader(window) {
       }
       return ensure(modules, name, function() {
         if (!requires) {
-          throw Error('No module: ' + name);
+          throw ngError(47, "Module '{0}' is not available! You either misspelled the module name or forgot to load it.", name);
         }
 
         /** @type {!Array.<Array.<*>>} */

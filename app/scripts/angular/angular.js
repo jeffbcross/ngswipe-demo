@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.1.5-5bc2836
+ * @license AngularJS v1.1.6-b8ea7f6
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -221,7 +221,7 @@ function nextUid() {
 
 /**
  * Set or clear the hashkey for an object.
- * @param obj object 
+ * @param obj object
  * @param h the hashkey (!truthy to delete the hashkey)
  */
 function setHashKey(obj, h) {
@@ -244,6 +244,7 @@ function setHashKey(obj, h) {
  *
  * @param {Object} dst Destination object.
  * @param {...Object} src Source object(s).
+ * @returns {Object} Reference to `dst`.
  */
 function extend(dst) {
   var h = dst.$$hashKey;
@@ -595,7 +596,10 @@ function isLeafNode (node) {
  * @returns {*} The copy or updated `destination`, if `destination` was specified.
  */
 function copy(source, destination){
-  if (isWindow(source) || isScope(source)) throw Error("Can't copy Window or Scope");
+  if (isWindow(source) || isScope(source)) {
+    throw ngError(43, "Can't copy! Making copies of Window or Scope instances is not supported.");
+  }
+
   if (!destination) {
     destination = source;
     if (source) {
@@ -608,7 +612,7 @@ function copy(source, destination){
       }
     }
   } else {
-    if (source === destination) throw Error("Can't copy equivalent objects or arrays");
+    if (source === destination) throw ngError(44, "Can't copy! Source and destination are identical.");
     if (isArray(source)) {
       destination.length = 0;
       for ( var i = 0; i < source.length; i++) {
@@ -1045,9 +1049,10 @@ function bindJQuery() {
       injector: JQLitePrototype.injector,
       inheritedData: JQLitePrototype.inheritedData
     });
-    JQLitePatchJQueryRemove('remove', true);
-    JQLitePatchJQueryRemove('empty');
-    JQLitePatchJQueryRemove('html');
+    // Method signature: JQLitePatchJQueryRemove(name, dispatchThis, filterElems, getterIfNoArguments)
+    JQLitePatchJQueryRemove('remove', true, true, false);
+    JQLitePatchJQueryRemove('empty', false, false, false);
+    JQLitePatchJQueryRemove('html', false, false, true);
   } else {
     jqLite = JQLite;
   }
@@ -1059,7 +1064,7 @@ function bindJQuery() {
  */
 function assertArg(arg, name, reason) {
   if (!arg) {
-    throw new Error("Argument '" + (name || '?') + "' is " + (reason || "required"));
+    throw ngError(45, "Argument '{0}' is {1}", (name || '?'), (reason || "required"));
   }
   return arg;
 }
@@ -1144,7 +1149,7 @@ function setupModuleLoader(window) {
       }
       return ensure(modules, name, function() {
         if (!requires) {
-          throw Error('No module: ' + name);
+          throw ngError(47, "Module '{0}' is not available! You either misspelled the module name or forgot to load it.", name);
         }
 
         /** @type {!Array.<Array.<*>>} */
@@ -1363,11 +1368,11 @@ function setupModuleLoader(window) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.1.5-5bc2836',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.1.6-b8ea7f6',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 1,
-  dot: 5,
-  codeName: 'triangle-squarification'
+  dot: 6,
+  codeName: 'spooky-giraffe'
 };
 
 
@@ -1591,37 +1596,38 @@ function camelCase(name) {
 /////////////////////////////////////////////
 // jQuery mutation patch
 //
-//  In conjunction with bindJQuery intercepts all jQuery's DOM destruction apis and fires a
+// In conjunction with bindJQuery intercepts all jQuery's DOM destruction apis and fires a
 // $destroy event on all DOM nodes being removed.
 //
 /////////////////////////////////////////////
 
-function JQLitePatchJQueryRemove(name, dispatchThis) {
+function JQLitePatchJQueryRemove(name, dispatchThis, filterElems, getterIfNoArguments) {
   var originalJqFn = jQuery.fn[name];
   originalJqFn = originalJqFn.$original || originalJqFn;
   removePatch.$original = originalJqFn;
   jQuery.fn[name] = removePatch;
 
-  function removePatch() {
-    var list = [this],
+  function removePatch(param) {
+    var list = filterElems && param ? [this.filter(param)] : [this],
         fireEvent = dispatchThis,
         set, setIndex, setLength,
-        element, childIndex, childLength, children,
-        fns, events;
+        element, childIndex, childLength, children;
 
-    while(list.length) {
-      set = list.shift();
-      for(setIndex = 0, setLength = set.length; setIndex < setLength; setIndex++) {
-        element = jqLite(set[setIndex]);
-        if (fireEvent) {
-          element.triggerHandler('$destroy');
-        } else {
-          fireEvent = !fireEvent;
-        }
-        for(childIndex = 0, childLength = (children = element.children()).length;
-            childIndex < childLength;
-            childIndex++) {
-          list.push(jQuery(children[childIndex]));
+    if (!getterIfNoArguments || param != null) {
+      while(list.length) {
+        set = list.shift();
+        for(setIndex = 0, setLength = set.length; setIndex < setLength; setIndex++) {
+          element = jqLite(set[setIndex]);
+          if (fireEvent) {
+            element.triggerHandler('$destroy');
+          } else {
+            fireEvent = !fireEvent;
+          }
+          for(childIndex = 0, childLength = (children = element.children()).length;
+              childIndex < childLength;
+              childIndex++) {
+            list.push(jQuery(children[childIndex]));
+          }
         }
       }
     }
@@ -1636,7 +1642,7 @@ function JQLite(element) {
   }
   if (!(this instanceof JQLite)) {
     if (isString(element) && element.charAt(0) != '<') {
-      throw Error('selectors not implemented');
+      throw ngError(46, 'Looking up elements via selectors is not supported by jqLite! See: http://docs.angularjs.org/api/angular.element');
     }
     return new JQLite(element);
   }
@@ -2110,22 +2116,22 @@ forEach({
                 }
               }
               return false;
-            };	
+            };
 
           events[type] = [];
-		
-		  // Refer to jQuery's implementation of mouseenter & mouseleave
+
+          // Refer to jQuery's implementation of mouseenter & mouseleave
           // Read about mouseenter and mouseleave:
           // http://www.quirksmode.org/js/events_mouse.html#link8
-          var eventmap = { mouseleave : "mouseout", mouseenter : "mouseover"}          
+          var eventmap = { mouseleave : "mouseout", mouseenter : "mouseover"};
+
           bindFn(element, eventmap[type], function(event) {
             var ret, target = this, related = event.relatedTarget;
             // For mousenter/leave call the handler if related is outside the target.
             // NB: No relatedTarget if the mouse left/entered the browser window
             if ( !related || (related !== target && !contains(target, related)) ){
               handle(event, type);
-            }	
-
+            }
           });
 
         } else {
@@ -2338,6 +2344,52 @@ HashMap.prototype = {
     return value;
   }
 };
+
+/**
+ * @description
+ *
+ * This object extends the error class and provides interpolation capability
+ * to make it easier to write and read Error messages within Angular. It can
+ * be called as follows:
+ *
+ * throw ngError(13, 'This {0} is {1}', foo, bar);
+ *
+ * The above will replace {0} with the value of foo, and {1} with the value of
+ * bar. The object is not restricted in the number of arguments it can take.
+ *
+ * If fewer arguments are specified than necessary for interpolation, the extra
+ * interpolation markers will be preserved in the final string.
+ *
+ * @param {...} arguments The first argument to this object is the error
+ *     number, the second argument the message with templated points for
+ *     Interpolation (of the for {0} for the first, {1} for the second and
+ *     so on). The second argument onwards are interpolated into the error
+ *     message string in order.
+ */
+function ngError() {
+  var message = '[NgErr' + arguments[0] + '] ' + arguments[1],
+      i = 0,
+      l = arguments.length - 2,
+      curlyRegexp, arg;
+
+  for (; i < l; i++) {
+    curlyRegexp = new RegExp("\\{" + i + "\\}", "gm");
+    arg = arguments[i + 2];
+
+    if (isFunction(arg)) {
+      arg = arg.toString().replace(/ \{[\s\S]*$/, '');
+    } else if (!isString(arg)) {
+      arg = toJson(arg);
+    }
+
+    message = message.replace(curlyRegexp, arg);
+  }
+
+  // even if we are called as constructor we can bypass the new ngError instance and return
+  // an instance of a real Error that contains correct stack info + extra frame for ngError call
+  // TODO(i): can we rewrite the stack string to remove ngError frame?
+  return new Error(message);
+}
 
 /**
  * @ngdoc function
@@ -2761,7 +2813,7 @@ function createInjector(modulesToLoad) {
       },
       providerInjector = (providerCache.$injector =
           createInternalInjector(providerCache, function() {
-            throw Error("Unknown provider: " + path.join(' <- '));
+            throw ngError(1, "Unknown provider: {0}", path.join(' <- '));
           })),
       instanceCache = {},
       instanceInjector = (instanceCache.$injector =
@@ -2794,7 +2846,7 @@ function createInjector(modulesToLoad) {
       provider_ = providerInjector.instantiate(provider_);
     }
     if (!provider_.$get) {
-      throw Error('Provider ' + name + ' must define $get factory method.');
+      throw ngError(2, "Provider '{0}' must define $get factory method.", name);
     }
     return providerCache[name + providerSuffix] = provider_;
   }
@@ -2875,12 +2927,9 @@ function createInjector(modulesToLoad) {
   function createInternalInjector(cache, factory) {
 
     function getService(serviceName) {
-      if (typeof serviceName !== 'string') {
-        throw Error('Service name expected');
-      }
       if (cache.hasOwnProperty(serviceName)) {
         if (cache[serviceName] === INSTANTIATING) {
-          throw Error('Circular dependency: ' + path.join(' <- '));
+          throw ngError(4, 'Circular dependency found: {0}', path.join(' <- '));
         }
         return cache[serviceName];
       } else {
@@ -2902,6 +2951,9 @@ function createInjector(modulesToLoad) {
 
       for(i = 0, length = $inject.length; i < length; i++) {
         key = $inject[i];
+        if (typeof key !== 'string') {
+          throw ngError(3, 'Incorrect injection token! Expected service name as string, got {0}', key);
+        }
         args.push(
           locals && locals.hasOwnProperty(key)
           ? locals[key]
@@ -3921,7 +3973,7 @@ function $CacheFactoryProvider() {
 
     function cacheFactory(cacheId, options) {
       if (cacheId in caches) {
-        throw Error('cacheId ' + cacheId + ' taken');
+        throw ngError(10, "CacheId '{0}' is already taken!", cacheId);
       }
 
       var size = 0,
@@ -4082,9 +4134,6 @@ function $TemplateCacheProvider() {
  */
 
 
-var NON_ASSIGNABLE_MODEL_EXPRESSION = 'Non-assignable model expression: ';
-
-
 /**
  * @ngdoc function
  * @name ng.$compile
@@ -4219,7 +4268,6 @@ function $CompileProvider($provide) {
       Suffix = 'Directive',
       COMMENT_DIRECTIVE_REGEXP = /^\s*directive\:\s*([\d\w\-_]+)\s+(.*)$/,
       CLASS_DIRECTIVE_REGEXP = /(([\d\w\-_]+)(?:\:([^;]+))?;?)/,
-      MULTI_ROOT_TEMPLATE_ERROR = 'Template must have exactly one root element. was: ',
       urlSanitizationWhitelist = /^\s*(https?|ftp|mailto|file):/;
 
 
@@ -4454,10 +4502,6 @@ function $CompileProvider($provide) {
         if (compositeLinkFn) compositeLinkFn(scope, $linkNode, $linkNode);
         return $linkNode;
       };
-    }
-
-    function wrongMode(localName, mode) {
-      throw Error("Unsupported '" + mode + "' for '" + localName + "'.");
     }
 
     function safeAddClass($element, className) {
@@ -4733,7 +4777,7 @@ function $CompileProvider($provide) {
             compileNode = $template[0];
 
             if ($template.length != 1 || compileNode.nodeType !== 1) {
-              throw new Error(MULTI_ROOT_TEMPLATE_ERROR + directiveValue);
+              throw ngError(12, "Template for directive '{0}' must have exactly one root element.", directiveName);
             }
 
             replaceWith(jqCollection, $compileNode, compileNode);
@@ -4819,7 +4863,7 @@ function $CompileProvider($provide) {
           }
           value = $element[retrievalMethod]('$' + require + 'Controller');
           if (!value && !optional) {
-            throw Error("No controller: " + require);
+            throw ngError(13, "Controller '{0}', required by directive '{1}', can't be found!", require, directiveName);
           }
           return value;
         } else if (isArray(require)) {
@@ -4847,8 +4891,8 @@ function $CompileProvider($provide) {
 
           var parentScope = scope.$parent || scope;
 
-          forEach(newIsolateScopeDirective.scope, function(definiton, scopeName) {
-            var match = definiton.match(LOCAL_REGEXP) || [],
+          forEach(newIsolateScopeDirective.scope, function(definition, scopeName) {
+            var match = definition.match(LOCAL_REGEXP) || [],
                 attrName = match[3] || scopeName,
                 optional = (match[2] == '?'),
                 mode = match[1], // @, =, or &
@@ -4879,8 +4923,8 @@ function $CompileProvider($provide) {
                 parentSet = parentGet.assign || function() {
                   // reset the change, or we will throw this exception on every $digest
                   lastValue = scope[scopeName] = parentGet(parentScope);
-                  throw Error(NON_ASSIGNABLE_MODEL_EXPRESSION + attrs[attrName] +
-                      ' (directive: ' + newIsolateScopeDirective.name + ')');
+                  throw ngError(14, "Expression '{0}' used with directive '{1}' is non-assignable!",
+                      attrs[attrName], newIsolateScopeDirective.name);
                 };
                 lastValue = scope[scopeName] = parentGet(parentScope);
                 scope.$watch(function parentValueWatch() {
@@ -4910,8 +4954,8 @@ function $CompileProvider($provide) {
               }
 
               default: {
-                throw Error('Invalid isolate scope definition for directive ' +
-                    newIsolateScopeDirective.name + ': ' + definiton);
+                throw ngError(15, "Invalid isolate scope definition for directive '{0}'. Definition: {... {1}: '{2}' ...}",
+                    newIsolateScopeDirective.name, scopeName, definition);
               }
             }
           });
@@ -5064,7 +5108,8 @@ function $CompileProvider($provide) {
             compileNode = $template[0];
 
             if ($template.length != 1 || compileNode.nodeType !== 1) {
-              throw new Error(MULTI_ROOT_TEMPLATE_ERROR + content);
+              throw ngError(16, "Template for directive '{0}' must have exactly one root element. Template: {1}",
+                  origAsyncDirective.name, templateUrl);
             }
 
             tempTemplateAttrs = {$attr: {}};
@@ -5101,7 +5146,7 @@ function $CompileProvider($provide) {
           linkQueue = null;
         }).
         error(function(response, code, headers, config) {
-          throw Error('Failed to load template: ' + config.url);
+          throw ngError(17, 'Failed to load template: {0}', config.url);
         });
 
       return function delayedNodeLinkFn(ignoreChildLinkFn, scope, node, rootElement, controller) {
@@ -5129,8 +5174,8 @@ function $CompileProvider($provide) {
 
     function assertNoDuplicate(what, previousDirective, directive, element) {
       if (previousDirective) {
-        throw Error('Multiple directives [' + previousDirective.name + ', ' +
-          directive.name + '] asking for ' + what + ' on: ' +  startingTag(element));
+        throw ngError(18, 'Multiple directives [{0}, {1}] asking for {2} on: {3}',
+            previousDirective.name, directive.name, what, startingTag(element));
       }
     }
 
@@ -5367,9 +5412,8 @@ function $ControllerProvider() {
       instance = $injector.instantiate(expression, locals);
 
       if (identifier) {
-        if (typeof locals.$scope !== 'object') {
-          throw new Error('Can not export controller as "' + identifier + '". ' +
-              'No scope object provided!');
+        if (!(locals && typeof locals.$scope == 'object')) {
+          throw ngError(47, "Cannot export controller '{0}' as '{1}'! No $scope object provided via `locals`.", constructor || expression.name, identifier);
         }
 
         locals.$scope[identifier] = instance;
@@ -5560,7 +5604,7 @@ function $InterpolateProvider() {
             return concat.join('');
           }
           catch(err) {
-            var newErr = new Error('Error while interpolating: ' + text + '\n' + err.toString());
+            var newErr = ngError(48, "$interpolate error! Can't interpolate: {0}\n{1}", text, err.toString());
             $exceptionHandler(newErr);
           }
         };
@@ -5703,7 +5747,7 @@ function LocationHtml5Url(appBase, basePrefix) {
     matchUrl(url, parsed);
     var pathUrl = beginsWith(appBaseNoFile, url);
     if (!isString(pathUrl)) {
-      throw Error('Invalid url "' + url + '", missing path prefix "' + appBaseNoFile + '".');
+      throw ngError(21, '$location error! Invalid url "{0}", missing path prefix "{1}".', url, appBaseNoFile);
     }
     matchAppUrl(pathUrl, parsed);
     extend(this, parsed);
@@ -5765,11 +5809,11 @@ function LocationHashbangUrl(appBase, hashPrefix) {
     matchUrl(url, this);
     var withoutBaseUrl = beginsWith(appBase, url) || beginsWith(appBaseNoFile, url);
     if (!isString(withoutBaseUrl)) {
-      throw new Error('Invalid url "' + url + '", does not start with "' + appBase +  '".');
+      throw ngError(22, '$location error! Invalid url "{0}", does not start with "{1}".', url, appBase);
     }
     var withoutHashUrl = withoutBaseUrl.charAt(0) == '#' ? beginsWith(hashPrefix, withoutBaseUrl) : withoutBaseUrl;
     if (!isString(withoutHashUrl)) {
-      throw new Error('Invalid url "' + url + '", missing hash prefix "' + hashPrefix + '".');
+      throw ngError(49, '$location error! Invalid url "{0}", missing hash prefix "{1}".', url, hashPrefix);
     }
     matchAppUrl(withoutHashUrl, this);
     this.$$compose();
@@ -6481,11 +6525,11 @@ function lex(text, csp){
 
   function throwError(error, start, end) {
     end = end || index;
-    throw Error("Lexer Error: " + error + " at column" +
-        (isDefined(start)
-            ? "s " + start +  "-" + index + " [" + text.substring(start, end) + "]"
-            : " " + end) +
-        " in expression [" + text + "].");
+    var colStr = (isDefined(start) ?
+        "s " + start +  "-" + index + " [" + text.substring(start, end) + "]"
+        : " " + end);
+    throw ngError(23, "Lexer Error: {0} at column{1} in expression [{2}].",
+        error, colStr, text);
   }
 
   function readNumber() {
@@ -6667,15 +6711,14 @@ function parser(text, json, $filter, csp){
 
   ///////////////////////////////////
   function throwError(msg, token) {
-    throw Error("Syntax Error: Token '" + token.text +
-      "' " + msg + " at column " +
-      (token.index + 1) + " of the expression [" +
-      text + "] starting at [" + text.substring(token.index) + "].");
+    throw ngError(24,
+        "Syntax Error: Token '{0}' {1} at column {2} of the expression [{3}] starting at [{4}].",
+        token.text, msg, (token.index + 1), text, text.substring(token.index));
   }
 
   function peekToken() {
     if (tokens.length === 0)
-      throw Error("Unexpected end of expression: " + text);
+      throw ngError(25, "Unexpected end of expression: {0}", text);
     return tokens[0];
   }
 
@@ -6724,7 +6767,7 @@ function parser(text, json, $filter, csp){
       constant: left.constant && middle.constant && right.constant
     });
   }
-  
+
   function binaryFn(left, fn, right) {
     return extend(function(self, locals) {
       return fn(self, locals, left, right);
@@ -6829,7 +6872,7 @@ function parser(text, json, $filter, csp){
       return left;
     }
   }
-  
+
   function logicalOR() {
     var left = logicalAND();
     var token;
@@ -8437,10 +8480,6 @@ function $RootScopeProvider(){
         var Child,
             child;
 
-        if (isFunction(isolate)) {
-          // TODO: remove at some point
-          throw Error('API-CHANGE: Use $controller to instantiate controllers.');
-        }
         if (isolate) {
           child = new Scope();
           child.$root = this.$root;
@@ -8836,8 +8875,9 @@ function $RootScopeProvider(){
 
           if(dirty && !(ttl--)) {
             clearPhase();
-            throw Error(TTL + ' $digest() iterations reached. Aborting!\n' +
-                'Watchers fired in the last 5 iterations: ' + toJson(watchLog));
+            throw ngError(27,
+                '{0} $digest() iterations reached. Aborting!\nWatchers fired in the last 5 iterations: {1}',
+                TTL, toJson(watchLog));
           }
         } while (dirty || asyncQueue.length);
 
@@ -9199,7 +9239,7 @@ function $RootScopeProvider(){
 
     function beginPhase(phase) {
       if ($rootScope.$$phase) {
-        throw Error($rootScope.$$phase + ' already in progress');
+        throw ngError(28, '{0} already in progress', $rootScope.$$phase);
       }
 
       $rootScope.$$phase = phase;
@@ -10314,7 +10354,7 @@ var XHR = window.XMLHttpRequest || function() {
   try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); } catch (e1) {}
   try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); } catch (e2) {}
   try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e3) {}
-  throw new Error("This browser does not support XMLHttpRequest.");
+  throw ngError(19, "This browser does not support XMLHttpRequest.");
 };
 
 
@@ -12636,6 +12676,8 @@ var inputType = {
    * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
    *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
    *    patterns defined as scope expressions.
+   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   *    interaction with the input element.
    *
    * @example
       <doc:example>
@@ -12866,7 +12908,8 @@ function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
         var patternObj = scope.$eval(pattern);
 
         if (!patternObj || !patternObj.test) {
-          throw new Error('Expected ' + pattern + ' to be a RegExp but was ' + patternObj);
+          throw ngError(5, 'ngPattern error! Expected {0} to be a RegExp but was {1}. Element: {2}',
+                                                      pattern,                   patternObj,   startingTag(element));
         }
         return validate(patternObj, value);
       };
@@ -13309,8 +13352,8 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
       ngModelSet = ngModelGet.assign;
 
   if (!ngModelSet) {
-    throw Error(NON_ASSIGNABLE_MODEL_EXPRESSION + $attr.ngModel +
-        ' (' + startingTag($element) + ')');
+    throw ngError(6, "ngModel error! Expression '{0}' is non-assignable. Element: {1}", $attr.ngModel,
+        startingTag($element));
   }
 
   /**
@@ -15315,8 +15358,8 @@ var ngRepeatDirective = ['$parse', '$animator', function($parse, $animator) {
           hashFnLocals = {$id: hashKey};
 
         if (!match) {
-          throw Error("Expected ngRepeat in form of '_item_ in _collection_[ track by _id_]' but got '" +
-            expression + "'.");
+          throw ngError(7, "ngRepeat error! Expected expression in form of '_item_ in _collection_[ track by _id_]' but got '{0}'.",
+            expression);
         }
 
         lhs = match[1];
@@ -15340,8 +15383,8 @@ var ngRepeatDirective = ['$parse', '$animator', function($parse, $animator) {
 
         match = lhs.match(/^(?:([\$\w]+)|\(([\$\w]+)\s*,\s*([\$\w]+)\))$/);
         if (!match) {
-          throw Error("'item' in 'item in collection' should be identifier or (key, value) but got '" +
-              lhs + "'.");
+          throw ngError(8, "ngRepeat error! '_item_' in '_item_ in _collection_' should be an identifier or '(_key_, _value_)' expression, but got '{0}'.",
+                                                                    lhs);
         }
         valueIdentifier = match[3] || match[1];
         keyIdentifier = match[2];
@@ -15402,8 +15445,8 @@ var ngRepeatDirective = ['$parse', '$animator', function($parse, $animator) {
                if (block && block.element) lastBlockMap[block.id] = block;
              });
              // This is a duplicate and we need to throw an error
-             throw new Error('Duplicates in a repeater are not allowed. Repeater: ' + expression +
-                 ' key: ' + trackById);
+             throw ngError(50, "ngRepeat error! Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. Repeater: {0}, Duplicate key: {1}",
+                                                                                                                                                    expression,       trackById);
            } else {
              // new never before seen block
              nextBlockOrder[index] = { id: trackById };
@@ -16550,9 +16593,9 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
         var match;
 
         if (! (match = optionsExp.match(NG_OPTIONS_REGEXP))) {
-          throw Error(
-            "Expected ngOptions in form of '_select_ (as _label_)? for (_key_,)?_value_ in _collection_ (track by _expr_)?'" +
-            " but got '" + optionsExp + "'.");
+          throw ngError(9,
+            "ngOptions error! Expected expression in form of '_select_ (as _label_)? for (_key_,)?_value_ in _collection_' but got '{0}'. Element: {1}",
+            optionsExp, startingTag(selectElement));
         }
 
         var displayFn = $parse(match[2] || match[1]),
@@ -16607,7 +16650,7 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
                       for (var trackIndex = 0; trackIndex < collection.length; trackIndex++) {
                         locals[valueName] = collection[trackIndex];
                         if (trackFn(scope, locals) == key) break;
-                      } 
+                      }
                     } else {
                       locals[valueName] = collection[key];
                     }

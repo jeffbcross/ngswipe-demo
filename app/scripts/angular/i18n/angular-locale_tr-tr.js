@@ -9,44 +9,44 @@ $provide.value("$locale", {
     "DAY": {
       "0": "Pazar",
       "1": "Pazartesi",
-      "2": "Sal\u0131",
-      "3": "\u00c7ar\u015famba",
-      "4": "Per\u015fembe",
+      "2": "Salı",
+      "3": "Çarşamba",
+      "4": "Perşembe",
       "5": "Cuma",
       "6": "Cumartesi"
     },
     "MONTH": {
       "0": "Ocak",
-      "1": "\u015eubat",
+      "1": "Şubat",
       "2": "Mart",
       "3": "Nisan",
-      "4": "May\u0131s",
+      "4": "Mayıs",
       "5": "Haziran",
       "6": "Temmuz",
-      "7": "A\u011fustos",
-      "8": "Eyl\u00fcl",
+      "7": "Ağustos",
+      "8": "Eylül",
       "9": "Ekim",
-      "10": "Kas\u0131m",
-      "11": "Aral\u0131k"
+      "10": "Kasım",
+      "11": "Aralık"
     },
     "SHORTDAY": {
       "0": "Paz",
       "1": "Pzt",
       "2": "Sal",
-      "3": "\u00c7ar",
+      "3": "Çar",
       "4": "Per",
       "5": "Cum",
       "6": "Cmt"
     },
     "SHORTMONTH": {
       "0": "Oca",
-      "1": "\u015eub",
+      "1": "Şub",
       "2": "Mar",
       "3": "Nis",
       "4": "May",
       "5": "Haz",
       "6": "Tem",
-      "7": "A\u011fu",
+      "7": "Ağu",
       "8": "Eyl",
       "9": "Eki",
       "10": "Kas",
@@ -86,9 +86,9 @@ $provide.value("$locale", {
         "minFrac": 2,
         "minInt": 1,
         "negPre": "(",
-        "negSuf": "\u00a0\u00a4)",
+        "negSuf": " \u00A4)",
         "posPre": "",
-        "posSuf": "\u00a0\u00a4"
+        "posSuf": " \u00A4"
       }
     }
   },

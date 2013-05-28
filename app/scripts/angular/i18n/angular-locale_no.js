@@ -7,13 +7,13 @@ $provide.value("$locale", {
       "1": "PM"
     },
     "DAY": {
-      "0": "s\u00f8ndag",
+      "0": "søndag",
       "1": "mandag",
       "2": "tirsdag",
       "3": "onsdag",
       "4": "torsdag",
       "5": "fredag",
-      "6": "l\u00f8rdag"
+      "6": "lørdag"
     },
     "MONTH": {
       "0": "januar",
@@ -30,13 +30,13 @@ $provide.value("$locale", {
       "11": "desember"
     },
     "SHORTDAY": {
-      "0": "s\u00f8n.",
+      "0": "søn.",
       "1": "man.",
       "2": "tir.",
       "3": "ons.",
       "4": "tor.",
       "5": "fre.",
-      "6": "l\u00f8r."
+      "6": "lør."
     },
     "SHORTMONTH": {
       "0": "jan.",
@@ -64,7 +64,7 @@ $provide.value("$locale", {
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "kr",
     "DECIMAL_SEP": ",",
-    "GROUP_SEP": "\u00a0",
+    "GROUP_SEP": " ",
     "PATTERNS": {
       "0": {
         "gSize": 3,
@@ -85,9 +85,9 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
+        "negPre": "\u00A4 -",
         "negSuf": "",
-        "posPre": "\u00a4\u00a0",
+        "posPre": "\u00A4 ",
         "posSuf": ""
       }
     }

@@ -1,7 +1,7 @@
 <h1><code ng:non-bindable=""></code>
 <span class="hint"></span>
 </h1>
-<div><a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/module.ngdoc" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="whatisamodule">What is a Module?</h1>
+<div><a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/module.ngdoc" class="improve-docs btn btn-primary">Improve this doc</a><h2>What is a Module?</h2>
 
 <p>Most applications have a main method which instantiates, wires, and bootstraps the application.
 Angular apps don't have a main method. Instead modules declaratively specify how an application
@@ -16,7 +16,7 @@ configuration and help end-to-end test the application</li>
 <li>The modules can be loaded in any/parallel order (due to delayed nature of module execution).</li>
 </ul>
 
-<h1 id="thebasics">The Basics</h1>
+<h2>The Basics</h2>
 
 <p>Ok, I'm in a hurry. How do I get a Hello World module working?</p>
 
@@ -28,11 +28,11 @@ configuration and help end-to-end test the application</li>
 bootstraps the app using your module.</li>
 </ul>
 
-<h3>Source</h2>
-<div source-edit="myApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-71" source-edit-css="" source-edit-js="script.js-70" source-edit-unit="" source-edit-scenario=""></div>
+<h3>Source</h3>
+<div source-edit="myApp" source-edit-deps="angular.js script.js" source-edit-html="index.html-69" source-edit-css="" source-edit-js="script.js-68" source-edit-unit="" source-edit-scenario=""></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-71" ng-html-wrap="myApp angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-71">
+<pre class="prettyprint linenums" ng-set-text="index.html-69" ng-html-wrap="myApp angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-69">
     
     <div>
       {{ 'World' | greet }}
@@ -40,8 +40,8 @@ bootstraps the app using your module.</li>
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-70"></pre>
-<script type="text/ng-template" id="script.js-70">
+<pre class="prettyprint linenums" ng-set-text="script.js-68"></pre>
+<script type="text/ng-template" id="script.js-68">
       // declare a module
       var myAppModule = angular.module('myApp', []);
 
@@ -55,10 +55,10 @@ bootstraps the app using your module.</li>
 
     </script>
 </div>
-</div><h2>Demo</h2>
-<div class="well doc-example-live animator-container" ng-embed-app="myApp" ng-set-html="index.html-71" ng-eval-javascript="script.js-70"></div>
+</div><h3>Demo</h3>
+<div class="well doc-example-live" ng-embed-app="myApp" ng-set-html="index.html-69" ng-eval-javascript="script.js-68"></div>
 
-<h1 id="recommendedsetup">Recommended Setup</h1>
+<h2>Recommended Setup</h2>
 
 <p>While the example above is simple, it will not scale to large applications. Instead we recommend
 that you break your application to multiple modules like this:</p>
@@ -78,11 +78,11 @@ that are relevant to tests.</p>
 
 <p>The above is only a suggestion, so feel free to tailor it to your needs.</p>
 
-<h2>Source</h2>
-<div source-edit="xmpl" source-edit-deps="angular.js script.js" source-edit-html="index.html-73" source-edit-css="" source-edit-js="script.js-72" source-edit-unit="" source-edit-scenario=""></div>
+<h3>Source</h3>
+<div source-edit="xmpl" source-edit-deps="angular.js script.js" source-edit-html="index.html-71" source-edit-css="" source-edit-js="script.js-70" source-edit-unit="" source-edit-scenario=""></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-73" ng-html-wrap="xmpl angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-73">
+<pre class="prettyprint linenums" ng-set-text="index.html-71" ng-html-wrap="xmpl angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-71">
     
     <div ng-controller="XmplController">
       {{ greeting }}!
@@ -90,8 +90,8 @@ that are relevant to tests.</p>
   </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-72"></pre>
-<script type="text/ng-template" id="script.js-72">
+<pre class="prettyprint linenums" ng-set-text="script.js-70"></pre>
+<script type="text/ng-template" id="script.js-70">
       angular.module('xmpl.service', []).
         value('greeter', {
           salutation: 'Hello',
@@ -128,10 +128,10 @@ that are relevant to tests.</p>
       }
     </script>
 </div>
-</div><h2>Demo</h2>
-<div class="well doc-example-live animator-container" ng-embed-app="xmpl" ng-set-html="index.html-73" ng-eval-javascript="script.js-72"></div>
+</div><h3>Demo</h3>
+<div class="well doc-example-live" ng-embed-app="xmpl" ng-set-html="index.html-71" ng-eval-javascript="script.js-70"></div>
 
-<h1 id="moduleloadingdependencies">Module Loading &amp; Dependencies</h1>
+<h2>Module Loading &amp; Dependencies</h2>
 
 <p>A module is a collection of configuration and run blocks which get applied to the application
 during the bootstrap process. In its simplest form the module consist of collection of two kinds
@@ -162,7 +162,7 @@ angular.module('myModule', []).
   });
 </pre>
 
-<h2 id="configurationblocks">Configuration Blocks</h2>
+<h3>Configuration Blocks</h3>
 
 <p>There are some convenience methods on the module which are equivalent to the config block. For
 example:</p>
@@ -188,7 +188,7 @@ angular.module('myModule', []).
 <p>The configuration blocks get applied in the order in which they are registered. The only exception
 to it are constant definitions, which are placed at the beginning of all configuration blocks.</p>
 
-<h2 id="runblocks">Run Blocks</h2>
+<h3>Run Blocks</h3>
 
 <p>Run blocks are the closest thing in Angular to the main method. A run block is the code which
 needs to run to kickstart the application. It is executed after all of the service have been
@@ -196,7 +196,7 @@ configured and the injector has been created. Run blocks typically contain code 
 to unit-test, and for this reason should be declared in isolated modules, so that they can be
 ignored in the unit-tests.</p>
 
-<h2 id="dependencies">Dependencies</h2>
+<h3>Dependencies</h3>
 
 <p>Modules can list other modules as their dependencies. Depending on a module implies that required
 module needs to be loaded before the requiring module is loaded. In other words the configuration
@@ -204,14 +204,14 @@ blocks of the required modules execute before the configuration blocks of the re
 The same is true for the run blocks. Each module can only be loaded once, even if multiple other
 modules require it.</p>
 
-<h2 id="asynchronousloading">Asynchronous Loading</h3>
+<h3>Asynchronous Loading</h3>
 
 <p>Modules are a way of managing $injector configuration, and have nothing to do with loading of
 scripts into a VM. There are existing projects which deal with script loading, which may be used
 with Angular. Because modules do nothing at load time they can be loaded into the VM in any order
 and thus script loaders can take advantage of this property and parallelize the loading process.</p>
 
-<h1 id="unittesting">Unit Testing</h2>
+<h2>Unit Testing</h2>
 
 <p>In its simplest form a unit test is a way of instantiating a subset of the application in test and
 then applying a stimulus to it. It is important to realize that each module can only be loaded

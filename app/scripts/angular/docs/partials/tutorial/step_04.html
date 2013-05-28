@@ -16,7 +16,7 @@ users to control the order in which the phones are listed.</p>
 <p>The most important differences between Steps 3 and 4 are listed below. You can see the full diff on
 <a href="https://github.com/angular/angular-phonecat/compare/step-3...step-4">GitHub</a>:</p>
 
-<h3 id="template">Template</h2>
+<h3>Template</h3>
 
 <p><strong><code>app/index.html</code>:</strong>
 <pre class="prettyprint linenums">
@@ -56,7 +56,7 @@ changes (for example because a user changes the order with the select drop down 
 data-binding will cause the view to automatically update. No bloated DOM manipulation code is
 necessary!</p>
 
-<h2 id="controller">Controller</h2>
+<h3>Controller</h3>
 
 <p><strong><code>app/js/controllers.js</code>:</strong>
 <pre class="prettyprint linenums">
@@ -92,7 +92,7 @@ will be reordered. That is the data-binding doing its job in the opposite direct
 to the model.</p></li>
 </ul>
 
-<h2 id="test">Test</h3>
+<h3>Test</h3>
 
 <p>The changes we made should be verified with both a unit test and an end-to-end test. Let's look at
 the unit test first.</p>
@@ -127,7 +127,7 @@ describe('PhoneCat controllers', function() {
 <p>We used Jasmine's API to extract the controller construction into a <code>beforeEach</code> block, which is
 shared by all tests in the parent <code>describe</code> block.</p>
 
-<p>You should now see the following output in the Karma tab:</p>
+<p>You should now see the following output in the Testacular tab:</p>
 
 <pre><code>    Chrome 22.0: Executed 2 of 2 SUCCESS (0.021 secs / 0.001 secs)
 </code></pre>
@@ -160,7 +160,7 @@ shared by all tests in the parent <code>describe</code> block.</p>
 <p>You can now rerun <code>./scripts/e2e-test.sh</code> or refresh the browser tab with the end-to-end test
 <code>runner.html</code> to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-4/test/e2e/runner.html">Angular's server</a>.</p>
 
-<h2 id="experiments">Experiments</h1>
+<h2>Experiments</h2>
 
 <ul>
 <li><p>In the <code>PhoneListCtrl</code> controller, remove the statement that sets the <code>orderProp</code> value and
@@ -170,7 +170,7 @@ ordering will default to unordered/natural order.</p></li>
 text.</p></li>
 </ul>
 
-<h1 id="summary">Summary</h2>
+<h2>Summary</h2>
 
 <p>Now that you have added list sorting and tested the app, go to <a href="tutorial/step_05">step 5</a> to learn
 about Angular services and how Angular uses dependency injection.</p>

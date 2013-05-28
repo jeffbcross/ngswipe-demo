@@ -3,26 +3,26 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": {
-      "0": "priek\u0161pusdien\u0101",
-      "1": "p\u0113cpusdien\u0101"
+      "0": "priekšpusdienā",
+      "1": "pēcpusdienā"
     },
     "DAY": {
-      "0": "sv\u0113tdiena",
+      "0": "svētdiena",
       "1": "pirmdiena",
       "2": "otrdiena",
-      "3": "tre\u0161diena",
+      "3": "trešdiena",
       "4": "ceturtdiena",
       "5": "piektdiena",
       "6": "sestdiena"
     },
     "MONTH": {
-      "0": "janv\u0101ris",
-      "1": "febru\u0101ris",
+      "0": "janvāris",
+      "1": "februāris",
       "2": "marts",
-      "3": "apr\u012blis",
+      "3": "aprīlis",
       "4": "maijs",
-      "5": "j\u016bnijs",
-      "6": "j\u016blijs",
+      "5": "jūnijs",
+      "6": "jūlijs",
       "7": "augusts",
       "8": "septembris",
       "9": "oktobris",
@@ -44,8 +44,8 @@ $provide.value("$locale", {
       "2": "marts",
       "3": "apr.",
       "4": "maijs",
-      "5": "j\u016bn.",
-      "6": "j\u016bl.",
+      "5": "jūn.",
+      "6": "jūl.",
       "7": "aug.",
       "8": "sept.",
       "9": "okt.",
@@ -64,7 +64,7 @@ $provide.value("$locale", {
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Ls",
     "DECIMAL_SEP": ",",
-    "GROUP_SEP": "\u00a0",
+    "GROUP_SEP": " ",
     "PATTERNS": {
       "0": {
         "gSize": 3,
@@ -85,9 +85,9 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-        "negPre": "(\u00a4",
+        "negPre": "(\u00A4",
         "negSuf": ")",
-        "posPre": "\u00a4",
+        "posPre": "\u00A4",
         "posSuf": ""
       }
     }

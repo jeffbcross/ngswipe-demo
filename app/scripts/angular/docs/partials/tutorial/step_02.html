@@ -17,7 +17,7 @@ little Angular and JavaScript to add model, view, and controller components to o
 
 <p>The most important changes are listed below. You can see the full diff on <a href="https://github.com/angular/angular-phonecat/compare/step-1...step-2">GitHub</a>:</p>
 
-<h3 id="viewandtemplate">View and Template</h2>
+<h3>View and Template</h3>
 
 <p>In Angular, the <strong>view</strong> is a projection of the model through the HTML <strong>template</strong>. This means that
 whenever the model changes, Angular refreshes the appropriate binding points, which updates the
@@ -61,7 +61,7 @@ model, which was set up in our <code>PhoneListCtrl</code> controller.</p>
 <p><img class="diagram" src="img/tutorial/tutorial_02.png"></p></li>
 </ul>
 
-<h2 id="modelandcontroller">Model and Controller</h2>
+<h3>Model and Controller</h3>
 
 <p>The data <strong>model</strong> (a simple array  of phones in object literal notation) is instantiated within
 the <code>PhoneListCtrl</code> <strong>controller</strong>:</p>
@@ -104,7 +104,7 @@ are reflected in the model.</p>
 <p>To learn more about Angular scopes, see the <a href="api/ng.$rootScope.Scope"><code>angular scope documentation</code></a>.</p></li>
 </ul>
 
-<h2 id="tests">Tests</h3>
+<h3>Tests</h3>
 
 <p>The "Angular way" makes it easy to test code as it is being developed. Take a look at the following
 unit test for your newly created controller:</p>
@@ -134,28 +134,27 @@ to write them.</p>
 writing tests. Although Angular does not require you to use Jasmine, we wrote all of the tests in
 this tutorial in Jasmine. You can learn about Jasmine on the <a href="http://pivotal.github.com/jasmine/">Jasmine home page</a> and on the <a href="https://github.com/pivotal/jasmine/wiki">Jasmine wiki</a>.</p>
 
-<p>The angular-seed project is pre-configured to run all unit tests using <a href="http://karma-runner.github.io/">Karma</a>. To run the test, do the following:</p>
+<p>The angular-seed project is pre-configured to run all unit tests using <a href="http://vojtajina.github.com/testacular/">Testacular</a>. To run the test, do the following:</p>
 
 <ol>
 <li><p>In a <em>separate</em> terminal window or tab, go to the <code>angular-phonecat</code> directory and run
-<code>./scripts/test.sh</code> to start the Karma server (the config file necessary to start the server
-is located at <code>./config/karma.conf.js</code>).</p></li>
-<li><p>Karma will start a new instance of Chrome browser automatically. Just ignore it and let it run in
-the background. Karma will use this browser for test execution.</p></li>
+<code>./scripts/test.sh</code> to start the Testacular server.</p></li>
+<li><p>Testacular will start a new instance of Chrome browser automatically. Just ignore it and let it run in
+the background. Testacular will use this browser for test execution.</p></li>
 <li><p>You should see the following or similar output in the terminal:</p>
 
-<pre><code>     info: Karma server started at http://localhost:9876/
+<pre><code>     info: Testacular server started at http://localhost:9876/
      info (launcher): Starting  browser "Chrome"
      info (Chrome 22.0): Connected on socket id tPUm9DXcLHtZTKbAEO-n
      Chrome 22.0: Executed 1 of 1 SUCCESS (0.093 secs / 0.004 secs)
 </code></pre>
 
 <p>Yay! The test passed! Or not...</p></li>
-<li><p>To rerun the tests, just change any of the source or test files. Karma will notice the change
+<li><p>To rerun the tests, just change any of the source or test files. Testacular will notice the change
 and will rerun the tests for you. Now isn't that sweet?</p></li>
 </ol>
 
-<h2 id="experiments">Experiments</h1>
+<h2>Experiments</h2>
 
 <ul>
 <li><p>Add another binding to <code>index.html</code>. For example:</p>
@@ -186,7 +185,7 @@ and will rerun the tests for you. Now isn't that sweet?</p></li>
 <li><p>Make the unit test fail by changing the <code>toBe(3)</code> statement to <code>toBe(4)</code>.</p></li>
 </ul>
 
-<h1 id="summary">Summary</h2>
+<h2>Summary</h2>
 
 <p>You now have a dynamic app that features separate model, view, and controller components, and you
 are testing as you go. Now, let's go to <a href="tutorial/step_03">step 3</a> to learn how to add full text search
