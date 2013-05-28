@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 describe('Service: Articles', function () {
   var httpMock, scope, Articles;
   
@@ -67,4 +67,3 @@ describe('Service: Articles', function () {
     expect(typeof Articles._cache['http%3A%2F%2Fdailyjs.com%2Fatom.xml'].entries[0].title).toEqual('string')
   });
 });
-*/

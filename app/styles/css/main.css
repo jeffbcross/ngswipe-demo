@@ -5622,61 +5622,61 @@ io-add-feed-form .add-feed-form input[type=text] {
 io-add-feed-form .add-feed-form h4 {
   margin-top: 0;
 }
-io-add-feed-form .add-hide-setup,
-io-add-feed-form .add-show-setup,
-io-add-feed-form .form-hide-setup,
-io-add-feed-form .form-show-setup {
+io-add-feed-form .add-hide,
+io-add-feed-form .add-show,
+io-add-feed-form .form-hide,
+io-add-feed-form .form-show {
   -webkit-transition: 0.25s linear all;
   -moz-transition: 0.25s linear all;
   -o-transition: 0.25s linear all;
   transition: 0.25s linear all;
   min-height: 0;
 }
-io-add-feed-form .add-hide-setup {
+io-add-feed-form .add-hide {
   height: 28px;
   overflow: hidden;
   padding: 15px;
   opacity: 1;
 }
-io-add-feed-form .add-hide-start {
+io-add-feed-form .add-hide-active {
   height: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0 15px;
   opacity: 0;
 }
-io-add-feed-form .add-show-setup {
+io-add-feed-form .add-show {
   height: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0 15px;
   opacity: 0;
 }
-io-add-feed-form .add-show-start {
+io-add-feed-form .add-show-active {
   height: 28px;
   overflow: hidden;
   padding: 15px;
   opacity: 1;
 }
-io-add-feed-form .form-hide-setup {
+io-add-feed-form .form-hide {
   opacity: 1;
   height: 160px;
   min-height: 0;
   padding: 15px;
 }
-io-add-feed-form .form-hide-start {
+io-add-feed-form .form-hide-active {
   opacity: 0;
   overflow: hidden;
   padding: 0 15px;
   height: 0;
 }
-io-add-feed-form .form-show-setup {
+io-add-feed-form .form-show {
   opacity: 0;
   overflow: hidden;
   padding: 0 15px;
   height: 0;
 }
-io-add-feed-form .form-show-start {
+io-add-feed-form .form-show-active {
   opacity: 1;
   height: 160px;
   min-height: 0;

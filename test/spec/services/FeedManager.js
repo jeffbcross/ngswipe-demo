@@ -1,13 +1,18 @@
 'use strict';
 
 describe('Service: FeedManager', function () {
-  var FeedManager;
+  var FeedManager, $window;
 
   beforeEach(module('ngswipeDemoApp'));
 
-  beforeEach(inject(function ($injector) {
+  beforeEach(inject(function ($injector, _$window_) {
     FeedManager = $injector.get('FeedManager');
+    $window = _$window_
   }));
+
+  afterEach(function () {
+    $window.localStorage.setItem('ngReaderFeeds', '');
+  })
 
   it('should provide a list of all feeds available for the user', function () {
     var list = FeedManager.getAll();
@@ -38,5 +43,18 @@ describe('Service: FeedManager', function () {
   it('should remove a feed', function () {
     FeedManager.remove("Random Feed");
     expect(FeedManager.get("Random Feed")).toBe(undefined);
+  });
+
+  describe('persistence', function () {
+    it('should persist added feed to localStorage', function () {
+      FeedManager.add('Random Feed', {href: "http://local.feed"});
+      expect($window.localStorage.getItem('ngReaderFeeds')).toContain('http://local.feed');
+    });
+
+    it('should persist deleted feed removed from localStorage', function () {
+      FeedManager.add('Deletable Feed', {'href': 'http://deletable'})
+      FeedManager.remove('Deletable Feed');
+      expect($window.localStorage.getItem('ngReaderFeeds')).not.toContain('http://deletable');
+    })
   });
 });

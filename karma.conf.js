@@ -13,10 +13,7 @@ files = [
   'scripts/filters/*.js',
   '../test/mock/*.js',
   '../test/spec/**/*.js',
-  'views/article.html',
-  'views/feeds.html',
-  'views/io-add-feed-form.html',
-  'views/io-article-preview.html'
+  'views/*.html'
 ];
 plugins = [
   'karma-ng-html2js-preprocessor',

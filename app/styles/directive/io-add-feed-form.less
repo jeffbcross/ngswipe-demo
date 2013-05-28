@@ -64,7 +64,7 @@ io-add-feed-form {
     opacity: 0;
   }
 
-  .add-hide-setup, .add-show-setup, .form-hide-setup, .form-show-setup {
+  .add-hide, .add-show, .form-hide, .form-show {
     -webkit-transition:0.25s linear all;
     -moz-transition:0.25s linear all;
     -o-transition:0.25s linear all;
@@ -72,34 +72,34 @@ io-add-feed-form {
     min-height: 0;
   }
 
-  .add-hide-setup {
+  .add-hide {
     .add-shown();
   }
-  .add-hide-start {
+  .add-hide-active {
     .add-hidden();
   }
 
-  .add-show-setup {
+  .add-show {
     .add-hidden();
   }
 
-  .add-show-start {
+  .add-show-active {
     .add-shown();
   }
 
-  .form-hide-setup {
+  .form-hide {
     .form-shown();
   }
 
-  .form-hide-start {
+  .form-hide-active {
     .form-hidden();
   }
   
-  .form-show-setup {
+  .form-show {
     .form-hidden();
   }
 
-  .form-show-start {
+  .form-show-active {
     .form-shown();
   }
 }
