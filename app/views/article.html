@@ -1,4 +1,4 @@
-<div class="ArticleDetailCtrl">
+<div class="ArticleDetailCtrl" ng-animate="{enter: 'page-enter-left', leave: 'page-leave-right'}">
   <div class="banner">
     <span class="back-link pull-left" ng-click="goBack()"><i class="icon-angle-left"></i></span>
     <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>

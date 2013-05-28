@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', function ($scope, FeedManager, $routeParams, $location) {
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', '$rootScope', function ($scope, FeedManager, $routeParams, $location, $rootScope) {
     var updateFeeds;
+
+    $rootScope.pageAnimation = {enter: 'page-enter-right', leave: 'page-leave-left'};
 
     $scope.showFeed = function (feed) {
       $location.path('/feeds/' + feed.name);
