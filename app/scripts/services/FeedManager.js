@@ -36,7 +36,6 @@ angular.module('ngswipeDemoApp')
         return this._feedsCache;
       },
       get: function (name) {
-        console.log('get name', name);
         var selected;
 
         angular.forEach(this._feedsCache, function (feed, key) {
@@ -48,16 +47,27 @@ angular.module('ngswipeDemoApp')
         return selected;
       },
       save: function () {
-        $window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this._feedsCache));
+        var stringified = JSON.stringify(this._feedsCache);
+        
+        if (stringified.indexOf('$$hashKey')) {
+          angular.forEach(this._feedsCache, function (feed, i) {
+            delete feed['$$hashKey'];
+          });
+
+          stringified = JSON.stringify(this._feedsCache);
+        }
+
+        $window.localStorage.setItem(LOCAL_STORAGE_KEY, stringified);
       },
       remove: function (name) {
         var self = this;
+        
         angular.forEach(this._feedsCache, function (feed, i) {
           if (feed.name === name) {
             self._feedsCache.splice(i, 1);
           }
         });
-        console.log('deleted _feedsCache', self._feedsCache);
+
         this.save();
       },
       add: function (name, meta) {
