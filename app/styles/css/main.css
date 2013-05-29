@@ -5340,6 +5340,14 @@ Animation classes for top-level ng-view
   left: 0;
   bottom: 0;
 }
+.feed-list-page .delete-show {
+  -webkit-transition: all linear 1s;
+  width: 0;
+  overflow: hidden;
+}
+.feed-list-page .delete-show-active {
+  width: 80px;
+}
 .feed-list-page .column {
   -webkit-flex-flow: column;
   -webkit-box-flex: 2;

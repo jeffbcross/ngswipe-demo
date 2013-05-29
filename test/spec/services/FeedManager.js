@@ -45,6 +45,10 @@ describe('Service: FeedManager', function () {
     expect(FeedManager.get("Random Feed")).toBe(undefined);
   });
 
+  it('should remove $$hashKey from feeds', function () {
+    expect(false).toBe(true);
+  });
+
   describe('persistence', function () {
     it('should persist added feed to localStorage', function () {
       FeedManager.add('Random Feed', {href: "http://local.feed"});
@@ -68,6 +72,5 @@ describe('Service: FeedManager', function () {
       FeedManager._feedsCache = JSON.parse($window.localStorage.getItem('ngReaderFeeds'));
       expect(FeedManager.get('RetrievableFeed')).toBeDefined();
     });
-
   });
 });

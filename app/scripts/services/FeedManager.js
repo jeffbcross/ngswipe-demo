@@ -36,10 +36,11 @@ angular.module('ngswipeDemoApp')
         return this._feedsCache;
       },
       get: function (name) {
+        console.log('get name', name);
         var selected;
 
         angular.forEach(this._feedsCache, function (feed, key) {
-          if (key === name || feed.name === name) {
+          if (key === name || feed && feed.name === name) {
             selected = feed;
           }
         });
@@ -53,9 +54,10 @@ angular.module('ngswipeDemoApp')
         var self = this;
         angular.forEach(this._feedsCache, function (feed, i) {
           if (feed.name === name) {
-            delete self._feedsCache[i]
+            self._feedsCache.splice(i, 1);
           }
-        })
+        });
+        console.log('deleted _feedsCache', self._feedsCache);
         this.save();
       },
       add: function (name, meta) {

@@ -24,15 +24,23 @@ angular.module('ngswipeDemoApp')
         $scope.showFeed($scope.feeds[0]);
       }
 
-      $scope.deletePrompts = {};
       $scope.$watch(function () {
-        return FeedManager._feedsCache;
-      }, updateFeeds);
+        return FeedManager.getAll();
+      }, updateFeeds, true);
     };
 
     updateFeeds = function (newVal) {
+      var firstFeed;
+
       if (newVal === undefined || Array.isArray(newVal)) {
         $scope.feeds = newVal;
+      }
+
+      if (!FeedManager.get($scope.activeFeed)) {
+        firstFeed = FeedManager.getAll()[0];
+
+        $scope.activeFeed = firstFeed ? firstFeed.name : '';
+        $scope.showFeed(firstFeed);
       }
     };
 
