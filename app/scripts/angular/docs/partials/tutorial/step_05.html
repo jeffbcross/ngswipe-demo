@@ -13,7 +13,7 @@ from our server using one of angular's built-in <a href="api/ng">services</a> ca
 
 <p>The most important changes are listed below. You can see the full diff on <a href="https://github.com/angular/angular-phonecat/compare/step-4...step-5">GitHub</a>:</p>
 
-<h3>Data</h3>
+<h3 id="data">Data</h2>
 
 <p>The <code>app/phones/phones.json</code> file in your project is a dataset that contains a larger list of phones
 stored in the JSON format.</p>
@@ -32,7 +32,7 @@ stored in the JSON format.</p>
 ]
 </pre>
 
-<h3>Controller</h3>
+<h2 id="controller">Controller</h2>
 
 <p>We'll use angular's <a href="api/ng.$http"><code>$http</code></a> service in our controller to make an HTTP
 request to your web server to fetch the data in the <code>app/phones/phones.json</code> file. <code>$http</code> is just
@@ -83,14 +83,14 @@ dependencies.</p>
 
 <p><img  class="diagram" src="img/tutorial/xhr_service_final.png"></p>
 
-<h4>'$' Prefix Naming Convention</h4>
+<h4 id="dprefixnamingconvention">'$' Prefix Naming Convention</h3>
 
 <p>You can create your own services, and in fact we will do exactly that in step 11. As a naming
 convention, angular's built-in services, Scope methods and a few other angular APIs have a '$'
 prefix in front of the name.  Don't use a '$' prefix when naming your services and models, in order
 to avoid any possible naming collisions.</p>
 
-<h4>A Note on Minification</h4>
+<h3 id="anoteonminification">A Note on Minification</h4>
 
 <p>Since angular infers the controller's dependencies from the names of arguments to the controller's
 constructor function, if you were to <a href="http://en.wikipedia.org/wiki/Minification_(programming)">minify</a> the JavaScript code for <code>PhoneListCtrl</code> controller, all of its function arguments would be
@@ -113,7 +113,7 @@ dependency names) followed by the function to be injected:</p>
 <p>Both of these methods work with any function that can be injected by Angular, so it's up to your
 project's style guide to decide which one you use.</p>
 
-<h3>Test</h3>
+<h2 id="test">Test</h3>
 
 <p><strong><code>test/unit/controllersSpec.js</code>:</strong></p>
 
@@ -129,6 +129,9 @@ describe('PhoneCat controllers', function() {
   describe('PhoneListCtrl', function(){
     var scope, ctrl, $httpBackend;
 
+    // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+    // This allows us to inject a service but then attach it to a variable
+    // with the same name as the service.
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
       $httpBackend = _$httpBackend_;
       $httpBackend.expectGET('phones/phones.json').
@@ -201,12 +204,12 @@ promise returned by the <code>$http</code> service to be resolved with the train
 });
 </pre>
 
-<p>You should now see the following output in the Testacular tab:</p>
+<p>You should now see the following output in the Karma tab:</p>
 
 <pre><code>   Chrome 22.0: Executed 2 of 2 SUCCESS (0.028 secs / 0.007 secs)
 </code></pre>
 
-<h2>Experiments</h2>
+<h2 id="experiments">Experiments</h1>
 
 <ul>
 <li><p>At the bottom of <code>index.html</code>, add a <code>{{phones | json}}</code> binding to see the list of phones
@@ -218,7 +221,7 @@ to the first 5 in the list. Use the following code in the $http callback:</p>
 </code></pre></li>
 </ul>
 
-<h2>Summary</h2>
+<h1 id="summary">Summary</h2>
 
 <p>Now that you have learned how easy it is to use angular services (thanks to Angular's dependency
 injection), go to <a href="tutorial/step_06">step 6</a>, where you will add some

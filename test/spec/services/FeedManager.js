@@ -55,6 +55,19 @@ describe('Service: FeedManager', function () {
       FeedManager.add('Deletable Feed', {'href': 'http://deletable'})
       FeedManager.remove('Deletable Feed');
       expect($window.localStorage.getItem('ngReaderFeeds')).not.toContain('http://deletable');
+    });
+
+    it('should save', function () {
+      expect($window.localStorage.getItem('ngReaderFeeds')).not.toContain('save method test');
+      FeedManager.add('save method test', {href: 'http://testURL'});
+      expect($window.localStorage.getItem('ngReaderFeeds')).toContain('save method test');
     })
+
+    it('should retrieve a feed by name if stored in localStorage', function () {
+      FeedManager.add('RetrievableFeed', {'href': 'http://retrievable'});
+      FeedManager._feedsCache = JSON.parse($window.localStorage.getItem('ngReaderFeeds'));
+      expect(FeedManager.get('RetrievableFeed')).toBeDefined();
+    });
+
   });
 });

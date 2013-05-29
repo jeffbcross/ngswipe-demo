@@ -14,7 +14,7 @@ about the phones in the catalog.</p>
 
 <p>The most important changes are listed below. You can see the full diff on <a href="https://github.com/angular/angular-phonecat/compare/step-5...step-6">GitHub</a>:</p>
 
-<h3>Data</h3>
+<h3 id="data">Data</h2>
 
 <p>Note that the <code>phones.json</code> file contains unique ids and image urls for each of the phones. The
 urls point to the <code>app/img/phones/</code> directory.</p>
@@ -33,7 +33,7 @@ urls point to the <code>app/img/phones/</code> directory.</p>
  ]
 </pre>
 
-<h3>Template</h3>
+<h2 id="template">Template</h2>
 
 <p><strong><code>app/index.html</code>:</strong>
 <pre class="prettyprint linenums">
@@ -59,7 +59,7 @@ invalid url <code>http://localhost:8000/app/{{phone.imageUrl}}</code>, which it 
 specified an attribute binding in a regular <code>src</code> attribute (<code>&lt;img  class="diagram" src="{{phone.imageUrl}}"&gt;</code>).
 Using the <code>ngSrc</code> directive prevents the browser from making an http request to an invalid location.</p>
 
-<h3>Test</h3>
+<h2 id="test">Test</h3>
 
 <p><strong><code>test/e2e/scenarios.js</code></strong>:
 <pre class="prettyprint linenums">
@@ -78,7 +78,7 @@ views that we will implement in the upcoming steps.</p>
 <p>You can now rerun <code>./scripts/e2e-test.sh</code> or refresh the browser tab with the end-to-end test
 runner to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-6/test/e2e/runner.html">Angular's server</a>.</p>
 
-<h2>Experiments</h2>
+<h2 id="experiments">Experiments</h1>
 
 <ul>
 <li><p>Replace the <code>ng-src</code> directive with a plain old <code>src</code> attribute. Using tools such as Firebug,
@@ -91,7 +91,7 @@ it hits the <code>img</code> tag, which is before Angular has a chance to evalua
 the valid address.</p></li>
 </ul>
 
-<h2>Summary</h2>
+<h1 id="summary">Summary</h2>
 
 <p>Now that you have added phone images and links, go to <a href="tutorial/step_07">step 7</a> to learn about Angular
 layout templates and how Angular makes it easy to create applications that have multiple views.</p>

@@ -6,8 +6,8 @@
     var production = location.hostname === 'docs.angularjs.org',
         headEl = document.head,
         angularVersion = {
-          current: '1.0.7-93891ad', // rewrite during build
-          stable: '1.0.6'
+          current: '1.1.6-a2e672e', // rewrite during build
+          cdn: '1.1.4'
         };
 
     addTag('script', {src: path('angular-scenario.js')}, function() {
@@ -34,7 +34,7 @@
 
     function path(name) {
       return production
-          ? 'http://code.angularjs.org/' + angularVersion.stable + '/' + name
+          ? 'http://code.angularjs.org/' + angularVersion.cdn + '/' + name
           : '../' + name;
     }
   </script>

@@ -17,11 +17,11 @@ user types into the search box.</p>
 <p>The most important differences between Steps 2 and 3 are listed below. You can see the full diff on
 <a href="https://github.com/angular/angular-phonecat/compare/step-2...step-3">GitHub</a>:</p>
 
-<h3>Controller</h3>
+<h3 id="controller">Controller</h2>
 
 <p>We made no changes to the controller.</p>
 
-<h3>Template</h3>
+<h2 id="template">Template</h2>
 
 <p><strong><code>app/index.html</code>:</strong>
 <pre class="prettyprint linenums">
@@ -72,7 +72,7 @@ the DOM to reflect the current state of the model.</p>
 by the <code>filter</code> filter. The process is completely transparent to the developer.</p></li>
 </ul>
 
-<h3>Test</h3>
+<h2 id="test">Test</h3>
 
 <p>In Step 2, we learned how to write and run unit tests. Unit tests are perfect for testing
 controllers and other components of our application written in JavaScript, but they can't easily
@@ -118,16 +118,16 @@ Jasmine, the end-to-end test uses APIs of <a href="guide/dev_guide.e2e-testing">
 <li>casual reader: <a href="http://angular.github.com/angular-phonecat/step-3/test/e2e/runner.html">http://angular.github.com/angular-phonecat/step-3/test/e2e/runner.html</a></li>
 </ul>
 
-<p>Previously we've seen how Testacular can be used to execute unit tests. Well, it can also run the
+<p>Previously we've seen how Karma can be used to execute unit tests. Well, it can also run the
 end-to-end tests! Use <code>./scripts/e2e-test.sh</code> script for that. End-to-end tests are slow, so unlike
-with unit tests, Testacular will exit after the test run and will not automatically rerun the test
+with unit tests, Karma will exit after the test run and will not automatically rerun the test
 suite on every file change. To rerun the test suite, execute the <code>e2e-test.sh</code> script again.</p>
 
 <p>This test verifies that the search box and the repeater are correctly wired together. Notice how
 easy it is to write end-to-end tests in Angular. Although this example is for a simple test, it
 really is that easy to set up any functional, readable, end-to-end test.</p>
 
-<h2>Experiments</h2>
+<h2 id="experiments">Experiments</h1>
 
 <ul>
 <li><p>Display the current value of the <code>query</code> model by adding a <code>{{query}}</code> binding into the
@@ -188,7 +188,7 @@ the browser. The app is live! You can change the search query to prove it. Notic
 is for troubleshooting end-to-end tests.</p></li>
 </ul>
 
-<h2>Summary</h2>
+<h1 id="summary">Summary</h2>
 
 <p>We have now added full text search and included a test to verify that search works! Now let's go on
 to <a href="tutorial/step_04">step 4</a> to learn how to add sorting capability to the phone app.</p>
