@@ -5,15 +5,14 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
     $routeProvider
       .when('/articles/:feedId/:articleId', {
         templateUrl: 'views/article.html',
-        controller: 'ArticleDetailCtrl',
-        depth: 1
+        controller: 'ArticleDetailCtrl'
       })
-      .when('/feeds/:feedId', {
+      .when('/feeds', {
         templateUrl: 'views/feeds.html',
         controller: 'FeedListCtrl',
-        depth: 0
+        reloadOnSearch: false
       })
       .otherwise({
-        redirectTo: '/feeds/'
+        redirectTo: '/feeds'
       });
   }]);

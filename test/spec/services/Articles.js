@@ -22,11 +22,6 @@ describe('Service: Articles', function () {
     expect(typeof promise['then']).toEqual('function');
   });
 
-  it('should allow setting and getting the selected article by id', function () {
-    Articles.setSelected('the-unique-id');
-    expect(Articles.getSelected()).toEqual('the-unique-id');
-  });
-
   it('should cache loaded articles, indexed by url-encoded feed url', function () {
     Articles.fetch('http%3A%2F%2Fdailyjs.com%2Fatom.xml');
     scope.$digest();

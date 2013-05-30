@@ -42,9 +42,9 @@ describe('Controller: IOArticlePreviewCtrl', function () {
     });
 
     it('should load new articles when loadArticles method is called', function () {
-      scope.loading = false;
+      scope.feed = {entries: [1, 2, 3]};
       scope.loadArticles();
-      expect(scope.loading).toBe(true);
+      expect(scope.feed.entries).toBeUndefined();
     });
 
     it('should change the route to show an article detail when calling showArticle', function () {

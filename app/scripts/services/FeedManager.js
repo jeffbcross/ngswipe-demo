@@ -6,14 +6,13 @@ angular.module('ngswipeDemoApp')
       , LOCAL_STORAGE_KEY = 'ngReaderFeeds'
       , localFeeds = $window.localStorage.getItem(LOCAL_STORAGE_KEY);
 
-      if (localFeeds) {
-        try {
-          feeds = JSON.parse(localFeeds);
-        }
-        catch (e) {
-          //NO-OP
-        }
-      }
+    
+    try {
+      feeds = localFeeds ? JSON.parse(localFeeds) : null;
+    }
+    catch (e) {
+      //NO-OP
+    }
     
     return {
       _feedsCache: feeds || [{
@@ -50,8 +49,8 @@ angular.module('ngswipeDemoApp')
         var stringified = JSON.stringify(this._feedsCache);
         
         if (stringified.indexOf('$$hashKey')) {
-          angular.forEach(this._feedsCache, function (feed, i) {
-            delete feed['$$hashKey'];
+          angular.forEach(this._feedsCache, function (feed) {
+            delete feed.$$hashKey;
           });
 
           stringified = JSON.stringify(this._feedsCache);
@@ -71,8 +70,6 @@ angular.module('ngswipeDemoApp')
         this.save();
       },
       add: function (name, meta) {
-        var isUpdated;
-
         if (typeof name === 'string' && name && meta && typeof meta.href === 'string') {
           meta.name = name;
           this._feedsCache.push(meta);

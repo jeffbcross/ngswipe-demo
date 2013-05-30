@@ -1,28 +1,22 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', '$rootScope', 'Articles', 'FeedManager', '$window', '$location', '$routeParams', function ($scope, $rootScope, Articles, FeedManager, $window, $location, $routeParams) {
-
-    var errorMessages = {
-      LOADING_ERROR: 'There was an error loading articles',
-      NO_ARTICLES: 'No articles are available.'
-    };
+  .controller('IOArticlePreviewCtrl', ['$scope', '$rootScope', 'Articles', 'FeedManager', '$window', '$location', function ($scope, $rootScope, Articles, FeedManager, $window, $location) {
 
     $scope.openArticle = function (id, index) {
       //Since it is part of a route, it must be encoded.
       if ($window.decodeURIComponent(id) === id) {
         id = $window.encodeURIComponent(id);
       }
+
       $rootScope.pageAnimation = {enter: 'page-enter-right', leave: 'page-leave-left'};
 
-      Articles.setSelected(id);
-      $location.path('/articles/' + $routeParams.feedId + '/' + id).search({index: index});
+      // Articles.setSelected(id);
+      $location.path('/articles/' + $location.search().feed + '/' + id).search({index: index});
     };
 
     $scope.loadArticles = function (name) {
       var feedToLoad = FeedManager.get(name);
-
-      $scope.loading = true;
 
       $scope.feed = {};
 
@@ -31,31 +25,7 @@ angular.module('ngswipeDemoApp')
       }
     };
 
-    $scope.articlesLoaded = function (feed) {
-      //If there was a problem loading data
-      if (!Array.isArray(feed.entries)) {
-        $scope.error = errorMessages.LOADING_ERROR;
-      }
-      //If there are just no articles in the results
-      else if (!feed.entries.length) {
-        $scope.error = errorMessages.NO_ARTICLES;
-      }
-      //Let's show some articles
-      else {
-        $scope.articles = feed.entries;
-      }
-
-      $scope.loading = false;
-    };
-
-    $scope.setSelecteArticle = function (id) {
-      Articles.setSelected(id);
-    };
-    
-    $scope.articles = [];
-
-    var feedId = $routeParams.feedId;
-    if (feedId) {
+    $scope.$watch('activeFeed', function (feedId) {
       $scope.loadArticles(feedId);
-    }
+    });
   }]);

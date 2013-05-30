@@ -2,8 +2,6 @@
 
 angular.module('ngswipeDemoApp')
   .factory('Articles', ['$q', '$http', '$window', '$filter', function ($q, $http, $window, $filter) {
-    var selected;
-
     return {
       _cache: {},
       //Take a deep JSON response and make it flatter
@@ -67,12 +65,6 @@ angular.module('ngswipeDemoApp')
         });
 
         return deferred.promise;
-      },
-      setSelected: function (id) {
-        selected = id;
-      },
-      getSelected: function () {
-        return selected;
       }
     };
   }]);

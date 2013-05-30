@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$routeParams', '$location', '$rootScope', function ($scope, FeedManager, $routeParams, $location, $rootScope) {
+  .controller('FeedListCtrl', ['$scope', 'FeedManager', '$location', '$rootScope', function ($scope, FeedManager, $location, $rootScope) {
     var updateFeeds;
 
     $rootScope.pageAnimation = {};
 
     $scope.showFeed = function (feed) {
-      $location.path('/feeds/' + feed.name);
-      $location.replace();
+      $location.search({ feed: feed.name });
+      $scope.activeFeed = feed.name;
     };
 
     $scope.deleteFeed = function (name) {
@@ -17,8 +17,8 @@ angular.module('ngswipeDemoApp')
 
     $scope.bootstrap = function () {
       $scope.feeds = FeedManager.getAll();
-      if ($routeParams.feedId) {
-        $scope.activeFeed = $routeParams.feedId;
+      if ($location.search().feed) {
+        $scope.activeFeed = $location.search().feed;
       }
       else if ($scope.feeds.length && $scope.feeds[0].name) {
         $scope.showFeed($scope.feeds[0]);
