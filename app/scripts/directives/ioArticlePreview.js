@@ -3,7 +3,7 @@
 angular.module('ngswipeDemoApp')
   .directive('ioArticlePreview', function () {
     return {
-      templateUrl: 'views/io-article-preview.html',
+      templateUrl: 'views/ioArticlePreview.html',
       restrict: 'EA',
       controller: 'IOArticlePreviewCtrl'
     };

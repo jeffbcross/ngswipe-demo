@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: ioArticlePreview', function () {
-  beforeEach(module('ngswipeDemoApp', 'views/io-article-preview.html'));
+  beforeEach(module('ngswipeDemoApp', 'views/ioArticlePreview.html'));
 
   var element, $httpBackend, $compile, $rootScope, spinner, $location, $scope;
 

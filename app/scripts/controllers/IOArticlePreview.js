@@ -11,7 +11,6 @@ angular.module('ngswipeDemoApp')
 
       $rootScope.pageAnimation = {enter: 'page-enter-right', leave: 'page-leave-left'};
 
-      // Articles.setSelected(id);
       $location.path('/articles/' + $location.search().feed + '/' + id).search({index: index});
     };
 

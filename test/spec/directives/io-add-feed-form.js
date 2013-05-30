@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: ioAddFeedForm', function () {
-  beforeEach(module('ngswipeDemoApp', 'views/io-add-feed-form.html'));
+  beforeEach(module('ngswipeDemoApp', 'views/ioAddFeedForm.html'));
 
   var element;
 
