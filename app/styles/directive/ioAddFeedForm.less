@@ -1,20 +1,19 @@
 io-add-feed-form {
   @formHeight: 160px;
+  color: @gray;
   /* General Styles */
   .add-feed {
-    color: @gray;
+    
     cursor: pointer;
     background: @grayLighter;
     font-family: @metaFont;
     padding: @padding;
-    height: 28px;
+    height: 50 - @padding * 2;
+    font-weight: bold;
 
-    .icon-plus {
-      color: @gray;
-    }
     .name {
-      font-size: 24px;
-      line-height: 28px;
+      font-size: 110%;
+      line-height: 125%;
     }
   }
   .add-feed-form {
@@ -30,6 +29,7 @@ io-add-feed-form {
     }
 
     h4 {
+      font-size: 110%;
       margin-top: 0;
     }
   }

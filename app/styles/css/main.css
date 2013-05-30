@@ -5341,10 +5341,12 @@ Animation classes for top-level ng-view
   bottom: 0;
 }
 .feed-list-page h1.title {
+  color: #555555;
   font-size: 110%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #eeeeee;
   padding: 0 15px;
+  margin-bottom: 0;
 }
 .feed-list-page .desktop-delete {
   display: none;
@@ -5633,25 +5635,23 @@ io-article-preview .article .date {
   color: #999999;
 }
 io-add-feed-form {
+  color: #555555;
   /* General Styles */
 
   /*Animation mix-ins*/
 
 }
 io-add-feed-form .add-feed {
-  color: #555555;
   cursor: pointer;
   background: #eeeeee;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 15px;
-  height: 28px;
-}
-io-add-feed-form .add-feed .icon-plus {
-  color: #555555;
+  height: 20px;
+  font-weight: bold;
 }
 io-add-feed-form .add-feed .name {
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 110%;
+  line-height: 125%;
 }
 io-add-feed-form .add-feed-form {
   min-height: 160px;
@@ -5665,6 +5665,7 @@ io-add-feed-form .add-feed-form input[type=text] {
   box-sizing: border-box;
 }
 io-add-feed-form .add-feed-form h4 {
+  font-size: 110%;
   margin-top: 0;
 }
 io-add-feed-form .add-hide,
