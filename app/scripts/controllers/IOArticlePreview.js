@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', '$rootScope', 'Articles', 'FeedManager', '$window', '$location', function ($scope, $rootScope, Articles, FeedManager, $window, $location) {
+  .controller('IOArticlePreviewCtrl', 
+    ['$scope', '$rootScope', 'Articles', 'FeedManager', '$window', '$location', function ($scope, $rootScope, Articles, FeedManager, $window, $location) {
 
     $scope.openArticle = function (id, index) {
       //Since it is part of a route, it must be encoded.

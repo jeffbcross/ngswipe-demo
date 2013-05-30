@@ -1,13 +1,14 @@
 angular.module('ngswipeDemoApp')
   .controller('IOAddFeedFormCtrl', 
     ['$scope', 'FeedManager', 'RecommendedFeeds', '$location', function ($scope, FeedManager, RecommendedFeeds, $location) {
+    
     $scope.saveFeed = function () {
       var name = $scope.newFeed.name;
       FeedManager.add(name, $scope.newFeed);
 
       $scope.newFeedForm = null;
 
-      $location.path('/feeds/' + name);
+      $location.search({feed: name});
     };
 
     $scope.sources = RecommendedFeeds;
