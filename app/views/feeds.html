@@ -5,9 +5,9 @@
             ng-class="{selected: feed.name == activeFeed}"
             ng-swipe-left="showDelete = true"
             ng-swipe-right="showDelete = false">
-        <span class="pull-right" ng-show="showDelete">
-          <button class="btn btn-danger pull-right" ng-animate="delete" ng-click="deleteFeed(feed.name)">Delete</button>
-        </span>
+          
+          <span class="desktop-delete" ng-show="!showDelete"><a class="icon-remove" ng-click="showDelete = true"></a></span>
+          <a ng-show="showDelete" ng-animate=" 'delete' " class="btn btn-danger pull-right" ng-click="deleteFeed(feed.name)">Delete</a>
         
         <img ng-src="{{ feed.icon }}">
         <span class="name" ng-bind="feed.name"></span>

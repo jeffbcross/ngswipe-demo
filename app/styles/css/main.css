@@ -5340,13 +5340,52 @@ Animation classes for top-level ng-view
   left: 0;
   bottom: 0;
 }
-.feed-list-page .delete-show {
-  -webkit-transition: all linear 1s;
-  width: 0;
+.feed-list-page .desktop-delete {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .feed-list-page .desktop-delete {
+    display: block;
+    float: right;
+    z-index: 2;
+  }
+  .feed-list-page .desktop-delete a {
+    color: #999999;
+  }
+  .feed-list-page .desktop-delete a:hover {
+    text-decoration: none;
+    color: #555555;
+  }
+}
+.feed-list-page .btn-danger {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 43px;
+}
+.feed-list-page .delete-show,
+.feed-list-page .delete-hide {
+  -webkit-transition: all linear 0.2s;
   overflow: hidden;
+  display: block;
+}
+.feed-list-page .delete-show {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .feed-list-page .delete-show-active {
-  width: 80px;
+  width: 43px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.feed-list-page .delete-hide {
+  width: 43px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.feed-list-page .delete-hide-active {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .feed-list-page .column {
   -webkit-flex-flow: column;
