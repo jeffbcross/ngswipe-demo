@@ -1,12 +1,25 @@
 <div class="box-row feed-list-page" ng-animate="{enter: 'page-enter-left', leave: 'page-leave-right'}">
   <div class="column">
     <div class="feed-list">
+      <h1 class="title">
+        Angular Reader
+        <span ng-click="showDelete = !showDelete;" class="desktop-delete pull-right">
+          <i class="icon-edit"></i>
+          <span ng-show="showDelete">
+            done
+          </span>
+          <span ng-show="!showDelete">
+            edit
+          </span>
+        </span>
+      </h1>
+      
+
       <span ng-repeat="feed in feeds" ng-click="showFeed(feed)" class="feed-box"
             ng-class="{selected: feed.name == activeFeed}"
             ng-swipe-left="showDelete = true"
             ng-swipe-right="showDelete = false">
           
-          <span class="desktop-delete" ng-show="!showDelete"><a class="icon-remove" ng-click="showDelete = true"></a></span>
           <a ng-show="showDelete" ng-animate=" 'delete' " class="btn btn-danger pull-right" ng-click="deleteFeed(feed.name)">Delete</a>
         
         <img ng-src="{{ feed.icon }}">

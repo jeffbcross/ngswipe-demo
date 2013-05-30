@@ -23,23 +23,22 @@
   left: 0;
   bottom: 0;
 
+  h1.title {
+    font-size: 110%;
+    font-family: @metaFont;
+    background: @grayLighter;
+    padding: 0 @padding;
+  }
+  
+
   .desktop-delete {
     display: none;
 
   }
   @media screen and (min-width: 1024px) {
     .desktop-delete {
-      display: block;
-      float: right;
-      z-index: 2;
-      a {
-        color: @grayLight;
-        &:hover {
-          text-decoration: none;
-          color: @gray;
-        }
-      }
-      
+      display: inline;
+      cursor: pointer;
     }
   }
 

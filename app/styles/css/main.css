@@ -5340,21 +5340,19 @@ Animation classes for top-level ng-view
   left: 0;
   bottom: 0;
 }
+.feed-list-page h1.title {
+  font-size: 110%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #eeeeee;
+  padding: 0 15px;
+}
 .feed-list-page .desktop-delete {
   display: none;
 }
 @media screen and (min-width: 1024px) {
   .feed-list-page .desktop-delete {
-    display: block;
-    float: right;
-    z-index: 2;
-  }
-  .feed-list-page .desktop-delete a {
-    color: #999999;
-  }
-  .feed-list-page .desktop-delete a:hover {
-    text-decoration: none;
-    color: #555555;
+    display: inline;
+    cursor: pointer;
   }
 }
 .feed-list-page .btn-danger {
