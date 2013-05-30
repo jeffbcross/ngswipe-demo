@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ngswipeDemoApp')
-  .controller('IOArticlePreviewCtrl', ['$scope', 'Articles', 'FeedManager', '$window', '$location', '$routeParams', function ($scope, Articles, FeedManager, $window, $location, $routeParams) {
+  .controller('IOArticlePreviewCtrl', ['$scope', '$rootScope', 'Articles', 'FeedManager', '$window', '$location', '$routeParams', function ($scope, $rootScope, Articles, FeedManager, $window, $location, $routeParams) {
 
     var errorMessages = {
       LOADING_ERROR: 'There was an error loading articles',
@@ -13,7 +13,8 @@ angular.module('ngswipeDemoApp')
       if ($window.decodeURIComponent(id) === id) {
         id = $window.encodeURIComponent(id);
       }
-      
+      $rootScope.pageAnimation = {enter: 'page-enter-right', leave: 'page-leave-left'};
+
       Articles.setSelected(id);
       $location.path('/articles/' + $routeParams.feedId + '/' + id).search({index: index});
     };
