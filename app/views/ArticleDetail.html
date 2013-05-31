@@ -4,7 +4,7 @@
     <h3 class="title" ng-bind="detailFeed.meta.title" ng-class="{loading: !detailFeed.entries.length}"></h3>
     <a class="url" target="_blank" href="{{detailFeed.meta.href}}" ng-bind="detailFeed.meta.href"></a>
   </div>
-  <ul rn-carousel rn-carousel-index="articleIndex">
+  <ul rn-carousel rn-carousel-index="articleIndex" rn-carousel-buffered>
     <li ng-repeat="page in detailFeed.entries">
       <div class="page">
         <div class="article">

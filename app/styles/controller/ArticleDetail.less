@@ -1,4 +1,3 @@
-
 .ArticleDetailCtrl {
   width: 100%;
   height: 100%;
@@ -6,6 +5,7 @@
   .banner {
     position: fixed;
     top:0;
+    left: 0;
     height: @bannerHeight;
     width: 100%;
     padding-left: 0;
@@ -49,6 +49,8 @@
       color: @grayLight;
     }
   }
+
+  
 
   .page {
     height: 100%;
@@ -108,3 +110,19 @@
     font-size: 200%;
   }
 }
+
+.page-enter-right, .page-enter-left, .page-leave-left, .page-leave-right {
+    .banner {
+      left: 0;
+      position: relative;
+      top: @padding * -1;
+
+      .title {
+        padding-top: @padding;
+      }
+    }
+
+    .article {
+      padding-top: 0;
+    }
+  }

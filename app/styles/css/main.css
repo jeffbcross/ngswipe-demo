@@ -5293,7 +5293,7 @@ Animation classes for top-level ng-view
 .page-enter-right,
 .page-leave-left,
 .page-leave-right {
-  -webkit-transition: all cubic-bezier(0.3, 0.5, 0.4, 0.2) 0.3s;
+  -webkit-transition: all linear 3s;
   position: absolute;
 }
 .page-enter-left {
@@ -5483,6 +5483,7 @@ Animation classes for top-level ng-view
 .ArticleDetailCtrl .banner {
   position: fixed;
   top: 0;
+  left: 0;
   height: 75px;
   width: 100%;
   padding-left: 0;
@@ -5600,6 +5601,26 @@ Animation classes for top-level ng-view
   top: 49%;
   text-align: center;
   font-size: 200%;
+}
+.page-enter-right .banner,
+.page-enter-left .banner,
+.page-leave-left .banner,
+.page-leave-right .banner {
+  left: 0;
+  position: relative;
+  top: -15px;
+}
+.page-enter-right .banner .title,
+.page-enter-left .banner .title,
+.page-leave-left .banner .title,
+.page-leave-right .banner .title {
+  padding-top: 15px;
+}
+.page-enter-right .article,
+.page-enter-left .article,
+.page-leave-left .article,
+.page-leave-right .article {
+  padding-top: 0;
 }
 [io-article-preview] .loading,
 io-article-preview .loading {

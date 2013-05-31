@@ -5,7 +5,13 @@ angular.module('ngswipeDemoApp', ['ngMobile', 'ngResource', 'ngSanitize', 'angul
     $routeProvider
       .when('/articles/:feedId/:articleId', {
         templateUrl: 'views/ArticleDetail.html',
-        controller: 'ArticleDetailCtrl'
+        controller: 'ArticleDetailCtrl',
+        resolve: {
+          detailFeed: function (Articles, FeedManager, $location, $route) {
+            var feed = FeedManager.get($route.current.params.feedId);
+            return Articles.fetch(feed.href);;
+          }
+        }
       })
       .when('/feeds', {
         templateUrl: 'views/FeedList.html',
