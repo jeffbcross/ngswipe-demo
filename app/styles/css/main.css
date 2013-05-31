@@ -5705,13 +5705,11 @@ io-add-feed-form .add-hide {
 io-add-feed-form .add-hide-active {
   height: 0;
   line-height: 0;
-  overflow: hidden;
   padding: 0 15px;
 }
 io-add-feed-form .add-show {
   height: 0;
   line-height: 0;
-  overflow: hidden;
   padding: 0 15px;
 }
 io-add-feed-form .add-show-active {
