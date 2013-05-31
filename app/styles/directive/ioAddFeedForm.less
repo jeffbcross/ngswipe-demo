@@ -34,36 +34,6 @@ io-add-feed-form {
     }
   }
 
-  /*Animation mix-ins*/
-  .form-shown () {
-    opacity: 1;
-    height: @formHeight;
-    min-height: 0;
-    padding: @padding;
-  }
-
-  .form-hidden () {
-    opacity: 0;
-    overflow: hidden;
-    padding: 0 @padding;
-    height: 0;
-  }
-
-  .add-shown () {
-    height: 28px;
-    overflow: hidden;
-    padding: @padding;
-    opacity: 1;
-  }
-
-  .add-hidden () {
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-    padding: 0 @padding;
-    opacity: 0;
-  }
-
   .add-hide, .add-show, .form-hide, .form-show {
     -webkit-transition:0.25s linear all;
     -moz-transition:0.25s linear all;
@@ -73,33 +43,51 @@ io-add-feed-form {
   }
 
   .add-hide {
-    .add-shown();
+    height: 28px;
+    overflow: hidden;
+    padding: @padding;
   }
   .add-hide-active {
-    .add-hidden();
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0 @padding;
   }
 
   .add-show {
-    .add-hidden();
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    padding: 0 @padding;
   }
 
   .add-show-active {
-    .add-shown();
+    height: 28px;
+    overflow: hidden;
+    padding: @padding;
   }
 
   .form-hide {
-    .form-shown();
+    height: @formHeight;
+    min-height: 0;
+    padding: @padding;
   }
 
   .form-hide-active {
-    .form-hidden();
+    overflow: hidden;
+    padding: 0 @padding;
+    height: 0;;
   }
   
   .form-show {
-    .form-hidden();
+    overflow: hidden;
+    padding: 0 @padding;
+    height: 0;;
   }
 
   .form-show-active {
-    .form-shown();
+    height: @formHeight;
+    min-height: 0;
+    padding: @padding;
   }
 }

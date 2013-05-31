@@ -5659,8 +5659,6 @@ io-add-feed-form {
   color: #555555;
   /* General Styles */
 
-  /*Animation mix-ins*/
-
 }
 io-add-feed-form .add-feed {
   cursor: pointer;
@@ -5703,48 +5701,40 @@ io-add-feed-form .add-hide {
   height: 28px;
   overflow: hidden;
   padding: 15px;
-  opacity: 1;
 }
 io-add-feed-form .add-hide-active {
   height: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0 15px;
-  opacity: 0;
 }
 io-add-feed-form .add-show {
   height: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0 15px;
-  opacity: 0;
 }
 io-add-feed-form .add-show-active {
   height: 28px;
   overflow: hidden;
   padding: 15px;
-  opacity: 1;
 }
 io-add-feed-form .form-hide {
-  opacity: 1;
   height: 160px;
   min-height: 0;
   padding: 15px;
 }
 io-add-feed-form .form-hide-active {
-  opacity: 0;
   overflow: hidden;
   padding: 0 15px;
   height: 0;
 }
 io-add-feed-form .form-show {
-  opacity: 0;
   overflow: hidden;
   padding: 0 15px;
   height: 0;
 }
 io-add-feed-form .form-show-active {
-  opacity: 1;
   height: 160px;
   min-height: 0;
   padding: 15px;
