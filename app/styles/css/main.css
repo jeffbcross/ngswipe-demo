@@ -5293,7 +5293,7 @@ Animation classes for top-level ng-view
 .page-enter-right,
 .page-leave-left,
 .page-leave-right {
-  -webkit-transition: all linear 3s;
+  -webkit-transition: all linear 0.3s;
   position: absolute;
 }
 .page-enter-left {
