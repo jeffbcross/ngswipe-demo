@@ -34,7 +34,43 @@ io-add-feed-form {
     }
   }
 
-  .add-hide, .add-show, .form-hide, .form-show {
+  .form-show {
+    overflow: hidden;
+    padding: 0 @padding;
+    height: 0;
+    min-height: 0;
+
+    -webkit-transition:0.25s linear all;
+    -moz-transition:0.25s linear all;
+    -o-transition:0.25s linear all;
+    transition:0.25s linear all;
+  }
+
+  .form-show-active {
+    height: @formHeight;
+    min-height: 0;
+    padding: @padding;
+  }
+
+  .form-hide {
+    height: @formHeight;
+    min-height: 0;
+    padding: @padding;
+
+    -webkit-transition:0.25s linear all;
+    -moz-transition:0.25s linear all;
+    -o-transition:0.25s linear all;
+    transition:0.25s linear all;
+  }
+
+  .form-hide-active {
+    overflow: hidden;
+    padding: 0 @padding;
+    height: 0;;
+  }
+
+
+  .add-hide, .add-show  {
     -webkit-transition:0.25s linear all;
     -moz-transition:0.25s linear all;
     -o-transition:0.25s linear all;
@@ -62,30 +98,6 @@ io-add-feed-form {
   .add-show-active {
     height: 28px;
     overflow: hidden;
-    padding: @padding;
-  }
-
-  .form-hide {
-    height: @formHeight;
-    min-height: 0;
-    padding: @padding;
-  }
-
-  .form-hide-active {
-    overflow: hidden;
-    padding: 0 @padding;
-    height: 0;;
-  }
-  
-  .form-show {
-    overflow: hidden;
-    padding: 0 @padding;
-    height: 0;;
-  }
-
-  .form-show-active {
-    height: @formHeight;
-    min-height: 0;
     padding: @padding;
   }
 }

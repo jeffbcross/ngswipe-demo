@@ -1,7 +1,7 @@
 <div class="add-feed feed-box"
-  ng-animate=" 'add' "
   ng-click="newFeed = {}"
-  ng-show="!newFeed">
+  ng-show="!newFeed"
+  ng-animate="{show: 'add-show', hide: 'add-hide'} ">
 
   <span class="name">
     <i class="icon-plus"></i>
@@ -9,7 +9,10 @@
   </span>
 </div>
 
-<div ng-show="newFeed" class="add-feed-form" ng-animate=" 'form' ">
+<div class="add-feed-form"
+  ng-show="newFeed"
+  ng-animate=" 'form' ">
+
   <h4>Add Atom Feed</h4>
   <form class="form" name="newFeedForm" 
     ng-submit="saveFeed()">

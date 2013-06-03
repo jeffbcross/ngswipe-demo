@@ -5697,6 +5697,16 @@ io-add-feed-form .form-show {
   transition: 0.25s linear all;
   min-height: 0;
 }
+io-add-feed-form .form-show {
+  overflow: hidden;
+  padding: 0 15px;
+  height: 0;
+}
+io-add-feed-form .form-show-active {
+  height: 160px;
+  min-height: 0;
+  padding: 15px;
+}
 io-add-feed-form .add-hide {
   height: 28px;
   overflow: hidden;
@@ -5726,16 +5736,6 @@ io-add-feed-form .form-hide-active {
   overflow: hidden;
   padding: 0 15px;
   height: 0;
-}
-io-add-feed-form .form-show {
-  overflow: hidden;
-  padding: 0 15px;
-  height: 0;
-}
-io-add-feed-form .form-show-active {
-  height: 160px;
-  min-height: 0;
-  padding: 15px;
 }
 /*
 generic styles applied to any carousel
