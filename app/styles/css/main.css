@@ -5329,7 +5329,7 @@ Animation classes for top-level ng-view
 }
 .feed-list-page {
   display: -webkit-box;
-  -webkit-box-align: center;
+  -webkit-box-align: top;
   -webkit-flex-basis: auto;
   max-height: 100%;
   height: 100%;
@@ -5346,7 +5346,7 @@ Animation classes for top-level ng-view
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #eeeeee;
   padding: 0 15px;
-  margin-bottom: 0;
+  margin: 0 inherit;
 }
 .feed-list-page .desktop-delete {
   display: none;
@@ -5393,9 +5393,6 @@ Animation classes for top-level ng-view
   box-flex: 2;
 }
 .feed-list-page .column:first-child {
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   width: 320px;
   min-width: 320px;
   display: -webkit-box;
@@ -5409,6 +5406,9 @@ Animation classes for top-level ng-view
   bottom: 0;
   max-height: 100%;
   overflow: auto;
+}
+.feed-list-page .feed-list {
+  border: 1px solid #eeeeee;
 }
 .feed-list-page .feed-list .feed-box {
   display: block;
@@ -5687,25 +5687,42 @@ io-add-feed-form .add-feed-form h4 {
   font-size: 110%;
   margin-top: 0;
 }
-io-add-feed-form .add-hide,
-io-add-feed-form .add-show,
-io-add-feed-form .form-hide,
-io-add-feed-form .form-show {
-  -webkit-transition: 0.25s linear all;
-  -moz-transition: 0.25s linear all;
-  -o-transition: 0.25s linear all;
-  transition: 0.25s linear all;
-  min-height: 0;
-}
 io-add-feed-form .form-show {
   overflow: hidden;
   padding: 0 15px;
   height: 0;
+  min-height: 0;
+  -webkit-transition: 0.25s linear all;
+  -moz-transition: 0.25s linear all;
+  -o-transition: 0.25s linear all;
+  transition: 0.25s linear all;
 }
 io-add-feed-form .form-show-active {
   height: 160px;
   min-height: 0;
   padding: 15px;
+}
+io-add-feed-form .form-hide {
+  height: 160px;
+  min-height: 0;
+  padding: 15px;
+  -webkit-transition: 0.25s linear all;
+  -moz-transition: 0.25s linear all;
+  -o-transition: 0.25s linear all;
+  transition: 0.25s linear all;
+}
+io-add-feed-form .form-hide-active {
+  overflow: hidden;
+  padding: 0 15px;
+  height: 0;
+}
+io-add-feed-form .add-hide,
+io-add-feed-form .add-show {
+  -webkit-transition: 0.25s linear all;
+  -moz-transition: 0.25s linear all;
+  -o-transition: 0.25s linear all;
+  transition: 0.25s linear all;
+  min-height: 0;
 }
 io-add-feed-form .add-hide {
   height: 28px;
@@ -5726,16 +5743,6 @@ io-add-feed-form .add-show-active {
   height: 28px;
   overflow: hidden;
   padding: 15px;
-}
-io-add-feed-form .form-hide {
-  height: 160px;
-  min-height: 0;
-  padding: 15px;
-}
-io-add-feed-form .form-hide-active {
-  overflow: hidden;
-  padding: 0 15px;
-  height: 0;
 }
 /*
 generic styles applied to any carousel
