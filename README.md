@@ -8,8 +8,14 @@ Angular reader is a simple Atom feed reader app that shows off some new features
 
 The app is a proof-of-concept, and a little rough around the edges. It should work with most Atom feeds, but may break if it has trouble parsing.
 
-## Getting Started
-...
+## Getting Started 
+
+(Requires node, grunt, bower)
+
+    $ npm intall
+    $ bower install
+    $ grunt server
+
 
 ## Features
 
