@@ -1,6 +1,7 @@
 # Angular Reader
 
 [Live Demo](http://jeffbcross.github.io/ngswipe-demo/app/)
+
 [Video Demo of Animation](https://plus.google.com/115279700532270609876/posts/L9q6HFFdrgj)
 
 Angular reader is a simple Atom feed reader app that shows off some new features in [AngularJS](http://www.angularjs.org), and generally shows off the simplicity of building apps with Angular.
